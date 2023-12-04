@@ -1,0 +1,16 @@
+<div class="header-component">
+    <nav class="nav-bar">
+      <img routerLink="/" class="instagram-logo" src="assets/icons/instagram-wordmark.svg">
+      <div class="spacer"></div>
+   
+      <svg-icon routerLink="/" class="icon" src="assets/icons/explore-24px.svg" #rla="routerLinkActive" routerLinkActive="active"> </svg-icon>
+
+  
+      <svg-icon routerLink='/create' class="icon" src="assets/icons/add_a_photo-24px.svg"> </svg-icon>
+      <svg-icon (click)=toUserProfile() class="icon"src="assets/icons/account_circle-24px.svg"> </svg-icon>
+      <svg-icon *ngIf="isAuthenticated" (click)=logOut() routerLinkActive="router-link-active"  class="icon" src="assets/icons/exit_to_app-24px.svg"> </svg-icon>
+   
+  
+    </nav>
+  </div>
+  
