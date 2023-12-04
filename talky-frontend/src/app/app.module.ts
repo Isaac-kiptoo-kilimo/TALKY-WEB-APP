@@ -17,6 +17,8 @@ import { CreatePostComponent } from './post/create-post/create-post.component';
 import { PostlistComponent } from './post/postlist/postlist.component';
 import { PostComponent } from './post/post/post.component';
 import { SidebarComponent } from './navigation/sidebar/sidebar.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 
@@ -31,7 +33,9 @@ import { SidebarComponent } from './navigation/sidebar/sidebar.component';
     CreatePostComponent,
     PostlistComponent,
     PostComponent,
-    SidebarComponent
+    SidebarComponent,
+    NotFoundComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

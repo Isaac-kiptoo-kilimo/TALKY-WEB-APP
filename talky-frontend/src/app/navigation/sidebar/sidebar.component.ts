@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { User } from 'src/app/interface/user';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,5 +9,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
+  authStatusSubscription!:Subscription;
+  isAuthenticated : any;
+  userID!: User;
 
+  constructor(private router:Router) { }
+
+  ngOnInit(): void {
+  
+  }
+
+  toUserProfile(){
+    this.router.navigate(['/user/'+ this.userID]);
+  }
+
+  logOut(){
+     
+  }
+ngOnDestroy(){
+  this.authStatusSubscription.unsubscribe();
+}  
 }
