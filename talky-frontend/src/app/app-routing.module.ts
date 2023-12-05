@@ -5,11 +5,13 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { UserDashboardComponent } from './user/user-dashboard/user-dashboard.component';
 import { PostlistComponent } from './post/postlist/postlist.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
   {path: "signup", component: SignUpComponent},
   {path: "user", component: UserDashboardComponent},
+  {path: "profile", component: UserProfileComponent},
   {path: "forgot", component: ForgotPasswordComponent},
   {path: "post", component: PostlistComponent},
 ];

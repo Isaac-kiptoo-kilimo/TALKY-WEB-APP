@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-dashboard.component.css']
 })
 export class UserDashboardComponent {
+  showPostButton = false;
+constructor(private router:Router){
 
+}
+  postComment(){
+    console.log("I am clickable");
+    
+  }
+
+  viewProfile(){
+    console.log("I am clickable");
+    this.router.navigate(['profile'])
+  }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent {
   loginError = false;
   loginForm! : FormGroup
 
-  constructor(private formBuilder:FormBuilder){
+  constructor(private formBuilder:FormBuilder, private router:Router){
     this.loginForm=formBuilder.group({
       fullName:["",[Validators.required]],
       username:["",[Validators.required]],
@@ -26,6 +27,8 @@ export class LoginComponent {
 
       const loginUserForm=this.loginForm.value
       console.log(loginUserForm);
+
+      this.router.navigate(['user'])
       
 }
   }

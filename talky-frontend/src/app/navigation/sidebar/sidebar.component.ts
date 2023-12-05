@@ -9,7 +9,6 @@ import { User } from 'src/app/interface/user';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-  authStatusSubscription!:Subscription;
   isAuthenticated : any;
   userID!: User;
 
@@ -26,7 +25,7 @@ export class SidebarComponent {
   logOut(){
      
   }
-ngOnDestroy(){
-  this.authStatusSubscription.unsubscribe();
-}  
+// ngOnDestroy(){
+//   this.authStatusSubscription.unsubscribe();
+// }  
 }

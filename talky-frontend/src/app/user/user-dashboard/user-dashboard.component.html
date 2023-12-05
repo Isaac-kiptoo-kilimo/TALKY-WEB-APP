@@ -1,8 +1,25 @@
 <div class="flex  gap-10 w-full bg-teal-500">
 <app-sidebar style="width: 20%;"></app-sidebar>
-<div class="flex overflow-y-auto">
-  <div class="h-full" style="background-color: #1D566E;width: 50%; margin: 20px ; border-radius: 20px;" >
 
+<div class="flex overflow-y-auto mt-5 justify-center" style="width: 80%;">
+  <div class="h-full text-white" style="background-color: #1D566E;width: 900px; margin: 20px ; border-radius: 20px;" >
+<div style="background-color: #163A5F ; padding: 20px; border-radius:10px 10px 0 0;">
+ 
+<form>
+  <div class="flex">
+      <div class="relative w-full">
+        <input type="search" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-none border-gray-300 focus:border-none focus:outline-none dark:bg-gray-700 dark:border-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Search by username" required>
+          <button type="submit" class="absolute top-0 end-0 h-full p-2.5 text-sm font-medium text-white bg-teal-500 rounded-e-lg border border-teal-700 hover:bg-teal-500 focus:ring-4 focus:outline-none focus:ring-teal-300 dark:bg-teal-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+              </svg>
+              <span class="sr-only">Search</span>
+          </button>
+      </div>
+  </div>
+</form>
+
+</div>
     <div>
         <ul class="inline-flex items-center">
             <li class="relative px-6 py-4">
@@ -10,35 +27,35 @@
                   class=" w-full transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                  
                 >
-                  <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full border-4 border-green-500 " alt="">
-                  <span class="ml-2">PROFILE</span>
+                  <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full border-2 border-green-500 " alt="">
+                  <span class="ml-2">Davis_12</span>
                 </a>
               </li>
               <li class="relative px-6 py-4">
                 <a
                   class=" w-full  transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                  href="modals.html"
+                  
                 >
-                  <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-                  <span class="ml-2">PROFILE</span>
+                <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full border-2 border-green-500 " alt="">
+                  <span class="ml-2">Noel_new </span>
                 </a>
               </li>
               <li class="relative px-6 py-4">
                 <a
                   class=" w-full  transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                  href="modals.html"
+                  
                 >
-                  <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-                  <span class="ml-2">PROFILE</span>
+                <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full border-2 border-green-500 " alt="">
+                  <span class="ml-2">Mike_745 </span>
                 </a>
               </li>
               <li class="relative px-6 py-4">
                 <a
                   class=" w-full  transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                  href="modals.html"
+                
                 >
-                  <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-                  <span class="ml-2">PROFILE</span>
+                <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full border-2 border-green-500 " alt="">
+                  <span class="ml-2">New_Ronaldo</span>
                 </a>
               </li>
          
@@ -54,7 +71,7 @@
       class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
       href="modals.html"
     >
-      <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
+    <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full border-2 border-green-500 " alt="">
       <span class="ml-2">DanKariuki</span>
       <img src="" alt="">
       <span class="ml-2" >3h</span>
@@ -67,23 +84,29 @@
       />
       <div class="flex justify-between items-center">
         <div class="flex gap-10">
-          <img src="assets/images/heart.svg" alt="">
-          <img src="assets/images/comment.svg" alt="">
+          <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart.svg" alt="">
+          <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/comment.svg" alt="">
         </div>
         <div>
-          <img src="assets/images/bookmark.svg" alt="">
+          <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/bookmark.svg" alt="">
         </div>
       </div>
       <p class="text-lg font-bold">123 Likes</p>
       <p class="text-lg">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse cupiditate quam aliquam </p>
 
       <p class="text-lg font-bold text-blue-300">View All 571 comments</p>
-     <div class="flex justify-between items-center">
-      <form >
-        <input type="text" placeholder="Add a comment">
-      </form>
-      <span>post</span>
-     </div>
+      <div class="flex items-center relative border-b-2">
+        <form class="flex-grow relative">
+          <input type="text" placeholder="Add a comment"
+            class="bg-1D566E p-2 focus:border-none focus:outline-none focus:bg-red-500"
+            style="background-color: #1D566E; font-size: 18px; width: 90%;">
+            <span (click)="postComment()" class="text-gray-200 text-lg ml-2 pt-3 cursor-pointer hover:cursor-pointer hover:text-green-500" >post</span>
+        </form>
+        
+      </div>
+      
+        
+      
     </div>
 
     <div
@@ -93,9 +116,9 @@
 <li class="relative px-6 py-4">
   <a
     class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-    href="modals.html"
+    
   >
-    <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
+  <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full border-2 border-green-500 " alt="">
     <span class="ml-2">DanKariuki</span>
     <img src="" alt="">
     <span class="ml-2" >3h</span>
@@ -108,23 +131,26 @@
     />
     <div class="flex justify-between items-center">
       <div class="flex gap-10">
-        <img src="assets/images/heart.svg" alt="">
-        <img src="assets/images/comment.svg" alt="">
+        <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart.svg" alt="">
+        <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/comment.svg" alt="">
       </div>
       <div>
-        <img src="assets/images/bookmark.svg" alt="">
+        <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/bookmark.svg" alt="">
       </div>
     </div>
     <p class="text-lg font-bold">123 Likes</p>
     <p class="text-lg">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse cupiditate quam aliquam </p>
 
     <p class="text-lg font-bold text-blue-300">View All 571 comments</p>
-   <div class="flex justify-between items-center">
-    <form >
-      <input type="text" placeholder="Add a comment">
-    </form>
-    <span>post</span>
-   </div>
+    <div class="flex items-center relative border-b-2">
+      <form class="flex-grow relative">
+        <input type="text" placeholder="Add a comment"
+          class="bg-1D566E p-2 focus:border-none focus:outline-none focus:bg-red-500"
+          style="background-color: #1D566E; font-size: 18px; width: 90%;">
+          <span (click)="postComment()" class="text-gray-200 text-lg ml-2 pt-3 cursor-pointer hover:cursor-pointer hover:text-green-500" >post</span>
+      </form>
+      
+    </div>
   </div>
   <div
   class="sec4-img4 p-4 flex flex-col justify-between rounded-md shadow-md hover:shadow-lg transition duration-300"
@@ -135,7 +161,7 @@
   class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
   href="modals.html"
 >
-  <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
+<img src="assets/images/profile2.png" class="w-16 h-16 rounded-full border-2 border-green-500 " alt="">
   <span class="ml-2">DanKariuki</span>
   <img src="" alt="">
   <span class="ml-2" >3h</span>
@@ -147,34 +173,37 @@
     class="w-full h-48 object-cover mb-2 rounded-md transform transition hover:scale-105 duration-300 ease-in-out"
   />
   <div class="flex justify-between items-center">
-    <div class="flex gap-10">
-      <img src="assets/images/heart.svg" alt="">
-      <img src="assets/images/comment.svg" alt="">
+    <div class="flex gap-10 ">
+      <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart.svg" alt="">
+      <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/comment.svg" alt="">
     </div>
     <div>
-      <img src="assets/images/bookmark.svg" alt="">
+      <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/bookmark.svg" alt="">
     </div>
   </div>
   <p class="text-lg font-bold">123 Likes</p>
   <p class="text-lg">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse cupiditate quam aliquam </p>
 
   <p class="text-lg font-bold text-blue-300">View All 571 comments</p>
- <div class="flex justify-between items-center">
-  <form >
-    <input type="text" placeholder="Add a comment">
-  </form>
-  <span>post</span>
- </div>
+  <div class="flex items-center relative border-b-2">
+    <form class="flex-grow relative">
+      <input type="text" placeholder="Add a comment"
+        class="bg-1D566E p-2 focus:border-none focus:outline-none focus:bg-red-500"
+        style="background-color: #1D566E; font-size: 18px; width: 90%;">
+        <span (click)="postComment()" class="text-gray-200 text-lg ml-2 pt-3 cursor-pointer hover:cursor-pointer hover:text-green-500" >post</span>
+    </form>
+    
+  </div>
 </div>
   
       
   </div>
-<div class="">
-  <ul>
+<div class="mt-20 w-full flex flex-col ">
+  <ul class="mx-8">
     <li class="relative px-6 py-4">
       <a
         class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-        href="modals.html"
+        (click)="viewProfile()" 
       >
         <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
        <div class="flex flex-col">
@@ -184,46 +213,54 @@
       </a>
     </li>
     </ul>
-    <ul>
-      <p>Suggested For You</p>
+    <ul class="mx-10">
+      <p class="font-bold text-white" style="font-size: 20px;">Suggested For You</p>
     <li class="relative px-6 py-4">
       <a
         class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
         href="modals.html"
       >
         <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-        <span class="ml-2">LeahKyalo2</span>
-        <span class="ml-2">Follow</span>
+        <div class="flex gap-8">
+          <span class="ml-2">LeahKyalo2</span>
+        <span class="">Follow</span>
+        </div>
       </a>
     </li>
     <li class="relative px-6 py-4">
       <a
-        class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+        class="inline-flex gap-3 items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
         href="modals.html"
       >
         <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-        <span class="ml-2">Marywam</span>
-        <span class="ml-2"> Follow </span>
+        <div class="flex gap-8">
+          <span class="ml-2">Marywam</span>
+        <span class=""> Follow </span>
+        </div>
       </a>
     </li>
     <li class="relative px-6 py-4">
       <a
-        class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+        class="inline-flex gap-3  items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
         href="modals.html"
       >
         <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-        <span class="ml-2">DanKariuki</span>
-        <span class="ml-2">Follow</span>
+        <div class="flex gap-8">
+          <span class="ml-2">DanKariuki</span>
+        <span class="">Follow</span>
+        </div>
       </a>
     </li>
     <li class="relative px-6 py-4">
       <a
-        class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+        class="inline-flex gap-3  items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
         href="modals.html"
       >
         <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-        <span class="ml-2">NicksonKen</span>
+        <div class="flex gap-6">
+          <span class="ml-2">NicksonKen</span>
         <span class="ml-2">Follow</span>
+        </div>
       </a>
     </li>
   </ul>
