@@ -8,13 +8,15 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { PostComponent } from './post/post/post.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
   {path: "signup", component: SignUpComponent},
   {path: "user", component: UserDashboardComponent},
   {path: "profile", component: UserProfileComponent},
-  {path: "post", component: CreatePostComponent},
+  {path: "createPost", component: CreatePostComponent},
+  {path: "post", component: PostComponent},
   {path: "forgot", component: ForgotPasswordComponent},
   {path: "post", component: PostlistComponent},
   {path: "**", component:NotFoundComponent}

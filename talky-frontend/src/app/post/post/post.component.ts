@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
-
+  postComment(){
+    console.log("I am clickable");
+    
+  }
 }
