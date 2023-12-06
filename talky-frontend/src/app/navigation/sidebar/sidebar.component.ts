@@ -12,6 +12,7 @@ export class SidebarComponent {
   isAuthenticated : any;
   userID!: User;
 
+  visible : boolean =true     
   constructor(private router:Router) { }
 
   ngOnInit(): void {

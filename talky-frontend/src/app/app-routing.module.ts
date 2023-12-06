@@ -6,14 +6,19 @@ import { UserDashboardComponent } from './user/user-dashboard/user-dashboard.com
 import { PostlistComponent } from './post/postlist/postlist.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { CreatePostComponent } from './post/create-post/create-post.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
   {path: "signup", component: SignUpComponent},
   {path: "user", component: UserDashboardComponent},
   {path: "profile", component: UserProfileComponent},
+  {path: "post", component: CreatePostComponent},
   {path: "forgot", component: ForgotPasswordComponent},
   {path: "post", component: PostlistComponent},
+  {path: "**", component:NotFoundComponent}
+
 ];
 
 @NgModule({
