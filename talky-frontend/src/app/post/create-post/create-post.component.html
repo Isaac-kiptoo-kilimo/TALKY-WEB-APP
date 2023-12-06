@@ -1,11 +1,11 @@
-<div *ngIf="visible" class="relative newTour z-10 h-full" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+<div *ngIf="visible" class="relative z-10 h-full" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
   <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
-  <div class="fixed createTour inset-0 overflow-hidden">
+  <div class="fixed inset-0 overflow-hidden">
     <div class="absolute inset-0 flex items-center justify-center">
    
       <div class="bg-white p-6 rounded-lg shadow-xl" style="width: 500px;"> 
-        <button data-cy="close-create-tour-modal" (click)="visible = !visible" type="button" class="btn relative rounded-md text-gray-300 hover:text-teal-500 focus:outline-none focus:ring-2 focus:ring-white">
+        <button (click)="visible = !visible" type="button" class="btn relative rounded-md text-gray-300 hover:text-teal-500 focus:outline-none focus:ring-2 focus:ring-white">
           <span class="absolute -inset-2.5"></span>
           <span class="sr-only">Close panel</span>
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">

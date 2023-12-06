@@ -25,7 +25,7 @@
                   
                   </a>
                   <div class="flex justify-center font-bold items-center">
-                    <p class="flex gap-6 text-lg"><span class="" >250 POSTS </span> | <span> 110 FOLLOWERS</span> | <span>20 FOLLOWING</span></p>
+                    <p class="flex gap-6 text-lg "><span class="hover:text-gray-300 hover:cursor-pointer" >250 POSTS </span> | <span class="hover:text-gray-300 hover:cursor-pointer" (click)="isVisible=!isVisible"> 110 FOLLOWERS</span> | <span class="hover:text-gray-300 hover:cursor-pointer" (click)="notVisible=!notVisible">20 FOLLOWING</span></p>
                 </div>
                 </li>
                 
@@ -61,6 +61,6 @@
     </div>
      </div> 
 
-     <app-edit-profile *ngIf="!isFormVisible"></app-edit-profile>
-
-    
+        <app-edit-profile *ngIf="!isFormVisible"></app-edit-profile>
+        <app-followers *ngIf="!isVisible"></app-followers>
+    <app-following *ngIf="!notVisible"></app-following>

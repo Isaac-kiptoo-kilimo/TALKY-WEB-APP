@@ -10,6 +10,8 @@ import { CreatePostComponent } from './post/create-post/create-post.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PostComponent } from './post/post/post.component';
 import { CommentComponent } from './comment/comment/comment.component';
+import { FollowersComponent } from './follow/followers/followers.component';
+import { FollowingComponent } from './follow/following/following.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path: "post", component: PostComponent},
   {path: "postlist", component: PostlistComponent},
   {path: "comment", component: CommentComponent},
+  {path: "followers", component: FollowersComponent},
+  {path: "following", component: FollowingComponent},
   {path: "forgot", component: ForgotPasswordComponent},
  
   {path: "**", component:NotFoundComponent}

@@ -21,6 +21,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { CommentComponent } from './comment/comment/comment.component';
 import { ReplyComponent } from './comment/reply/reply.component';
+import { FollowersComponent } from './follow/followers/followers.component';
+import { FollowingComponent } from './follow/following/following.component';
 
 
 
@@ -39,7 +41,9 @@ import { ReplyComponent } from './comment/reply/reply.component';
     NotFoundComponent,
     ForgotPasswordComponent,
     CommentComponent,
-    ReplyComponent
+    ReplyComponent,
+    FollowersComponent,
+    FollowingComponent
   ],
   imports: [
     BrowserModule,

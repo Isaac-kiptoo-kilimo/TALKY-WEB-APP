@@ -1,10 +1,10 @@
 
 
-<div class="relative z-10 h-full" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+<div *ngIf="hidden" class="relative z-10 h-full" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
     <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">   
 <div class="flex px-20 py-8">
         
-    <button type="button" class="btn relative rounded-md text-gray-300 hover:text-teal-500 focus:outline-none focus:ring-2 focus:ring-white">
+    <button type="button" (click)="hidden=!hidden" class="btn relative rounded-md text-gray-300 hover:text-teal-500 focus:outline-none focus:ring-2 focus:ring-white">
         <span class="absolute -inset-2.5"></span>
         <span class="sr-only">Close panel</span>
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -53,7 +53,7 @@
                           </div>
                           <p class="font-semibold text-gray-500 dark:text-gray-400">_  View All Replies(100)</p>
                           </div>
-                          <img class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out text-gray-900 " src="assets/images/heart.svg" alt="">
+                          <img class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out text-gray-900 " src="assets/images/heart2.svg" alt="">
                         </a>
                         </li>
                         
@@ -75,7 +75,7 @@
                               </div>
                               <p class="font-semibold text-gray-500 dark:text-gray-400">_  View All Replies(100)</p>
                               </div>
-                              <img class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out text-gray-900 " src="assets/images/heart.svg" alt="">
+                              <img class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out text-gray-900 " src="assets/images/heart2.svg" alt="">
                             </a>
                             </li>
                             
@@ -96,7 +96,7 @@
                                   </div>
                                   <p class="font-semibold text-gray-500 dark:text-gray-400">_  View All Replies(100)</p>
                                   </div>
-                                  <img class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out text-gray-900 " src="assets/images/heart.svg" alt="">
+                                  <img class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out text-gray-900 " src="assets/images/heart2.svg" alt="">
                                 </a>
                                 </li>
                                 

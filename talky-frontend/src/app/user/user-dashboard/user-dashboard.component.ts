@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class UserDashboardComponent {
   showPostButton = false;
+  hidden: boolean= true
 constructor(private router:Router){
 
 }
