@@ -9,6 +9,7 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PostComponent } from './post/post/post.component';
+import { CommentComponent } from './comment/comment/comment.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
@@ -17,8 +18,10 @@ const routes: Routes = [
   {path: "profile", component: UserProfileComponent},
   {path: "createPost", component: CreatePostComponent},
   {path: "post", component: PostComponent},
+  {path: "postlist", component: PostlistComponent},
+  {path: "comment", component: CommentComponent},
   {path: "forgot", component: ForgotPasswordComponent},
-  {path: "post", component: PostlistComponent},
+ 
   {path: "**", component:NotFoundComponent}
 
 ];

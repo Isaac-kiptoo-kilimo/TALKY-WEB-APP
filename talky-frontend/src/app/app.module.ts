@@ -19,6 +19,8 @@ import { PostComponent } from './post/post/post.component';
 import { SidebarComponent } from './navigation/sidebar/sidebar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { CommentComponent } from './comment/comment/comment.component';
+import { ReplyComponent } from './comment/reply/reply.component';
 
 
 
@@ -35,7 +37,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     PostComponent,
     SidebarComponent,
     NotFoundComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    CommentComponent,
+    ReplyComponent
   ],
   imports: [
     BrowserModule,
