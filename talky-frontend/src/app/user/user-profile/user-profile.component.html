@@ -19,7 +19,7 @@
                     
                     <span class="ml-2">Isaac Kilimo</span>
                    </div>
-                   <button class="text-gray-900 bg-white py-2 px-4 border-gray-100 rounded-md text-lg hover:bg-gray-200 font-light">
+                   <button class="text-gray-900 bg-white py-2 px-4 border-gray-100 rounded-md text-lg hover:bg-gray-200 font-light" (click)="isFormVisible=!isFormVisible">
                     Edit Profile
                   </button>
                   
@@ -60,3 +60,5 @@
       
     </div>
      </div> 
+
+     <app-edit-profile *ngIf="!isFormVisible"></app-edit-profile>
