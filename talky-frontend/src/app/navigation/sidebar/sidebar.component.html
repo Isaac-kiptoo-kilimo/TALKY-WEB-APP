@@ -23,7 +23,7 @@
             routerLink="/message"
           >
             <img src="assets/images/message.svg" alt="" class="w-10 h-10">
-            <span class="ml-7">MESSAGES</span>
+            <span class="ml-6">MESSAGES</span>
           </a>
         </li>
         <li class="relative px-6 py-4">
@@ -32,7 +32,7 @@
           
           >
             <img src="assets/images/plus.svg" alt="" class="w-10 h-10">
-            <span (click)="visible=!visible" class="ml-7">CREATE POST </span>
+            <span (click)="visible=!visible" class="ml-5">CREATE POST </span>
           </a>
         </li>
         <li class="relative px-6 py-4">
@@ -41,16 +41,25 @@
           routerLink="/post"
           >
             <img src="assets/images/plus.svg" alt="" class="w-10 h-10">
-            <span class="ml-7">POSTS </span>
+            <span class="ml-6">POSTS </span>
           </a>
         </li>
-        <li class="relative px-6 py-4">
+        <li class="relative px-4 py-2">
           <a
             class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
             routerLink="/profile"
           >
             <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-            <span class="ml-2">PROFILE</span>
+            <span class="ml-1">PROFILE</span>
+          </a>
+        </li>
+        <li class="relative ml-3 px-6 py-2">
+          <a
+            class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+          routerLink="/"
+          >
+            <img src="assets/images/logout2.svg" alt="" class="w-8 h-8">
+            <span class="ml-4">Logout </span>
           </a>
         </li>
       </ul>
