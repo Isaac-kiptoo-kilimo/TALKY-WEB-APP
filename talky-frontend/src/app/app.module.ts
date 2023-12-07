@@ -23,6 +23,8 @@ import { CommentComponent } from './comment/comment/comment.component';
 import { ReplyComponent } from './comment/reply/reply.component';
 import { FollowersComponent } from './follow/followers/followers.component';
 import { FollowingComponent } from './follow/following/following.component';
+import { MessageComponent } from './message/message/message.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -43,7 +45,9 @@ import { FollowingComponent } from './follow/following/following.component';
     CommentComponent,
     ReplyComponent,
     FollowersComponent,
-    FollowingComponent
+    FollowingComponent,
+    MessageComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

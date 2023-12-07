@@ -31,8 +31,10 @@
         <div class="flex-grow border-t border-white ml-4"></div>
       </div>
 
-      <div *ngIf="!isLoading" class="infobox text-white">
-        <p>Don't have an account? <a routerLink="/signup" class="underline">Sign up</a></p>
+      <div *ngIf="!isLoading" class="infobox text-lg text-white flex justify-between">
+        <p>Don't have an account? <a routerLink="/signup" class="underline hover:text-blue-300">Sign up</a></p>
+        <p> <a routerLink="/forgot" class="underline hover:text-blue-300">Forgot password?</a></p>
+
       </div>
     </div>
   </div>

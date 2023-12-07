@@ -12,6 +12,8 @@ import { PostComponent } from './post/post/post.component';
 import { CommentComponent } from './comment/comment/comment.component';
 import { FollowersComponent } from './follow/followers/followers.component';
 import { FollowingComponent } from './follow/following/following.component';
+import { MessageComponent } from './message/message/message.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
@@ -24,8 +26,9 @@ const routes: Routes = [
   {path: "comment", component: CommentComponent},
   {path: "followers", component: FollowersComponent},
   {path: "following", component: FollowingComponent},
+  {path: "message", component: MessageComponent},
   {path: "forgot", component: ForgotPasswordComponent},
- 
+  {path: "reset", component: ResetPasswordComponent},
   {path: "**", component:NotFoundComponent}
 
 ];

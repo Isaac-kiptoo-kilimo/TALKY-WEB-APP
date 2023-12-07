@@ -1,26 +1,25 @@
-<div class="flex  gap-10 w-full bg-teal-500">
+<div class="flex   w-full bg-teal-500">
 <app-sidebar style="width: 20%;"></app-sidebar>
 
-<div class="flex overflow-y-auto mt-5 justify-center" style="width: 80%;">
-  <div class="h-full w-full text-white" style="background-color: #1D566E; margin: 20px ; border-radius: 20px;" >
-<div style="background-color: #163A5F ; width: 600px; padding: 20px; border-radius:10px 10px 0 0;">
- 
-<form>
-  <div class="flex">
-      <div class="relative w-full">
-        <input type="search" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-none border-gray-300 focus:border-none focus:outline-none dark:bg-gray-700 dark:border-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Search by username" required>
-          <button type="submit" class="absolute top-0 end-0 h-full p-2.5 text-sm font-medium text-white bg-teal-500 rounded-e-lg border border-teal-700 hover:bg-teal-500 focus:ring-4 focus:outline-none focus:ring-teal-300 dark:bg-teal-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+<div class="flex gap-6 verflow-y-auto overflow-x-hidden  justify-center" style="width: 80%;">
+  
+  <div class="h-full text-white ml-12 " style="background-color: #1D566E;  border-radius: 20px; width: 60%;" >
+    <div class="fixed z-20 top-0 text-white " style="background-color: #163A5F; padding: 20px; border-radius: 20px 20px 0 0; width: 48%;">
+      <form style="width: 100%;">
+        <div class="flex">
+          <div class="relative w-full">
+            <input type="search" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-none border-gray-300 focus:border-none focus:outline-none dark:bg-gray-700 dark:border-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Search by username" required>
+            <button type="submit" class="absolute top-0 end-0 h-full p-2.5 text-sm font-medium text-white bg-teal-500 rounded-e-lg border border-teal-700 hover:bg-teal-500 focus:ring-4 focus:outline-none focus:ring-teal-300 dark:bg-teal-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
               <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
               </svg>
               <span class="sr-only">Search</span>
-          </button>
-      </div>
-  </div>
-</form>
-
-</div>
-    <div>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="w-full mt-20">
         <ul class="inline-flex items-center">
             <li class="relative px-6 py-4">
                 <a
@@ -69,7 +68,7 @@
   <li class="relative px-6 py-4">
     <a
       class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-      href="modals.html"
+     
     >
     <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full border-2 border-green-500 " alt="">
       <span class="ml-2">DanKariuki</span>
@@ -198,8 +197,8 @@
   
       
   </div>
-<div class="mt-20 w-full flex flex-col ">
-  <ul class="mx-8">
+<div class="mt-20 w-full flex flex-col flex-1">
+  <ul class="">
     <li class="relative px-6 py-4">
       <a
         class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -213,9 +212,9 @@
       </a>
     </li>
     </ul>
-    <ul class="mx-6">
+    <ul class="">
       <p class="font-bold text-white" style="font-size: 20px;">Suggested For You</p>
-    <li class="relative px-6">
+    <li class="relative px-2">
       <a
         class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
        
@@ -227,7 +226,7 @@
         </div>
       </a>
     </li>
-    <li class="relative px-6">
+    <li class="relative px-2">
       <a
         class="inline-flex gap-3 items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
   
@@ -239,25 +238,25 @@
         </div>
       </a>
     </li>
-    <li class="relative px-6">
+    <li class="relative px-2">
       <a
         class="inline-flex gap-3  items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
        
       >
         <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-        <div class="flex gap-8">
+        <div class="flex gap-6">
           <span class="ml-2">DanKariuki</span>
         <span class="">Follow</span>
         </div>
       </a>
     </li>
-    <li class="relative px-6">
+    <li class="relative px-2">
       <a
         class="inline-flex gap-2  items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
  
       >
         <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-        <div class="flex gap-6">
+        <div class="flex gap-4">
           <span class="ml-2">NicksonKen</span>
         <span class="ml-2">Follow</span>
         </div>
