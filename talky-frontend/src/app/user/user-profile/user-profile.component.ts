@@ -9,5 +9,6 @@ export class UserProfileComponent {
   isFormVisible: boolean=true;
   isVisible : boolean=true
   notVisible: boolean=true
+  hidden: boolean= true
 
 }

@@ -37,10 +37,10 @@
     <div class="border-b border-white pb-10">
         <h4 class="text-gray-100 flex gap-3 ">POSTS</h4>
         <div class="flex gap-3 flex-wrap">
-            <img src="assets/images/post5.jpg" width="300px" alt="">
-            <img src="assets/images/post6.jpg" width="300px" alt="">
-            <img src="assets/images/post7.png" width="300px" alt="">
-            <img src="assets/images/post4.jpg" width="300px" alt="">
+            <img (click)="hidden=!hidden" src="assets/images/post5.jpg" width="300px" alt="">
+            <img (click)="hidden=!hidden" src="assets/images/post6.jpg" width="300px" alt="">
+            <img (click)="hidden=!hidden" src="assets/images/post7.png" width="300px" alt="">
+            <img (click)="hidden=!hidden" src="assets/images/post4.jpg" width="300px" alt="">
         </div>
     </div>
     <div class="py-2 mb-10" >
@@ -51,10 +51,10 @@
               </div>
             
         <div class="flex gap-3 flex-wrap">
-            <img src="assets/images/post5.jpg" width="300px" alt="">
-            <img src="assets/images/post6.jpg" width="300px" alt="">
-            <img src="assets/images/post7.png" width="300px" alt="">
-            <img src="assets/images/post4.jpg" width="300px" alt="">
+            <img (click)="hidden=!hidden" src="assets/images/post5.jpg" width="300px" alt="">
+            <img (click)="hidden=!hidden" src="assets/images/post6.jpg" width="300px" alt="">
+            <img (click)="hidden=!hidden" src="assets/images/post7.png" width="300px" alt="">
+            <img (click)="hidden=!hidden" src="assets/images/post4.jpg" width="300px" alt="">
         </div>
     </div>
       
@@ -63,4 +63,6 @@
 
         <app-edit-profile *ngIf="!isFormVisible"></app-edit-profile>
         <app-followers *ngIf="!isVisible"></app-followers>
-    <app-following *ngIf="!notVisible"></app-following>
+         <app-following *ngIf="!notVisible"></app-following>
+
+         <app-comment *ngIf="!hidden" ></app-comment>

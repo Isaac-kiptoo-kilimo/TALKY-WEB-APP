@@ -88,8 +88,9 @@
       />
       <div class="flex justify-between items-center">
         <div class="flex gap-10">
-          <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart.svg" alt="">
-          <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/comment.svg" alt="">
+          <img  *ngIf="!isLikeClicked" (click)="toggleLikeColor()" class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart.svg" alt="">
+      <img  *ngIf="isLikeClicked" (click)="toggleLikeColor()" class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart-green.svg" alt="">
+          <img (click)="hidden=!hidden" class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/comment.svg" alt="">
         </div>
         <div>
           <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/bookmark.svg" alt="">
@@ -135,8 +136,9 @@
     />
     <div class="flex justify-between items-center">
       <div class="flex gap-10">
-        <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart.svg" alt="">
-        <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/comment.svg" alt="">
+        <img  *ngIf="!isLikeClicked2" (click)="toggleLikeColor2()" class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart.svg" alt="">
+        <img  *ngIf="isLikeClicked2" (click)="toggleLikeColor2()" class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart-green.svg" alt="">
+        <img (click)="hidden=!hidden" class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/comment.svg" alt="">
       </div>
       <div>
         <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/bookmark.svg" alt="">
@@ -178,8 +180,9 @@
   />
   <div class="flex justify-between items-center">
     <div class="flex gap-10 ">
-      <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart.svg" alt="">
-      <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/comment.svg" alt="">
+      <img  *ngIf="!isLikeClicked3" (click)="toggleLikeColor3()" class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart.svg" alt="">
+      <img  *ngIf="isLikeClicked3" (click)="toggleLikeColor3()" class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart-green.svg" alt="">
+      <img (click)="hidden=!hidden" class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/comment.svg" alt="">
     </div>
     <div>
       <img class="w-10 h-10 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/bookmark.svg" alt="">
