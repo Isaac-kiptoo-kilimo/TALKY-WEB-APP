@@ -1,10 +1,15 @@
-<div class="flex   w-full bg-teal-500">
-<app-sidebar style="width: 20%;"></app-sidebar>
-
-<div class="flex gap-6 verflow-y-auto overflow-x-hidden  justify-center" style="width: 80%;">
+<div class="flex main-container w-full bg-teal-500">
   
-  <div class="h-full text-white ml-12 " style="background-color: #1D566E;  border-radius: 20px; width: 60%;" >
-    <div class="fixed z-20 top-0 text-white " style="background-color: #163A5F; padding: 20px; border-radius: 20px 20px 0 0; width: 48%;">
+<div style="width: 20%;" class="siderbar-menu" >
+  
+  <app-sidebar ></app-sidebar>
+</div>
+
+<div class="flex justify-center main-content flex-wrap gap-6 overflow-y-auto overflow-x-hidden" style="width: 80%;">
+
+  <div class="h-full text-white ml-12 post-content overflow-y-auto" style="background-color: #1D566E; border-radius: 20px; width: 60%;">
+
+    <div class="fixed z-10 top-0 text-white " style="background-color: #163A5F; padding: 20px; border-radius: 20px 20px 0 0; width: 48%;">
       <form style="width: 100%;">
         <div class="flex">
           <div class="relative w-full">
@@ -19,8 +24,8 @@
         </div>
       </form>
     </div>
-    <div class="w-full mt-20">
-        <ul class="inline-flex items-center">
+    <div class="post-main-content w-full mt-20">
+        <ul class="inline-flex flex-wrap items-center">
             <li class="relative px-6 py-4">
                 <a
                   class=" w-full transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -194,78 +199,85 @@
     
   </div>
 </div>
-  
-      
   </div>
-<div class="mt-20 w-full flex flex-col flex-1">
-  <ul class="">
-    <li class="relative px-6 py-4">
-      <a
-        class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-        (click)="viewProfile()" 
-      >
-        <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-       <div class="flex flex-col">
-        <span class="ml-2">Isoo123</span>
-        <span class="ml-2">Isaac Kilimo</span>
-       </div>
-      </a>
-    </li>
-    </ul>
-    <ul class="">
-      <p class="font-bold text-white" style="font-size: 20px;">Suggested For You</p>
-    <li class="relative px-2">
-      <a
-        class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-       
-      >
-        <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-        <div class="flex gap-6">
-          <span class="ml-2">LeahKyalo2</span>
-        <span class="">Follow</span>
-        </div>
-      </a>
-    </li>
-    <li class="relative px-2">
-      <a
-        class="inline-flex gap-3 items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-  
-      >
-        <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-        <div class="flex gap-8">
-          <span class="ml-2">Marywam</span>
-        <span class=""> Follow </span>
-        </div>
-      </a>
-    </li>
-    <li class="relative px-2">
-      <a
-        class="inline-flex gap-3  items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-       
-      >
-        <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-        <div class="flex gap-6">
-          <span class="ml-2">DanKariuki</span>
-        <span class="">Follow</span>
-        </div>
-      </a>
-    </li>
-    <li class="relative px-2">
-      <a
-        class="inline-flex gap-2  items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
- 
-      >
-        <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-        <div class="flex gap-4">
-          <span class="ml-2">NicksonKen</span>
-        <span class="ml-2">Follow</span>
-        </div>
-      </a>
-    </li>
-  </ul>
+
+  <div class="mt-20 w-full follow-content flex flex-col flex-1">
+    <div class="fixed right-0 top-0 w-1/4  p-4">
+      <ul class="">
+        <li class="relative px-6 py-4">
+          <a class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" (click)="viewProfile()">
+            <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
+            <div class="flex flex-col">
+              <span class="ml-2">Isoo123</span>
+              <span class="ml-2">Isaac Kilimo</span>
+            </div>
+          </a>
+        </li>
+
+        <ul class="">
+          <p class="font-bold text-white" style="font-size: 20px;">Suggested For You</p>
+        <li class="relative px-2">
+          <a
+            class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+           
+          >
+            <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
+            <div class="flex gap-6">
+              <span class="ml-2">LeahKyalo2</span>
+            <span class="">Follow</span>
+            </div>
+          </a>
+        </li>
+        <li class="relative px-2">
+          <a
+            class="inline-flex gap-3 items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+      
+          >
+            <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
+            <div class="flex gap-8">
+              <span class="ml-2">Marywam</span>
+            <span class=""> Follow </span>
+            </div>
+          </a>
+        </li>
+        <li class="relative px-2">
+          <a
+            class="inline-flex gap-3  items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+           
+          >
+            <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
+            <div class="flex gap-6">
+              <span class="ml-2">DanKariuki</span>
+            <span class="">Follow</span>
+            </div>
+          </a>
+        </li>
+        <li class="relative px-2">
+          <a
+            class="inline-flex gap-2  items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+     
+          >
+            <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
+            <div class="flex gap-4">
+              <span class="ml-2">NicksonKen</span>
+            <span class="ml-2">Follow</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+      </ul>
+    </div>
+  </div>
+
 </div>
-  
-</div>
+
+
  </div> 
+
+
+
+
+
+
 
  <app-comment *ngIf="!hidden" ></app-comment>

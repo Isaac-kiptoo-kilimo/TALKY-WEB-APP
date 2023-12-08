@@ -1,45 +1,27 @@
-.header-component{
-    width: 100%;
-    height: 54px;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);
-    background-color: rgba(var(--d87,255,255,255),1);
+
+@media only screen and (max-width: 768px) {
+.side{
+  border: none;
+}
+
+.main-sidebar{
+  width: 100vw;
+  background-color: black;
+  justify-content: center;
+  height: 10%;
   
-  }
-  .nav-bar {
+}
+  .sidebar {
+    display: none; 
     position: fixed;
     top: 0;
-    height: 54px;
-    /* -bottom: 1px solid rgba(var(--b6a,219,219,219),1); */
-    width: 100%;
-    max-width: 975px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-  
+    left: 0;
+    height: 100%;
+    z-index: 1000;
+    background-color: #cf2e2e; 
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    border: none; 
   }
-  
-  
-  .nav-bar .icon {
-    margin-inline-start: 22px;
-    outline: black;
-    height: 24px;
-  }
-  
-  .spacer {
-    flex: 1;
-  }
-  .instagram-logo{
-    width: 103px;
-    outline: none;
-    cursor: pointer;
-  }
-  .icon:hover{
-  cursor: pointer;
-  }
-  
-  
+
+
+}
