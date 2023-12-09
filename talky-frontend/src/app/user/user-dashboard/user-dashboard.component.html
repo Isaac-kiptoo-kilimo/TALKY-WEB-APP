@@ -67,21 +67,21 @@
     </div>
     
     <div
-      class="sec4-img4 p-4 flex flex-col justify-between rounded-md shadow-md hover:shadow-lg transition duration-300"
+      class="sec4-img4 p-4   flex flex-col justify-between rounded-md shadow-md hover:shadow-lg transition duration-300"
     >
- <ul>
-  <li class="relative px-6 py-4">
-    <a
-      class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+ <div >
+  <ul class="relative  px-6 py-4">
+    <li
+      class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 "
      
     >
     <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full border-2 border-green-500 " alt="">
-      <span class="ml-2">DanKariuki</span>
+      <span class="ml-2 hover:text-gray-800 dark:hover:text-gray-200">DanKariuki</span>
       <img src="" alt="">
-      <span class="ml-2" >3h</span>
-    </a>
+      <span class="ml-2 hover:text-gray-800 dark:hover:text-gray-200" >3h</span>
   </li>
- </ul>
+  </ul>
+</div>
       <img
         src="assets/images/post2.jpg"
         class="w-full h-48 object-cover mb-2 rounded-md transform transition hover:scale-105 duration-300 ease-in-out"
@@ -117,19 +117,19 @@
     <div
     class="sec4-img4 p-4 flex flex-col justify-between rounded-md shadow-md hover:shadow-lg transition duration-300"
   >
-<ul>
-<li class="relative px-6 py-4">
-  <a
-    class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-    
-  >
-  <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full border-2 border-green-500 " alt="">
-    <span class="ml-2">DanKariuki</span>
-    <img src="" alt="">
-    <span class="ml-2" >3h</span>
-  </a>
-</li>
-</ul>
+  <div >
+    <ul class="relative  px-6 py-4">
+      <li
+        class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 "
+       
+      >
+      <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full border-2 border-green-500 " alt="">
+        <span class="ml-2 hover:text-gray-800 dark:hover:text-gray-200">DanKariuki</span>
+        <img src="" alt="">
+        <span class="ml-2 hover:text-gray-800 dark:hover:text-gray-200" >3h</span>
+    </li>
+    </ul>
+  </div>
     <img
       src="assets/images/post2.jpg"
       class="w-full h-48 object-cover mb-2 rounded-md transform transition hover:scale-105 duration-300 ease-in-out"
@@ -161,19 +161,19 @@
   <div
   class="sec4-img4 p-4 flex flex-col justify-between rounded-md shadow-md hover:shadow-lg transition duration-300"
 >
-<ul>
-<li class="relative px-6 py-4">
-<a
-  class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-  href="modals.html"
->
-<img src="assets/images/profile2.png" class="w-16 h-16 rounded-full border-2 border-green-500 " alt="">
-  <span class="ml-2">DanKariuki</span>
-  <img src="" alt="">
-  <span class="ml-2" >3h</span>
-</a>
-</li>
-</ul>
+<div >
+  <ul class="relative  px-6 py-4">
+    <li
+      class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 "
+     
+    >
+    <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full border-2 border-green-500 " alt="">
+      <span class="ml-2 hover:text-gray-800 dark:hover:text-gray-200">DanKariuki</span>
+      <img src="" alt="">
+      <span class="ml-2 hover:text-gray-800 dark:hover:text-gray-200" >3h</span>
+  </li>
+  </ul>
+</div>
   <img
     src="assets/images/post2.jpg"
     class="w-full h-48 object-cover mb-2 rounded-md transform transition hover:scale-105 duration-300 ease-in-out"
@@ -205,70 +205,72 @@
   </div>
 
   <div class="mt-20 w-full follow-content flex flex-col flex-1">
-    <div class="fixed right-0 top-0 w-1/4  p-4">
-      <ul class="">
-        <li class="relative px-6 py-4">
-          <a class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" (click)="viewProfile()">
+    
+    <div class="fixed right-0 top-1/8 w-1/4  p-4">
+      <div class="">
+        <div class="relative px-6 py-4">
+          <div class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 " (click)="viewProfile()">
             <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-            <div class="flex flex-col">
-              <span class="ml-2">Isoo123</span>
-              <span class="ml-2">Isaac Kilimo</span>
+            <div class="flex flex-col ">
+              <span class="ml-2 hover:text-white dark:hover:text-gray-200 ">Isoo123</span>
+              <span class="ml-2 hover:text-white dark:hover:text-gray-200">Isaac Kilimo</span>
             </div>
-          </a>
-        </li>
+          </div>
+        </div>
 
-        <ul class="">
+        <div class=" hover:cursor-pointer ">
           <p class="font-bold text-white" style="font-size: 20px;">Suggested For You</p>
-        <li class="relative px-2">
-          <a
-            class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+        <div class="relative px-2">
+          <div
+            class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 "
            
           >
             <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
             <div class="flex gap-6">
-              <span class="ml-2">LeahKyalo2</span>
-            <span class="">Follow</span>
-            </div>
-          </a>
-        </li>
-        <li class="relative px-2">
-          <a
-            class="inline-flex gap-3 items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-      
+              <span class="ml-2 hover:text-gray-700 dark:hover:text-gray-700">LeahKyalo2</span>
+              <span (click)="toggleFollow()" [class.hover:text-white]="followStatus === 'Follow'">{{ followStatus }}</span>            </div>
+          </div>
+        </div>
+        <div class="relative px-2">
+          <div
+            class="inline-flex gap-2 items-center w-full text-lg font-semibold transition-colors duration-150 "
+           
           >
             <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
             <div class="flex gap-8">
-              <span class="ml-2">Marywam</span>
-            <span class=""> Follow </span>
-            </div>
-          </a>
-        </li>
-        <li class="relative px-2">
-          <a
-            class="inline-flex gap-3  items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+              <span class="ml-2 hover:text-gray-700 dark:hover:text-gray-700">MaryWam</span>
+              <span (click)="toggleFollow2()" [class.hover:text-white]="followStatus === 'Follow'">{{ followStatus2 }}</span>            </div>
+          </div>
+        </div>
+        <div class="relative px-2">
+          <div
+            class="inline-flex gap-2  items-center w-full text-lg font-semibold transition-colors duration-150 "
            
           >
             <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
             <div class="flex gap-6">
-              <span class="ml-2">DanKariuki</span>
-            <span class="">Follow</span>
-            </div>
-          </a>
-        </li>
-        <li class="relative px-2">
-          <a
-            class="inline-flex gap-2  items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-     
+              <span class="ml-2 hover:text-gray-700 dark:hover:text-gray-700">DanKariuki</span>
+              <span (click)="toggleFollow3()" [class.hover:text-white]="followStatus === 'Follow'">{{ followStatus3 }}</span>            </div>
+          </div>
+        </div>
+        <div class="relative px-2">
+          <div
+            class="inline-flex gap-2  items-center w-full text-lg font-semibold transition-colors duration-150 "
+            
           >
             <img src="assets/images/profile2.png" class="w-16 h-16 rounded-full" alt="">
-            <div class="flex gap-4">
-              <span class="ml-2">NicksonKen</span>
-            <span class="ml-2">Follow</span>
+            <div class="flex gap-3">
+              
+              <span class="ml-2 hover:text-gray-700 dark:hover:text-gray-700" >NicksonKen
+                
+              </span>
+              <span (click)="toggleFollow4()" [class.hover:text-white]="followStatus === 'Follow'">{{ followStatus4 }}</span>
+            
             </div>
-          </a>
-        </li>
-      </ul>
-      </ul>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 

@@ -13,6 +13,10 @@ export class UserDashboardComponent {
   isLikeClicked = false;
   isLikeClicked2 = false;
   isLikeClicked3 = false;
+  followStatus: string = 'Follow';
+  followStatus2: string = 'Follow';
+  followStatus3: string = 'Follow';
+  followStatus4: string = 'Follow';
 
 constructor(private router:Router){
 
@@ -41,6 +45,25 @@ toggleLikeColor3() {
 toggleSidebar() {
   this.sidebarOpen = !this.sidebarOpen;
 }
+
+toggleFollow() {
+  
+  this.followStatus = this.followStatus === 'Follow' ? 'Following' : 'Follow';
+}
+
+toggleFollow2() {
+  
+  this.followStatus2 = this.followStatus2 === 'Follow' ? 'Following' : 'Follow';
+}
+toggleFollow3() {
+  
+  this.followStatus3 = this.followStatus3 === 'Follow' ? 'Following' : 'Follow';
+}
+toggleFollow4() {
+  
+  this.followStatus4 = this.followStatus4 === 'Follow' ? 'Following' : 'Follow';
+}
+
   postComment(){
     console.log("I am clickable");
     
