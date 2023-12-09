@@ -12,14 +12,15 @@
       </div>
       <h1 class="text-center text-white mb-4">LOGIN</h1>
       <form [formGroup]="loginForm" (ngSubmit)="loginUser()" class="space-y-4">
-        <mat-form-field class="w-full ">
-          <input matInput name="email" type="email" placeholder="E-mail" required email class="w-full bg-gray-200 p-2 rounded border-none outline-none" />
-          <mat-error>Please enter a valid email</mat-error>
+        <mat-form-field class="mx-3" style="width: 94%;">
+          <input matInput name="email" formControlName="email" type="email" placeholder="E-mail" required email class="w-full bg-gray-200 rounded border-none outline-none" />
+          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Please enter your email</mat-error>
+          <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Please enter a valid email</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="w-full">
-          <input type="password" placeholder="Password" required class="w-full bg-gray-200 p-2 rounded  outline-none focus:border-green-900" />
-          <mat-error>Please enter a password</mat-error>
+        <mat-form-field class="mx-3" style="width: 94%;">
+          <input matInput formControlName="password" type="password" placeholder="Password" required class="w-full bg-gray-200 rounded  outline-none focus:border-green-900" />
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Please enter a password</mat-error>
         </mat-form-field>
 
         <button type="submit" (click)="loginUser()" class="text-white mx-3 py-4 rounded bg-teal-500 " style="width: 94%;">Log In</button>
@@ -34,7 +35,6 @@
       <div *ngIf="!isLoading" class="infobox text-lg text-white flex justify-between">
         <p>Don't have an account? <a routerLink="/signup" class="underline hover:text-blue-300">Sign up</a></p>
         <p> <a routerLink="/forgot" class="underline hover:text-blue-300">Forgot password?</a></p>
-
       </div>
     </div>
   </div>
