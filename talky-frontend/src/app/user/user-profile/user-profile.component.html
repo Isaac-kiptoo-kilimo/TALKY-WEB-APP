@@ -1,65 +1,172 @@
-<div class="flex  gap-10 w-full bg-teal-500">
-    <app-sidebar  style="height: 100vh;  width: 20%;"></app-sidebar>
-    
-    <div class="overflow-y-auto mx-6 mt-5 justify-center" style="width: 80%;">
-    <div class="border-b border-white pb-10 ">
-        <div class=" text-white " style="background-color: #163A5F;width: 920px;  ; border-radius: 20px 20px 0 0;" >
 
-            <ul class="mx-8 ">
-                <li class="relative px-6 py-4 flex flex-col gap-6 justify-center">
-                  <a
-                    class="inline-flex items-center justify-center gap-8 w-full text-lg font-semibold transition-colors duration-150 "
-                   
-                  >
-                   <div class="flex flex-col items-center">
-                    <img src="assets/images/profile2.png" class="w-30 h-30 rounded-full" alt="">
-                    <span class="ml-2 font-normal">Isoo123</span>
-                </div>
-                   <div class="" >
-                    
-                    <span class="ml-2">Isaac Kilimo</span>
-                   </div>
-                   <button class="text-gray-900 bg-white py-2 px-4 border-gray-100 rounded-md text-lg hover:bg-gray-200 font-light" (click)="isFormVisible=!isFormVisible">
-                    Edit Profile
-                  </button>
-                  
-                  </a>
-                  <div class="flex justify-center font-bold items-center">
-                    <p class="flex gap-6 text-lg "><span class="hover:text-gray-300 hover:cursor-pointer" >250 POSTS </span> | <span class="hover:text-gray-300 hover:cursor-pointer" (click)="isVisible=!isVisible"> 110 FOLLOWERS</span> | <span class="hover:text-gray-300 hover:cursor-pointer" (click)="notVisible=!notVisible">20 FOLLOWING</span></p>
-                </div>
-                </li>
-                
-                </ul>
-    
-              
-          </div>
-    </div>
-    <div class="border-b border-white pb-10">
-        <h4 class="text-gray-100 flex gap-3 ">POSTS</h4>
-        <div class="flex gap-3 flex-wrap">
-            <img (click)="hidden=!hidden" src="assets/images/post5.jpg" width="300px" alt="">
-            <img (click)="hidden=!hidden" src="assets/images/post6.jpg" width="300px" alt="">
-            <img (click)="hidden=!hidden" src="assets/images/post7.png" width="300px" alt="">
-            <img (click)="hidden=!hidden" src="assets/images/post4.jpg" width="300px" alt="">
-        </div>
-    </div>
-    <div class="py-2 mb-10" >
-        
-            <div class="flex items-center gap-3 pb-8">
-                <img class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/bookmark.svg" alt="">
-                <h4 class="text-gray-100 text-lg">SAVED</h4>
-              </div>
-            
-        <div class="flex gap-3 flex-wrap">
-            <img (click)="hidden=!hidden" src="assets/images/post5.jpg" width="300px" alt="">
-            <img (click)="hidden=!hidden" src="assets/images/post6.jpg" width="300px" alt="">
-            <img (click)="hidden=!hidden" src="assets/images/post7.png" width="300px" alt="">
-            <img (click)="hidden=!hidden" src="assets/images/post4.jpg" width="300px" alt="">
-        </div>
-    </div>
+
+     <div class="flex main-container w-full bg-teal-500">
+        <!-- bg-[#FBFBFB] -->
       
-    </div>
-     </div> 
+        <nav
+          class="lg:hidden px-8 py-3 flex items-center flex-wrap justify-between bg-[#163A5F] w-full fixed z-50"
+        >
+          <a class="text-lg w-1/5 font-bold text-white"> TALKY </a>
+          <div
+            class="z-10 w-2/5 top-0 text-white"
+            style="padding: 20px; border-radius: 20px 20px 0 0"
+          >
+            <form style="width: 100%">
+              <div class="flex">
+                <div class="relative w-full">
+                  <input
+                    type="search"
+                    class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-none border-gray-300 focus:border-none focus:outline-none dark:bg-gray-700 dark:border-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+                    placeholder="Search by username"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    class="absolute top-0 end-0 h-full p-2.5 text-sm font-medium text-white bg-teal-500 rounded-e-lg border border-teal-700 hover:bg-teal-500 focus:ring-4 focus:outline-none focus:ring-teal-300 dark:bg-teal-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                      />
+                    </svg>
+                    <span class="sr-only">Search</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <ul
+            class="sidebar w-2/5 flex flex-wrap items-center sm:space-x-4 space-x-4 md:space-x-8 lg:space-x-8"
+          >
+            <!-- Adjust the space-x values based on your preference -->
+            <li class="relative">
+              <a
+                class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 text-white group"
+                routerLink="/user"
+              >
+                <img src="assets/images/home.svg" alt="" class="w-6 h-6" />
+              </a>
+            </li>
+      
+            <li class="relative">
+              <a
+                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 text-white group"
+                routerLink="/message"
+              >
+                <img src="assets/images/message.svg" alt="" class="w-6 h-6" />
+              </a>
+            </li>
+      
+            <li class="relative">
+              <a
+                class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 text-white group"
+              >
+                <img src="assets/images/plus.svg" alt="" class="w-6 h-6" />
+              </a>
+            </li>
+      
+            <li class="relative">
+              <a
+                class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 text-white group"
+                routerLink="/profile"
+              >
+                <img
+                  src="assets/images/profile2.png"
+                  class="w-10 h-10 rounded-full"
+                  alt=""
+                />
+              </a>
+            </li>
+      
+            <li class="relative">
+              <a
+                class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 text-white group"
+                routerLink="/"
+              >
+                <img src="assets/images/logout2.svg" alt="" class="w-6 h-6" />
+              </a>
+            </li>
+          </ul>
+        </nav>
+      
+        <div class="hidden border-r border-white lg:w-1/5 md:w-1/5 md:flex">
+          <div class="siderbar-menu">
+            <app-sidebar></app-sidebar>
+          </div>
+        </div>
+      
+        <div class="mt-10 w-full md:w-4/5 lg:w-4/5  lg:mx-10 md:mx-6 overflow-y-auto md:w-screen overflow-x-hidden" >
+            <div class="border-b border-white pb-10 ">
+                <div class=" text-white " style="background-color: #163A5F; border-radius: 20px 20px 0 0;" >
+        
+                    <ul class="mx-8 ">
+                        <li class="relative px-6 py-4 flex flex-col gap-6 justify-center">
+                          <a
+                            class="inline-flex items-center justify-center gap-8 w-full text-lg font-semibold transition-colors duration-150 "
+                           
+                          >
+                           <div class="flex flex-col items-center">
+                            <img src="assets/images/profile2.png" class="w-30 h-30 rounded-full" alt="">
+                            <span class="ml-2 font-normal">Isoo123</span>
+                        </div>
+                           <div class="" >
+                            
+                            <span class="ml-2">Isaac Kilimo</span>
+                           </div>
+                           <button class="text-gray-900 bg-white py-2 px-4 border-gray-100 rounded-md text-lg hover:bg-gray-200 font-light" (click)="isFormVisible=!isFormVisible">
+                            Edit Profile
+                          </button>
+                          
+                          </a>
+                          <div class="flex justify-center font-bold items-center">
+                            <p class="flex gap-6 text-lg "><span class="hover:text-gray-300 hover:cursor-pointer" >250 POSTS </span> | <span class="hover:text-gray-300 hover:cursor-pointer" (click)="isVisible=!isVisible"> 110 FOLLOWERS</span> | <span class="hover:text-gray-300 hover:cursor-pointer" (click)="notVisible=!notVisible">20 FOLLOWING</span></p>
+                        </div>
+                        </li>
+                        
+                        </ul>
+            
+                      
+                  </div>
+            </div>
+            <div class="border-b border-white overflow-y-hidden pb-10">
+                <h4 class="text-gray-100 flex gap-3 ">POSTS</h4>
+                <div class="flex gap-3 flex-wrap">
+                    <img (click)="hidden=!hidden" src="assets/images/post5.jpg" width="300px" alt="">
+                    <img (click)="hidden=!hidden" src="assets/images/post6.jpg" width="300px" alt="">
+                    <img (click)="hidden=!hidden" src="assets/images/post7.png" width="300px" alt="">
+                    <img (click)="hidden=!hidden" src="assets/images/post4.jpg" width="300px" alt="">
+                </div>
+            </div>
+            <div class="py-2 mb-10" >
+                
+                    <div class="flex items-center gap-3 pb-8">
+                        <img class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/bookmark.svg" alt="">
+                        <h4 class="text-gray-100 text-lg">SAVED</h4>
+                      </div>
+                    
+                <div class="flex gap-3 flex-wrap">
+                    <img (click)="hidden=!hidden" src="assets/images/post5.jpg" width="300px" alt="">
+                    <img (click)="hidden=!hidden" src="assets/images/post6.jpg" width="300px" alt="">
+                    <img (click)="hidden=!hidden" src="assets/images/post7.png" width="300px" alt="">
+                    <img (click)="hidden=!hidden" src="assets/images/post4.jpg" width="300px" alt="">
+                </div>
+            </div>
+              
+            </div>
+      </div>
+      
+      <app-comment *ngIf="!hidden"></app-comment>
+      
 
         <app-edit-profile *ngIf="!isFormVisible"></app-edit-profile>
         <app-followers *ngIf="!isVisible"></app-followers>
