@@ -1,12 +1,16 @@
-<div class="flex main-sidebar h-screen fixed">
 
+<div class="lg:flex md:hidden main-sidebar h-screen fixed">
 
-  <aside class="z-20 side  h-screen pt-12 w-64 overflow-y-hidden text-white md:block flex-shrink-0 border-r border-white">
+  <!-- Navbar for Small Screens -->
+ 
+
+  <!-- Sidebar Content -->
+  <aside class="z-20 side h-screen pt-12 lg:w-64 overflow-y-hidden text-white md:block flex-shrink-0 border-r border-white">
     <div class="py-4">
-      <a class="ml-6 text-lg font-bold" style="font-size: 40px;" >
+      <a class="ml-6 text-lg font-bold" style="font-size: 40px;">
         TALKY
       </a>
-    
+
       <ul class="mt-2 sidebar ">
         <li class="relative px-6 py-4">
           <a
@@ -65,6 +69,5 @@
       </ul>
     </div>
   </aside>
-
 </div>
-<app-create-post *ngIf="!visible" ></app-create-post>
+<app-create-post *ngIf="!visible"></app-create-post>
