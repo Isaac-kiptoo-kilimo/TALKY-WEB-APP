@@ -1,5 +1,5 @@
 <!-- <app-sidebar></app-sidebar> -->
-<div class="flex items-center justify-center h-screen w-full bg-teal-500">
+<!-- <div class="flex items-center justify-center h-screen w-full bg-teal-500">
   <div class="loading-spinner-item" *ngIf="loading">
     <mat-spinner [mode]="'indeterminate'" [diameter]="50"></mat-spinner>
     <p class="text-white mt-2">Talking App is loading...</p>
@@ -42,5 +42,68 @@
         <p>Have an account? <a routerLink="/" class="underline">Sign In</a></p>
       </div>
     </div>
+  </div>
+</div>
+ -->
+
+
+
+
+<div class="flex items-center min-h-screen bg-blue-200">
+  <div class="loading-spinner-item" *ngIf="loading">
+    <mat-spinner [mode]="'indeterminate'" [diameter]="50"></mat-spinner>
+    <p class="text-gray-900 mt-2">Talking App is loading...</p>
+  </div>
+  <div class="flex-1 h-3/4 max-w-4xl mx-auto bg-blue-500 rounded-lg shadow-xl">
+      <div class="flex flex-col md:flex-row">
+          <div class="h-3/4 md:h-3/4 md:w-1/2 ">
+            <img style="width: 100%" src="assets/images/login.png" >
+          </div>
+          <div class="flex items-center justify-center sm:px-12 sm:py-2 md:w-1/2">
+              <div class="w-full">
+                  
+                  <h1 class="mb-4 text-2xl text-white font-bold text-center">
+                    CREATE AN ACCOUNT
+                  </h1>
+                  <form [formGroup]="signupForm" (ngSubmit)="signupUser()">
+                    <mat-form-field class="w-full">
+                      <input matInput formControlName="fullName" type="text" placeholder="Full Name" required class="w-full bg-gray-200 rounded border-none outline-none" />
+                      <mat-error *ngIf="signupForm.get('fullName')?.hasError('required')">Please enter your full name</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-full">
+                      <input matInput formControlName="username" type="text" placeholder="Username" required class="w-full bg-gray-200 rounded border-none outline-none" />
+                      <mat-error *ngIf="signupForm.get('username')?.hasError('required')">Please enter a username</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-full">
+                      <input matInput formControlName="email" type="email" placeholder="E-mail" required email class="w-full bg-gray-200 rounded border-none outline-none" />
+                      <mat-error *ngIf="signupForm.get('email')?.hasError('required')">Please enter your email</mat-error>
+                      <mat-error *ngIf="signupForm.get('email')?.hasError('email')">Please enter a valid email</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-full">
+                      <input matInput formControlName="password" type="password" placeholder="Password" required class="w-full bg-gray-200 rounded outline-none focus:border-green-900" />
+                      <mat-error *ngIf="signupForm.get('password')?.hasError('required')">Please enter a password</mat-error>
+                    </mat-form-field>
+            
+             
+                  <button
+                      class="block w-full px-4 py-3 mt-2 text-lg font-medium leading-5 text-center border border-transparent text-white transition-colors duration-150 bg-blue-500 border-none rounded-lg active:bg-blue-700 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
+                       type="submit" >
+                       Sign Up
+                  </button>
+
+
+                  <div class="divider my-4 flex items-center">
+                    <div class="flex-grow border-t border-white mr-4"></div>
+                    <span class="text-white">OR</span>
+                    <div class="flex-grow border-t border-white ml-4"></div>
+                  </div>
+                  <div class="infobox text-white text-center">
+                    <p>Have an account? <a routerLink="/" class="underline">Sign In</a></p>
+                  </div>                
+                </form>
+                
+              </div>
+          </div>
+      </div>
   </div>
 </div>

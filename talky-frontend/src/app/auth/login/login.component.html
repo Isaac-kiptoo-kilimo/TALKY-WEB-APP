@@ -1,41 +1,86 @@
-<div class="flex items-center justify-center h-screen w-full bg-teal-500">
-  <div *ngIf="isLoading" class="loading-spinner-item">
-    <mat-spinner [mode]="'indeterminate'" [diameter]="50"></mat-spinner>
-  </div>
 
-  <div *ngIf="!isLoading" class="flex items-center login p-8 rounded-lg" style="background-color: #1D566E; width: 70%">
-    <h1 class="mr-4" style="width: 50%"><img style="width: 100%" src="assets/images/login.png" width="200px" height="68px"></h1>
 
-    <div style="width: 60% ; margin-left: 10px;">
-      <div *ngIf="loginError" class="login-error text-red-500 mb-4">
-        The email or password is incorrect
+<div class="flex items-center min-h-screen bg-blue-200">
+
+  <div class="flex-1 h-3/4 max-w-4xl mx-auto bg-blue-500 rounded-lg shadow-xl" >
+      <div class="flex flex-col md:flex-row">
+          <div class="h-3/4 md:h-3/4 md:w-1/2 ">
+            <img  class="object-cover w-full h-full dark:hidden " style="border-radius: 10px 0 0 10px;" src="assets/images/login.png" />
+          </div>
+          <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
+              <div class="w-full">
+                  
+                  <h1 class="mb-4 text-2xl font-bold text-center text-white">
+                      Login Talky Account
+                  </h1>
+                  <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+                    <mat-form-field class="w-full">
+                      <input
+                        matInput
+                        name="email"
+                        formControlName="email"
+                        type="email"
+                        placeholder="E-mail"
+                        required
+                        email
+                        class="w-full bg-gray-200 rounded border-none outline-none"
+                      />
+                      <mat-error *ngIf="loginForm.get('email')?.hasError('required')"
+                        >Please enter your email</mat-error
+                      >
+                      <mat-error *ngIf="loginForm.get('email')?.hasError('email')"
+                        >Please enter a valid email</mat-error
+                      >
+                    </mat-form-field>
+                  <mat-form-field class="w-full">
+                    <input
+                      matInput
+                      formControlName="password"
+                      type="password"
+                      placeholder="Password"
+                      required
+                      class="w-full bg-gray-200 rounded outline-none focus:border-green-900"
+                    />
+                    <mat-error *ngIf="loginForm.get('password')?.hasError('required')"
+                      >Please enter a password</mat-error
+                    >
+                  </mat-form-field>
+                  <p class="mt-2">
+                      <a class="text-sm text-white hover:underline"routerLink="/forgot">
+                          Forgot your password?
+                      </a>
+                  </p>
+
+
+                  <button
+                      class="block w-full px-4 py-3 mt-4 text-lg font-medium leading-5 text-center border border-transparent text-white transition-colors duration-150 bg-blue-500 border-none rounded-lg active:bg-blue-700 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
+                       type="submit" >
+                      Log in
+                  </button>
+
+
+                  <div class="divider my-4 flex items-center">
+                    <div class="flex-grow border-t border-white mr-4"></div>
+                    <span class="text-white">OR</span>
+                    <div class="flex-grow border-t border-white ml-4"></div>
+                  </div>
+                  <div
+                  *ngIf="!isLoading"
+                  class="infobox text-lg text-white flex justify-between"
+                >
+                  <p>
+                    Don't have an account?
+                    <a routerLink="/signup" class="underline hover:text-blue-300"
+                      >Sign up</a
+                    >
+                  </p>
+                 
+                </div>                  
+                </form>
+                
+              </div>
+          </div>
       </div>
-      <h1 class="text-center text-white mb-4">LOGIN</h1>
-      <form [formGroup]="loginForm" (ngSubmit)="loginUser()" class="space-y-4">
-        <mat-form-field class="mx-3" style="width: 94%;">
-          <input matInput name="email" formControlName="email" type="email" placeholder="E-mail" required email class="w-full bg-gray-200 rounded border-none outline-none" />
-          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Please enter your email</mat-error>
-          <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Please enter a valid email</mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="mx-3" style="width: 94%;">
-          <input matInput formControlName="password" type="password" placeholder="Password" required class="w-full bg-gray-200 rounded  outline-none focus:border-green-900" />
-          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Please enter a password</mat-error>
-        </mat-form-field>
-
-        <button type="submit" (click)="loginUser()" class="text-white mx-3 py-4 rounded bg-teal-500 " style="width: 94%;">Log In</button>
-      </form>
-
-      <div class="divider my-4 flex items-center">
-        <div class="flex-grow border-t border-white mr-4"></div>
-        <span class="text-white">OR</span>
-        <div class="flex-grow border-t border-white ml-4"></div>
-      </div>
-
-      <div *ngIf="!isLoading" class="infobox text-lg text-white flex justify-between">
-        <p>Don't have an account? <a routerLink="/signup" class="underline hover:text-blue-300">Sign up</a></p>
-        <p> <a routerLink="/forgot" class="underline hover:text-blue-300">Forgot password?</a></p>
-      </div>
-    </div>
   </div>
 </div>
+

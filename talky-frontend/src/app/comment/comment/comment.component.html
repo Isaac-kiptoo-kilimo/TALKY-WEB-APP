@@ -1,19 +1,20 @@
 
 
-<div *ngIf="hidden" class="relative z-10 h-full" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+<div *ngIf="hidden" class="relative z-30 h-full" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
     <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">   
 <div class="flex px-20 py-8">
         
-    <button type="button" (click)="hidden=!hidden" class="btn relative rounded-md text-gray-300 hover:text-teal-500 focus:outline-none focus:ring-2 focus:ring-white">
-        <span class="absolute -inset-2.5"></span>
-        <span class="sr-only">Close panel</span>
-        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-
+  
+  <button type="button" (click)="hidden=!hidden" class="btn relative rounded-md text-gray-300 hover:text-teal-500 focus:outline-none focus:ring-2 focus:ring-white">
+    <span class="absolute -inset-2.5"></span>
+    <span class="sr-only">Close panel</span>
+    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
  
         <div   tabindex="-1" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-4/5 h-full  p-4 overflow-hidden  bg-white dark:bg-gray-800 rounded-lg" style="height: 90%; width: 70%;">
+          
             <div class="relative w-full flex h-full">
                 <div class= "relative w-1/3 overflow-hidden ">
                     <img
@@ -28,7 +29,7 @@
                           class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                          
                         >
-                        <img src="assets/images/profile2.png" class="w-10 h-10 rounded-full border-2 border-green-500 " alt="">
+                        <img src="assets/images/profile2.png" class="w-10 h-10 rounded-full border-2 border-blue-500 " alt="">
                           <span class="ml-2">DanKariuki</span>
                           <img src="" alt="">
                           <span class="ml-2" >
@@ -43,7 +44,7 @@
                           class="inline-flex  gap-3 w-full    transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         
                         >
-                        <img src="assets/images/profile2.png" class="w-10 h-10 rounded-full border-2 border-green-500 " alt="">
+                        <img src="assets/images/profile2.png" class="w-10 h-10 rounded-full border-2 border-blue-500 " alt="">
                           <div>
                             <span class="text-lg font-semibold">DanKariuki</span>
                           <span class="ml-2 text-sm text-gray-500 dark:text-gray-400" >Stop milking this goal and plan how to win I ain't in for another depressing day it's my bday</span>
@@ -66,7 +67,7 @@
                               class="inline-flex  gap-3 w-full    transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                             
                             >
-                            <img src="assets/images/profile2.png" class="w-10 h-10 rounded-full border-2 border-green-500 " alt="">
+                            <img src="assets/images/profile2.png" class="w-10 h-10 rounded-full border-2 border-blue-500 " alt="">
                               <div>
                                 <span class="text-lg font-semibold">DanKariuki</span>
                               <span class="ml-2 text-sm text-gray-500 dark:text-gray-400" >Stop milking this goal and plan how to win I ain't in for another depressing day it's my bday</span>
@@ -88,7 +89,7 @@
                                   class="inline-flex  gap-3 w-full    transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 
                                 >
-                                <img src="assets/images/profile2.png" class="w-10 h-10 rounded-full border-2 border-green-500 " alt="">
+                                <img src="assets/images/profile2.png" class="w-10 h-10 rounded-full border-2 border-blue-500 " alt="">
                                   <div>
                                     <span class="text-lg font-semibold">DanKariuki</span>
                                   <span class="ml-2 text-sm text-gray-500 dark:text-gray-400" >Stop milking this goal and plan how to win I ain't in for another depressing day it's my bday</span>
@@ -126,7 +127,7 @@
                       <input type="text" placeholder="Add a comment"
                         class=" p-2 focus:border-none focus:outline-none "
                         style="font-size: 18px; width: 90%;">
-                        <span class="text-gray-200 text-lg ml-2 pt-3 cursor-pointer hover:cursor-pointer hover:text-green-500" >post</span>
+                        <span class="text-gray-500 text-lg ml-2 pt-3 cursor-pointer hover:cursor-pointer hover:text-blue-500" >post</span>
                     </form>
                     
                   </div>
@@ -135,6 +136,7 @@
                
             </div>
         </div>
+        
         
       </div>
   

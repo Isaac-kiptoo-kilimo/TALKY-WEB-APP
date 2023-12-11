@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,9 +18,14 @@ export class UserDashboardComponent {
   followStatus2: string = 'Follow';
   followStatus3: string = 'Follow';
   followStatus4: string = 'Follow';
+  visible : boolean =true  
+  commentForm!: FormGroup;
 
-constructor(private router:Router){
-
+  
+constructor(private router:Router, private fb:FormBuilder){
+  this.commentForm = this.fb.group({
+    commentText: ['', [Validators.required, Validators.maxLength(255)]]
+  });
 }
 
 

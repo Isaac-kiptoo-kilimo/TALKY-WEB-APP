@@ -1,6 +1,6 @@
 
 
-     <div class="flex main-container w-full bg-teal-500">
+     <div class="flex main-container w-full bg-[#F9FAFB]">
         <!-- bg-[#FBFBFB] -->
       
         <nav
@@ -99,19 +99,19 @@
           </ul>
         </nav>
       
-        <div class="hidden border-r border-white lg:w-1/5 md:w-1/5 md:flex">
+        <div class="hidden border-r border-gray-200 lg:w-1/5 md:w-1/5 md:flex">
           <div class="siderbar-menu">
             <app-sidebar></app-sidebar>
           </div>
         </div>
       
-        <div class="mt-10 w-full md:w-4/5 lg:w-4/5  lg:mx-10 md:mx-6 overflow-y-auto md:w-screen overflow-x-hidden" >
-            <div class="border-b border-white pb-10 ">
-                <div class=" text-white " style="background-color: #163A5F; border-radius: 20px 20px 0 0;" >
+        <div  class="mt-10 w-full md:w-4/5 lg:w-4/5  lg:mx-10 md:mx-6 overflow-y-auto md:w-screen overflow-x-hidden" >
+            <div class="border-b border-gray-200 pb-10 ">
+                <div class=" text-gray-900 " style=" border-radius: 20px 20px 0 0;" >
         
                     <ul class="mx-8 ">
-                        <li class="relative px-6 py-4 flex flex-col gap-6 justify-center">
-                          <a
+                        <li class="relative px-6 py-4 flex flex-col gap-6 justify-center" style="background-image: url('assets/images/profile-cover.jpg');">
+                          <div
                             class="inline-flex items-center justify-center gap-8 w-full text-lg font-semibold transition-colors duration-150 "
                            
                           >
@@ -123,13 +123,13 @@
                             
                             <span class="ml-2">Isaac Kilimo</span>
                            </div>
-                           <button class="text-gray-900 bg-white py-2 px-4 border-gray-100 rounded-md text-lg hover:bg-gray-200 font-light" (click)="isFormVisible=!isFormVisible">
+                           <button class="text-white bg-[#0284C7] py-2 px-4 border-gray-100 rounded-md text-lg hover:bg-[#0284C7] font-light" (click)="isFormVisible=!isFormVisible">
                             Edit Profile
                           </button>
                           
-                          </a>
+                        </div>
                           <div class="flex justify-center font-bold items-center">
-                            <p class="flex gap-6 text-lg "><span class="hover:text-gray-300 hover:cursor-pointer" >250 POSTS </span> | <span class="hover:text-gray-300 hover:cursor-pointer" (click)="isVisible=!isVisible"> 110 FOLLOWERS</span> | <span class="hover:text-gray-300 hover:cursor-pointer" (click)="notVisible=!notVisible">20 FOLLOWING</span></p>
+                            <p class="flex gap-6 text-lg "><span class="hover:text-blue-500 hover:cursor-pointer" >250 POSTS </span> | <span class="hover:text-blue-500 hover:cursor-pointer" (click)="isVisible=!isVisible"> 110 FOLLOWERS</span> | <span class="hover:text-blue-500 hover:cursor-pointer" (click)="notVisible=!notVisible">20 FOLLOWING</span></p>
                         </div>
                         </li>
                         
@@ -138,8 +138,8 @@
                       
                   </div>
             </div>
-            <div class="border-b border-white overflow-y-hidden pb-10">
-                <h4 class="text-gray-100 flex gap-3 ">POSTS</h4>
+            <div class="border-b border-gray-200 overflow-y-hidden pb-10">
+                <h4 class="text-gray-900 flex gap-3 ">POSTS</h4>
                 <div class="flex gap-3 flex-wrap">
                     <img (click)="hidden=!hidden" src="assets/images/post5.jpg" width="300px" alt="">
                     <img (click)="hidden=!hidden" src="assets/images/post6.jpg" width="300px" alt="">
@@ -151,7 +151,7 @@
                 
                     <div class="flex items-center gap-3 pb-8">
                         <img class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/bookmark.svg" alt="">
-                        <h4 class="text-gray-100 text-lg">SAVED</h4>
+                        <h4 class="text-gray-900 text-lg">SAVED</h4>
                       </div>
                     
                 <div class="flex gap-3 flex-wrap">
