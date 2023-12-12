@@ -14,7 +14,7 @@ app.use(cors())
 
 
 app.use('/users',userRouter)
-app.use('/posts', )
+// app.use('/posts', )
 
 
 
