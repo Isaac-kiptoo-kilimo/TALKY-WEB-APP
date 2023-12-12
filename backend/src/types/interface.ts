@@ -6,48 +6,65 @@ export interface User{
     profileImage: string;
     gender: string;
     role: string;
-    CreatedAt: string;
-    UpdatedAt: string;
+    createdAt: string;
+    updatedAt: string;
     password: string;
 }
 
-  
 
 export  interface Post {
-    PostID: string;
-    UserID: string;
-    Content: string;
-    LikesCount: number;
-    CreatedAt: string; 
-    UpdatedAt: string;
+    postID: string;
+    userID: string;
+    caption: string;
+    postImage: string;
+    createdAt: string; 
+    updatedAt: string;
   }
   
-
   export interface Comment {
-    CommentID: string; 
-    PostID: string;
-    UserID: string;
-    ParentCommentID?: string; 
-    Content: string;
-    LikesCount: number; 
-    CreatedAt: string; 
-    UpdatedAt: string; 
+    commentID: string; 
+    postID: string;
+    userID: string;
+    content: string;
+    createdAt: string; 
+    updatedAt: string; 
   }
-  
 
+  export interface Reply {
+    replyID: string;
+    userID: string;
+    commentID: string;
+    text: string;
+    createdAt: string;
+  }
   export interface Follower {
-    FollowerID: string; 
-    FollowerUserID: string;
-    FollowedUserID: string;
-    CreatedAt:string; 
+    followerID: string; 
+    userID: string;
+    followerUserID: string;
+    createdAt:string; 
   }
   
+  export interface Following {
+    followingID: string; 
+    userID: string;
+    followingUserID: string;
+    createdAt:string; 
+  }
   
   export interface Like {
-    LikeID: string; 
-    UserID: string;
-    PostID: string; 
-    CommentID: string; 
-    CreatedAt:string; 
+    likeID: string; 
+    userID: string;
+    postID: string; 
+    createdAt:string; 
   }
+
+  export interface commentLike {
+    likeID: string; 
+    userID: string;
+    postID: string; 
+    commentID: string; 
+    createdAt:string; 
+  }
+  
+
   

@@ -1,6 +1,5 @@
 import mssql from 'mssql'
 import { dbConfig } from '../config/db'
-import { request } from 'express'
 
 export default class Connection{
     private pool:Promise<mssql.ConnectionPool>

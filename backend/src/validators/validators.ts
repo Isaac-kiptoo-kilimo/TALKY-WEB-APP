@@ -5,6 +5,7 @@ import Joi from "joi";
 // user registration validators
 export const regUserValidation = Joi.object({
     fullName: Joi.string().required().min(3).max(30),
+    username: Joi.string().required().min(3).max(30),
     email : Joi.string().required().email({
         minDomainSegments:2, tlds:{
             allow: ['com', 'ke']
@@ -34,11 +35,8 @@ export const loginUserValidation=Joi.object({
 
 export const validateUpdateuser=Joi.object({
     fullName: Joi.string().required().min(3).max(30),
-    email : Joi.string().required().email({
-        minDomainSegments:2, tlds:{
-            allow: ['com', 'ke']
-        }
-    }),
+    username: Joi.string().required().min(3).max(30),
+    
     profileImage: Joi.string().required()
 })
 

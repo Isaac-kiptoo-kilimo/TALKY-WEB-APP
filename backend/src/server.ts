@@ -2,6 +2,7 @@ import express, { Request,Response,json, NextFunction } from 'express';
 import * as dotenv from 'dotenv';
 
 import cors from 'cors';
+import userRouter from './routes/usersRoutes';
 
 
 const app=express();
@@ -12,8 +13,8 @@ app.use(json());
 app.use(cors())
 
 
-// app.use('/users',)
-// app.use('/products',)
+app.use('/users',userRouter)
+app.use('/posts', )
 
 
 

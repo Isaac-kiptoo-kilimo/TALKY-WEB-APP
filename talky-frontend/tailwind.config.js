@@ -7,8 +7,13 @@ module.exports = {
     extend: {
       screens: {
         'sm': '200px',
+        'xl-sm': '420px',
         // => @media (min-width: 640px) { ... }
-  
+        'sm-md': '500px', 
+        
+        
+        'xl-md': '640px',
+
         'md': '768px',
         // => @media (min-width: 768px) { ... }
   
