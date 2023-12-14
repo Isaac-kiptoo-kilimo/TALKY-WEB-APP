@@ -1,0 +1,8 @@
+CREATE OR ALTER PROCEDURE deletePost(
+    @postID VARCHAR(255)
+)
+AS
+BEGIN
+    DELETE FROM Posts
+    WHERE postID = @postID;
+END;

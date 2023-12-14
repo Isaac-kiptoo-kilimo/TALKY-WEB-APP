@@ -3,5 +3,5 @@ CREATE TABLE Replies (
   userID VARCHAR(255) REFERENCES Users(userID),
   commentID VARCHAR(255) REFERENCES Comments(commentID),
   text VARCHAR(500) NOT NULL ,
-  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  createdAt VARCHAR(300)
 );

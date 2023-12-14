@@ -1,7 +1,6 @@
 import Joi from "joi";
 
 
-
 // user registration validators
 export const regUserValidation = Joi.object({
     fullName: Joi.string().required().min(3).max(30),
@@ -14,7 +13,7 @@ export const regUserValidation = Joi.object({
     password: Joi.string().required().pattern(
         new RegExp('^[a-zA-Z0-9!@#$%^&*()]{3,30}$')
     ),
-    profileImage: Joi.string().required()
+    profileImage: Joi.string()
 })
 
 
@@ -39,4 +38,20 @@ export const validateUpdateuser=Joi.object({
     
     profileImage: Joi.string().required()
 })
+
+export const createPostValidation = Joi.object({
+    postImage: Joi.any(),    
+    userID: Joi.string(),
+    caption : Joi.string(),
+    createdAt : Joi.string(),
+})
+
+export const updatePostValidation = Joi.object({
+    updatedImages: Joi.array().items(Joi.string()),
+    userID: Joi.string(),
+    postID: Joi.string(),
+    caption : Joi.string(),
+    createdAt : Joi.string(),
+})
+
 

@@ -17,8 +17,7 @@ export  interface Post {
     userID: string;
     caption: string;
     postImage: string;
-    createdAt: string; 
-    updatedAt: string;
+    createdAt: string;
   }
   
   export interface Comment {
@@ -27,7 +26,6 @@ export  interface Post {
     userID: string;
     content: string;
     createdAt: string; 
-    updatedAt: string; 
   }
 
   export interface Reply {

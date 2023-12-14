@@ -1,0 +1,8 @@
+{
+    "/api": {
+      "target": "https://api.cloudinary.com/dyisqzh7l/image/upload",
+      "secure": true,
+      "changeOrigin": true
+    }
+  }
+  

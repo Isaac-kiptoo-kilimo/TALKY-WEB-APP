@@ -3,7 +3,7 @@
 
 
 
-  <div class="flex-1 h-3/4 max-w-4xl mx-auto bg-blue-500 rounded-lg shadow-xl" >
+<div class="flex-1  h-3/4 max-w-4xl mx-auto bg-blue-500 rounded-lg shadow-xl" >
       
 <div class="flex flex-col md:flex-row">
   <div class="hidden lg:block lg:w-1/2 bg-cover"
@@ -22,7 +22,9 @@
   
       <div class="w-full">
         <div class="w-full">
-                  
+          <div data-cy="general-message" [ngClass]="{'success-message': successMessage, 'error-message': errorMessage}" class="message">
+            {{ successMessage || errorMessage }}
+          </div>
           <h1 class="mb-4 text-2xl font-bold text-center text-white">
               Login Talky Account
           </h1>

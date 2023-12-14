@@ -3,6 +3,6 @@ CREATE TABLE Likes (
   userID VARCHAR(255) REFERENCES Users(userID),
   postsID VARCHAR(255) REFERENCES Posts(postID),
   commentID VARCHAR(255) REFERENCES Comments(commentID),
-  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  createdAt TIMESTAMP
 );
 

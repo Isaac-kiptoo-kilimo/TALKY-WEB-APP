@@ -3,10 +3,9 @@ POST http://localhost:3700/users/register/
 Content-Type: application/json
 
 {
-    "fullName": "Isaac Kiptoo",
-    "username": "_@isookip",
-    "profileImage": "https://media.istockphoto.com/id/1437816897/photo/business-woman-manager-or-human-resources-portrait-for-career-success-company-we-are-hiring.webp?b=1&s=612x612&w=0&k=20&c=hEPh7-WEAqHTHdQtPrfEN9-yYCiPGKvD32VZ5lcL6SU=",
-    "email": "isaackilimok2@gmail.com",
+    "fullName": "Isaac Kil",
+    "username": "_@isookilimo",
+    "email": "isaackilimo@gmail.com",
     "password": "12345678@Ik"
 }
 
@@ -16,13 +15,13 @@ POST http://localhost:3700/users/login/
 Content-Type: application/json
 
 {
-   "email": "isaackilimok2@gmail.com",
-   "password": "12345678@ik" 
+   "email": "isaackilimo@gmail.com",
+   "password": "12345678@Ik" 
 }
 
 ### fetching all users
 GET http://localhost:3700/users/all
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI5NzVlMDgxOS05Nzc0LTQ2ZTAtODliZS0xNWM5MDU2ZGI4OTciLCJmdWxsTmFtZSI6IklzYWFjIEtpbGltbyIsInVzZXJuYW1lIjoiaXNhYWNraXAiLCJlbWFpbCI6ImlzYWFja2lsaW1vQGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsInJlc2V0VG9rZW4iOm51bGwsImV4cGlyeVRpbWUiOm51bGwsIndlbGNvbWVkIjpmYWxzZSwiaXNTZW5kIjpmYWxzZSwicHJvZmlsZUltYWdlIjoiaHR0cHM6Ly9tZWRpYS5pc3RvY2twaG90by5jb20vaWQvMTQzNzgxNjg5Ny9waG90by9idXNpbmVzcy13b21hbi1tYW5hZ2VyLW9yLWh1bWFuLXJlc291cmNlcy1wb3J0cmFpdC1mb3ItY2FyZWVyLXN1Y2Nlc3MtY29tcGFueS13ZS1hcmUtaGlyaW5nLndlYnA_Yj0xJnM9NjEyeDYxMiZ3PTAmaz0yMCZjPWhFUGg3LVdFQXFIVEhkUXRQcmZFTjkteVlDaVBHS3ZEMzJWWjVsY0w2U1U9IiwiaWF0IjoxNzAyMzkwOTU0LCJleHAiOjE3MDI1NjM3NTR9.t5M0xosvx1C2vMA-lz6nxe5VLEAEvHi3u4aNF-Z23l8
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2M2I4YTU3MC1iZWUwLTQ4NGYtYmY3MS1hMjNmZGRjMzk1NDkiLCJmdWxsTmFtZSI6IklzYWFjIEtpbCIsInVzZXJuYW1lIjoiX0Bpc29va2lsaW1vIiwiZW1haWwiOiJpc2FhY2tpbGltb0BnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJyZXNldFRva2VuIjpudWxsLCJleHBpcnlUaW1lIjpudWxsLCJ3ZWxjb21lZCI6ZmFsc2UsImlzU2VuZCI6ZmFsc2UsInByb2ZpbGVJbWFnZSI6Imh0dHBzOi8vbWVkaWEuaXN0b2NrcGhvdG8uY29tL2lkLzEzMDA4NDU2MjAvdmVjdG9yL3VzZXItaWNvbi1mbGF0LWlzb2xhdGVkLW9uLXdoaXRlLWJhY2tncm91bmQtdXNlci1zeW1ib2wtdmVjdG9yLWlsbHVzdHJhdGlvbi5qcGc_cz02MTJ4NjEyJnc9MCZrPTIwJmM9eUJleWJhMGhVa2gxNF9qZ3YxT0txSUgwQ0NTV1VfNGNrUmtBb3kycDczbz0iLCJpYXQiOjE3MDI0NTMyNjAsImV4cCI6MTcwMjYyNjA2MH0.jbwtjtuZiOX2XDB95pA0UvLunlPHeatd_8Lqo8ET2Oo
 
 
 ###update user
@@ -68,19 +67,23 @@ GET http://localhost:3700/users/checkUserDetails/
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJiNjc3ZDk2NC01ZTIxLTQyMDItOGJjNC1iNzc5ZDcyMzExZTAiLCJmdWxsTmFtZSI6Impvc2h1YSBvbW9uZGkiLCJlbWFpbCI6Impvc2h1YW9tb25kaTMzMzRAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwicmVzZXRQYXNzd29yZFRva2VuIjpudWxsLCJyZXNldFBhc3N3b3JkRXhwaXJlcyI6bnVsbCwid2VsY29tZWQiOnRydWUsImlhdCI6MTcwMTE4NzE4OSwiZXhwIjoxNzAxMzU5OTg5fQ.0hRlKsXGtEKP8_MP--ROem0zMLUBlePZA2-VFI2mmBY
 
 
+
 #### deleting user
 DELETE http://localhost:3700/users/delete/975e0819-9774-46e0-89be-15c9056db897/
 
-###### creating new product
+
+
+###### creating new post
 POST http://localhost:3700/posts/create
 Content-Type: application/json
 
 {
-    "name": "new Tv Stand",
-    "shortDescription": "This is a good Tv stand for modern house",
-    "price": 2200,
-    "image": "https://media.istockphoto.com/id/937510970/photo/smart-tv-mockup-with-black-glossy-screen-on-console-in-living-room.jpg?s=2048x2048&w=is&k=20&c=0_fvqr0Hrqd3NR9C5tsDF2ys6rQQBJEcYI_o6fyvlg0="
+    "userID": "63b8a570-bee0-484f-bf71-a23fddc39549",
+    "caption": "Nice image",
+    "postImage": ["https://media.istockphoto.com/id/937510970/photo/smart-tv-mockup-with-black-glossy-screen-on-console-in-living-room.jpg?s=2048x2048&w=is&k=20&c=0_fvqr0Hrqd3NR9C5tsDF2ys6rQQBJEcYI_o6fyvlg0="]
 }
+
+
 
 ### fetching all posts
 
@@ -92,14 +95,14 @@ GET http://localhost:3700/posts/single/82B7DAD8-DA99-40FB-B143-1D2AD2437D64/
 
 
 ###### Updating post
-PUT  http://localhost:3700/posts/update/82B7DAD8-DA99-40FB-B143-1D2AD2437D64/
+PUT  http://localhost:3700/posts/update/
 Content-Type: application/json
 
 {
-    "name": "Black Tv Stand",
-    "shortDescription": "They are remainin two in stock",
-    "price": 2800,
-    "image": "https://media.istockphoto.com/id/1430080532/photo/bedroom-without-sheets.webp?b=1&s=612x612&w=0&k=20&c=7_c725vsPgGRxQJLD13VAt5zOk6TvFT4KWZba4RYBfg="
+    "userID": "63b8a570-bee0-484f-bf71-a23fddc39549",
+    "postID": "19d22d77-b10f-4a54-838f-34961bddc0cf",
+    "caption": "They are remaining two in stock",
+    "updatedImages": ["https://media.istockphoto.com/id/1430080532/photo/bedroom-without-sheets.webp?b=1&s=612x612&w=0&k=20&c=7_c725vsPgGRxQJLD13VAt5zOk6TvFT4KWZba4RYBfg="]
   }
 
 ### search post by types
@@ -108,6 +111,6 @@ GET http://localhost:3700/posts/search?type=GA
 
 # Deleting a post
 ###
-DELETE http://localhost:3700/posts/delete/492776AB-44CC-4468-B1B2-207C35E2B87C/
+DELETE http://localhost:3700/posts/delete/19d22d77-b10f-4a54-838f-34961bddc0cf/
 
 

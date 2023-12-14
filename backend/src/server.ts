@@ -3,7 +3,15 @@ import * as dotenv from 'dotenv';
 
 import cors from 'cors';
 import userRouter from './routes/usersRoutes';
+import postRoute from './routes/postRoutes';
+import * as cloudinary from 'cloudinary';
 
+
+cloudinary.v2.config({
+    cloud_name: 'dyisqzh7l',
+    api_key: '883445841839746',
+    api_secret: 'tP8KviZBVC4x-HO2Qr41-PiV41U',
+  });
 
 const app=express();
 
@@ -14,7 +22,7 @@ app.use(cors())
 
 
 app.use('/users',userRouter)
-// app.use('/posts', )
+app.use('/posts', postRoute)
 
 
 

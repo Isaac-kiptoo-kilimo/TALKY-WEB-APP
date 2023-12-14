@@ -26,6 +26,10 @@ import { FollowersComponent } from './follow/followers/followers.component';
 import { FollowingComponent } from './follow/following/following.component';
 import { MessageComponent } from './message/message/message.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { HttpClientModule } from '@angular/common/http';
+import {CloudinaryModule} from '@cloudinary/ng';
+import { ToastrModule } from 'ngx-toastr';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 
 
@@ -59,7 +63,11 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     BrowserAnimationsModule,
     MatFormFieldModule,
     IonicModule,
-    MatInputModule    
+    MatInputModule,
+    HttpClientModule,
+    CloudinaryModule,
+    ToastrModule.forRoot(),
+    NgxDropzoneModule,  
   ],
   providers: [],
   bootstrap: [AppComponent]

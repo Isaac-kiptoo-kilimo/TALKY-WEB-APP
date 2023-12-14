@@ -15,7 +15,7 @@ const dbhelpers = new Connection
 
 export const registerUserControllers = async (req: Request, res: Response) => {
   try {
-    const { fullName, username, email, password, profileImage } = req.body
+    const { fullName, username, email, password} = req.body
 
 
     const { error } = regUserValidation.validate(req.body)
@@ -39,7 +39,6 @@ export const registerUserControllers = async (req: Request, res: Response) => {
       .input('username', mssql.VarChar, username)
       .input('email', mssql.VarChar, email)
       .input('password', mssql.VarChar, hashedpwd)
-      .input('profileImage', mssql.VarChar, profileImage)
       .execute('registerUser')
 
     return res.status(201).json({

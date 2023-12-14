@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,7 +12,7 @@ export class SignUpComponent {
   signupForm: FormGroup;
   loading: boolean = false; 
 
-  constructor(private fb: FormBuilder,private router:Router) {
+  constructor(private fb: FormBuilder,private router:Router,private authService:AuthService) {
     this.signupForm = this.fb.group({
       fullName: ['', Validators.required],
       username: ['', Validators.required],
@@ -22,24 +23,25 @@ export class SignUpComponent {
 
   ngOnInit(): void {}
 
-  signupUser() {
-    if(this.signupForm.valid){
-    const signupnewUser=this.signupForm.value
-    console.log(this.signupForm.value);
-    
-    this.loading = true;
+ 
 
-   
-    setTimeout(() => {
-     
-      this.loading = false;
-    }, 6000);
-    this.router.navigate([''])
-  }else{
-    console.log(Error);
-    
+  getErrorMessage(controlName: string) {
+    const control = this.signupForm.get(controlName);
+    return control?.hasError('required') ? 'This field is required' :
+      control?.hasError('email') ? 'Not a valid email' :
+        '';
   }
+  
+  registerUser(){
+    if (this.signupForm.valid) {
+      let registeredUser = this.signupForm.value;
+      this.authService.registerUser(registeredUser);
+      this.router.navigate(['']);
+    } else {
+      this.signupForm.markAllAsTouched();
+    }
   }
+
     
   }
 
