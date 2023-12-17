@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { PostDetails } from 'src/app/interface/post';
+import { Post, PostDetails } from 'src/app/interface/post';
 import { PostService } from 'src/app/services/post.service';
 import { UploadphotoService } from 'src/app/services/uploadphoto.service';
 import { UserDetails } from 'src/app/interface/user';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { ElementRef } from '@angular/core';
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
@@ -20,6 +20,8 @@ export class CreatePostComponent implements OnInit {
   userDetails!: UserDetails;
   userID: string = '';
   postFiles: any[] = [];
+  posts!: Post[];
+ 
 
 
   constructor(
@@ -28,7 +30,8 @@ export class CreatePostComponent implements OnInit {
     private uploadService: UploadphotoService,
     private postService: PostService,
     private toastr: ToastrService,
-    private authService: AuthService
+    private authService: AuthService,
+    private el: ElementRef
   ) {
     this.createPostForm = this.formbuilder.group({
       postImage: '',
@@ -37,6 +40,7 @@ export class CreatePostComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getPosts()
     this.authService.getUserDetails().subscribe(
       (userDetails) => {
         console.log(userDetails[0].fullName);
@@ -82,6 +86,7 @@ export class CreatePostComponent implements OnInit {
                 console.log(response);
                 this.toastr.success('Form submitted successfully!', 'Success');
     
+                this.getPosts();
                 this.createPostForm.reset();
                 this.postFiles = []; 
               },
@@ -101,6 +106,26 @@ export class CreatePostComponent implements OnInit {
       this.toastr.error('Form is invalid. Please check the fields.', 'Error');
       console.log('Form is invalid. Please check the fields.',this.createPostForm.value);
     }
+  }
+
+
+  getPosts() {
+    this.postService.getPosts().subscribe((posts) => {
+      this.posts = posts;
+      console.log(posts[0].username);
+    },
+    (error) => {
+      console.error('Error fetching users:', error.error.message);
+    });
+  }
+
+  closeModal() {
+    
+    const modal = this.el.nativeElement.querySelector('.createPostModal') as HTMLDivElement; 
+    setTimeout(() => {
+      modal.style.display = 'none';      
+      this.getPosts();
+    }, 1000); 
   }
 
   onSelectPostImage(event: any) {

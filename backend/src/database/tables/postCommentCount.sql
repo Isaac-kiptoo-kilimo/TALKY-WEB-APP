@@ -3,3 +3,5 @@ CREATE TABLE postCommentCount (
   commentsCount INT DEFAULT 0,
   FOREIGN KEY (postID) REFERENCES Posts(postID)
 );
+
+DROP TABLE postCommentCount

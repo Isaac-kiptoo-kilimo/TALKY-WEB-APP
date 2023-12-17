@@ -1,9 +1,10 @@
-CREATE OR ALTER PROCEDURE getUserFollowers
-    @userID VARCHAR(255)
+
+CREATE OR ALTER PROCEDURE getFollowers
+    @followedUserID VARCHAR(255)
 AS
 BEGIN
-    -- Retrieve user's followers
-    SELECT followerID, userID, followerUserID
+    SELECT followerID
     FROM Followers
-    WHERE userID = @userID;
-END;
+    WHERE followedUserID = @followedUserID;
+END
+

@@ -38,9 +38,8 @@ export class AuthService {
 
     return this.http.get<UserDetails[]>('http://localhost:3700/users/userDetails/', { headers });
   }
-  // http://localhost:3500/users/userDetails/
 
-
+  
 
   isLoggedIn(): boolean {
    

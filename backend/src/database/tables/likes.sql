@@ -1,8 +1,9 @@
 CREATE TABLE Likes (
   likesID VARCHAR(255) PRIMARY KEY,
   userID VARCHAR(255) REFERENCES Users(userID),
-  postsID VARCHAR(255) REFERENCES Posts(postID),
+  postID VARCHAR(255) REFERENCES Posts(postID),
   commentID VARCHAR(255) REFERENCES Comments(commentID),
   createdAt TIMESTAMP
 );
 
+DROP TABLE Likes

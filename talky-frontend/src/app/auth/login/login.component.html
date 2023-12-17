@@ -1,35 +1,86 @@
 
-<div class="flex items-center min-h-screen bg-blue-200">
-
+<div class="flex items-center min-h-screen bg-blue-100" >
 
 
 <div class="flex-1  h-3/4 max-w-4xl mx-auto bg-blue-500 rounded-lg shadow-xl" >
       
-<div class="flex flex-col md:flex-row">
-  <div class="hidden lg:block lg:w-1/2 bg-cover"
-  style="background-image:url('assets/images/talky4.jpg')">
-  <p class="text-center my-4 py-6  text-[30px] text-blue-500">Talky App Let's Connect </p>
+<div class="flex flex-col md:flex-row" style="border-radius: 10px;" >
+  <div class="lg:block lg:w-1/2 bg-cover " 
+  >
+   
+  <img  [@fadeInOut]="showFirstImage ? 'fadeIn' : 'fadeOut'" *ngIf="showFirstImage" style="width: 100%; height: 100%; border-radius: 10px 0 0 10px;"   src="assets/images/social.jpg" >
+
+
+  <img [@fadeInOut]="!showFirstImage ? 'fadeIn' : 'fadeOut'" *ngIf="!showFirstImage" style="width: 100%; height: 100%; border-radius: 10px 0 0 10px;"   src="assets/images/tally0-.png" >
+
+
 </div>
-  <!-- <div class="h-full md:h-full  md:w-1/2 relative">
-    
-      <img
-          
-          src="assets/images/login.jpg"
-          alt="Left Image"
-      />
-  </div> -->
-  <div class="flex items-center justify-center py-2 px-4 sm:p-12 md:w-1/2" style="border-radius: 0 10px 10px 0;">
+ 
+  <div class="flex items-center justify-center pt-4 pb-2 px-4 sm:p-12 md:w-1/2" style="border-radius: 0 10px 10px 0;">
   
       <div class="w-full">
         <div class="w-full">
-          <div data-cy="general-message" [ngClass]="{'success-message': successMessage, 'error-message': errorMessage}" class="message">
+          <div data-cy="general-message" [ngClass]="{'success-message': successMessage, 'error-message': errorMessage}" class="message flex flex-col justify-center items-center">
             {{ successMessage || errorMessage }}
+            <img class="custom-logo w-16 h-16" src="{{ link }}" alt="Custom Logo">
           </div>
-          <h1 class="mb-4 text-2xl font-bold text-center text-white">
+          <h1 class="mt-4 text-2xl font-bold text-center text-white">
               Login Talky Account
           </h1>
           <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
-            <mat-form-field class="w-full">
+            <div class="relative w-full mb-3">
+            
+              <input 
+                type="email" formControlName="email"
+                class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                placeholder="Email"
+                style="transition: all 0.15s ease 0s;"
+              />
+              <div data-cy="error-message" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')" class="text-red-500">Email should not empty</div>
+                <div data-cy="error-message-email" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email')" class="text-red-500">Use a valid email</div>
+            </div>
+            <div class="relative w-full mb-3">
+             <input
+                type="password" formControlName="password"
+                class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                placeholder="Password"
+                style="transition: all 0.15s ease 0s;"
+              />
+              <div data-cy="error-message" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')" class="text-red-500">Password shold not empty</div>
+            </div>
+            <div>
+              <p class="mt-2">
+                <a class="text-sm text-white hover:underline"routerLink="/forgot">
+                    Forgot your password?
+                </a>
+            </p>
+            </div>
+            <button
+            class="block w-full px-4 py-3 mt-4 text-lg font-medium leading-5 text-center border border-transparent text-white transition-colors duration-150 bg-blue-500 border-none rounded-lg active:bg-blue-700 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
+             type="submit" >
+            Log in
+        </button>
+
+
+        <div class="divider my-4 flex items-center">
+          <div class="flex-grow border-t border-white mr-4"></div>
+          <span class="text-white">OR</span>
+          <div class="flex-grow border-t border-white ml-4"></div>
+        </div>
+        <div
+        *ngIf="!isLoading"
+        class="infobox text-lg text-white flex justify-between"
+      >
+        <p>
+          Don't have an account?
+          <a routerLink="/signup" class="underline hover:text-blue-300"
+            >Sign up</a
+          >
+        </p>
+        </div>
+          </form>
+          <!-- <form >
+            <mat-form-field class="w-full mt-2">
               <input
                 matInput
                 name="email"
@@ -47,7 +98,8 @@
                 >Please enter a valid email</mat-error
               >
             </mat-form-field>
-          <mat-form-field class="w-full " style="border-radius: 0 0 20px 20px;">
+            
+          <mat-form-field class="w-full mt-2" style="border-radius: 0 0 20px 20px;">
             <input
               matInput
               formControlName="password"
@@ -91,7 +143,7 @@
           </p>
          
         </div>                  
-        </form>
+        </form> -->
         
       </div>
       </div>

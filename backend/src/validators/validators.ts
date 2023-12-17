@@ -46,12 +46,39 @@ export const createPostValidation = Joi.object({
     createdAt : Joi.string(),
 })
 
-export const updatePostValidation = Joi.object({
-    updatedImages: Joi.array().items(Joi.string()),
-    userID: Joi.string(),
-    postID: Joi.string(),
-    caption : Joi.string(),
+
+
+export const validateComment = Joi.object({
+    postID: Joi.string().required(),
+    content: Joi.string().required(),
+    userID: Joi.string().required(),
     createdAt : Joi.string(),
+  });
+  
+  export const validateUpdateComment = Joi.object({
+    postID: Joi.string().required(),
+    content: Joi.string().required(),
+    userID: Joi.string().required(),
+    commentID: Joi.string().required(),
+  });
+
+  export const validateCommentReply = Joi.object({
+    text: Joi.string(),
+    userID: Joi.string(),
+    commentID: Joi.string().required(),
+  });
+
+
+  export const updatePostSchema = Joi.object({
+    postImage: Joi.any(),    
+    userID: Joi.string(),
+    caption : Joi.string()
 })
 
-
+// export const updatePostValidation = Joi.object({
+//     updatedImages: Joi.array().items(Joi.string()),
+//     userID: Joi.string(),
+//     postID: Joi.string(),
+//     caption : Joi.string(),
+//     createdAt : Joi.string(),
+// })

@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Comment, CommentDetails, Post, PostDetails } from 'src/app/interface/post';
 import { User, UserDetails } from 'src/app/interface/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -26,17 +29,26 @@ export class UserDashboardComponent {
   commentForm!: FormGroup;
   filter=''
   userID! : string;
+  postUserID! : string;
   users!: User[];
+  posts!: Post[];
+  comments!: CommentDetails[];
+  comPostID!: string;
+  // postDetails!: PostDetails;
+  clickedPostID! : string
+  CommentclickedPostID! : string
   userDetails!: UserDetails ;
   showProfileDropdown: boolean = false;
-
+  postUsername!: string;
 
 constructor(private router:Router, private fb:FormBuilder,
-  private userService: UserService,
-  private authService: AuthService){
+  private userService: UserService,    private toastr: ToastrService,
+  private authService: AuthService, private postService: PostService){
   this.commentForm = this.fb.group({
-    commentText: ['', [Validators.required, Validators.maxLength(255)]]
+    content: ['', [Validators.required]]
   });
+
+  
 }
 
 loggedInTrue = localStorage.getItem('loggedIn')
@@ -45,7 +57,7 @@ loggedInTrue = localStorage.getItem('loggedIn')
  ngOnInit() {
    
     this.getUsers();
-
+    this.getPosts();
     if (this.authService.isLoggedIn()) {
      
       this.authService.getUserDetails().subscribe(
@@ -61,6 +73,7 @@ loggedInTrue = localStorage.getItem('loggedIn')
         }
       );
     }
+    
     
  }
 
@@ -87,6 +100,7 @@ loggedInTrue = localStorage.getItem('loggedIn')
     );
   }
 
+
 deleteUser(userID: string): void {
     alert('Are you sure You want to delete, this action is irreversible')
     this.userService.deleteUser(userID).subscribe(
@@ -100,6 +114,96 @@ deleteUser(userID: string): void {
   }
   
 
+  // posts
+
+  getPosts() {
+    this.postService.getPosts().subscribe((posts) => {
+      this.posts = posts;
+      console.log(posts[0].username);
+      console.log(posts[0].createdAt);
+    },
+    (error) => {
+      console.error('Error fetching users:', error.error.message);
+    });
+  }
+
+
+  
+  clickedPost(clickedID: string) {
+    console.log(clickedID);
+    // Store the clicked post ID for later use
+    this.clickedPostID = clickedID;
+  }
+  
+
+  postComment() {
+   
+    
+    if (this.commentForm.valid && this.clickedPostID) {
+      this.authService.getUserDetails().subscribe(
+        (userDetails) => {
+          // Assuming userDetails contains the user ID
+          const userID = userDetails[0].userID;
+        console.log(userID);
+  
+          const commentedPost: Comment = {
+            postID: this.clickedPostID,
+            userID: userID,
+            content: this.commentForm.value.content,
+            // other properties...
+          };
+  console.log(commentedPost);
+  
+          this.postService.createComment(commentedPost).subscribe(
+            (res) => {
+              console.log(res);
+              this.getPostComments(commentedPost.postID)
+              this.toastr.success('Comment submitted successfully!', 'Success');
+              console.log("Comment created");
+              this.commentForm.reset();
+            },
+            (error) => {
+              console.error('Error creating comment:', error);
+              this.toastr.error('Error submitting comment', 'Error');
+            }
+          );
+        },
+        (error) => {
+          console.error('Error getting user details:', error);
+        }
+      );
+    } else {
+      console.log("Error in creating comment");
+    }
+  }
+
+  // commentPostClicked(commentPostClickedID: string) {
+    
+  //   if (commentPostClickedID) {
+  //     this.postService.getPostComments(commentPostClickedID).subscribe(comments => {
+  //       this.comments = comments;
+  //       console.log(comments);
+      
+  //     });
+  //   } else {
+  //     console.error('Post ID is not available.');
+  //   }
+    
+  // }
+  
+  
+  getPostComments(postID: string): void {
+    this.postService.getPostComments(postID).subscribe((comments) => {
+      // Find the post index
+      const postIndex = this.posts.findIndex((post) => post.postID === postID);
+
+      // Update comments for the specific post
+      if (postIndex !== -1) {
+        this.posts[postIndex].comments = comments;
+      }
+    });
+  }
+
   checkLoggedIn(){
 
     console.log(this.loggedInTrue);
@@ -108,6 +212,7 @@ deleteUser(userID: string): void {
     }
   }
   
+
   logout() {
     this.router.navigate(['']);
     localStorage.clear();
@@ -158,10 +263,7 @@ toggleFollow4() {
   this.followStatus4 = this.followStatus4 === 'Follow' ? 'Following' : 'Follow';
 }
 
-  postComment(){
-    console.log("I am clickable");
-    
-  }
+  
 
   viewProfile(){
     console.log("I am clickable");

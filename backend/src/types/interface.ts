@@ -24,8 +24,7 @@ export  interface Post {
     commentID: string; 
     postID: string;
     userID: string;
-    content: string;
-    createdAt: string; 
+    content: string; 
   }
 
   export interface Reply {
@@ -37,17 +36,17 @@ export  interface Post {
   }
   export interface Follower {
     followerID: string; 
-    userID: string;
     followerUserID: string;
-    createdAt:string; 
-  }
-  
-  export interface Following {
-    followingID: string; 
-    userID: string;
     followingUserID: string;
     createdAt:string; 
   }
+  
+  // export interface Following {
+  //   followingID: string; 
+  //   userID: string;
+  //   followingUserID: string;
+  //   createdAt:string; 
+  // }
   
   export interface Like {
     likeID: string; 
