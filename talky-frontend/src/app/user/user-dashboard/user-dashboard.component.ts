@@ -44,7 +44,7 @@ export class UserDashboardComponent {
   showProfileDropdown: boolean = false;
   postUsername!: string;
   updateCommentForm! : FormGroup
-
+  selectedPost: any;
   currentUserID: string='';
   followStatusMap: { [userID: string]: string } = {};
 
@@ -176,8 +176,9 @@ deleteUser(userID: string): void {
     console.log(clickedID);
     this.clickedPostID = clickedID;
   }
-  
 
+
+ 
   postComment() {
    
     
@@ -219,7 +220,23 @@ deleteUser(userID: string): void {
     }
   }
 
- 
+
+  showAllComments(post: Post): void {
+    this.selectedPost = post;
+    console.log(this.selectedPost);
+    
+    this.hidden = !this.hidden;
+  }
+
+
+ getAllPostComments(post: any): void {
+  this.postService.getPostComments(post.postID).subscribe((comments) => {
+    post.comments = comments;
+    console.log(this.selectedPost.comments[0]?.profileImage);
+
+  });
+}
+
   
   getPostComments(postID: string): void {
     this.postService.getPostComments(postID).subscribe((comments) => {
