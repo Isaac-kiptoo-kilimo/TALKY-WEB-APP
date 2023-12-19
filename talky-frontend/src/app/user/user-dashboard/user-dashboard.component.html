@@ -226,9 +226,11 @@
         />
         <div class="flex justify-between items-center">
           <div class="flex gap-10">
+
+            
             <svg
-              *ngIf="!isLikeClicked"
-              (click)="toggleLikeColor()"
+              
+              (click)="isLiked ? unlikePost() : likePost()"
               class="transform transition hover:scale-105 duration-300 ease-in-out"
               xmlns="http://www.w3.org/2000/svg"
               height="24"
@@ -281,7 +283,7 @@
             </svg>
           </div>
         </div>
-        <p class="text-lg text-gray-500 font-semibold">123 Likes</p>
+        <p class="text-lg text-gray-500 font-semibold">{{ likeCount }} Likes </p>
 
         <div class="text-lg text-gray-500 mx-3" *ngIf="post.comments">
           <!-- Display comment details -->

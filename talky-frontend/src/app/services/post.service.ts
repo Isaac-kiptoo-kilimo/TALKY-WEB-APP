@@ -68,6 +68,22 @@ getPosts(): Observable<Post[]>{
    
   }
 
+
+  likePost(data: { userID: string; postID: string }): Observable<any> {
+    return this.http.post('http://localhost:3700/posts/likepost/', data);
+  }
+
+  unlikePost(data: { userID: string; postID: string }): Observable<any> {
+    return this.http.post('http://localhost:3700/posts/unlikepost/', data);
+  }
+
+  getLikesForPost(postID: string): Observable<any> {
+    return this.http.get(`http://localhost:3700/posts/alllikes${postID}`);
+  }
+
+  getLikeCountForPost(postID: string): Observable<any> {
+    return this.http.get(`http://localhost:3700/posts/postlikecount/${postID}`);
+  }
   
 }
 

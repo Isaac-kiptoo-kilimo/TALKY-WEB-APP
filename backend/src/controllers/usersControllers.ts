@@ -183,6 +183,47 @@ export const updateUserControllers = async (req: Request, res: Response) => {
   }
 }
 
+// export const updateUser = async (req: Request, res: Response) => {
+//   try {
+//     let { user_id, user_name, profileImage, fullName } = req.body;
+
+//     console.log(profileImage);
+
+//     // if (profileImage === "") {
+//     //   profileImage =
+//     //     "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?q=80&w=1434&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+//     // }
+
+//     const { error } = validateUpdateuser.validate(req.body);
+//     console.log(error);
+
+//     if (error)
+//       return res
+//         .status(400)
+//         .send({ error: "check input infomation if its correct" });
+
+//     const newUser: UpdateUser = {
+//       user_id,
+//       user_name,
+//       profileImage,
+//       fullName,
+//     };
+
+//     const procedureName = "updateUser";
+//     const params = newUser;
+//     // console.log(params);
+
+//     await execute(procedureName, params);
+//     return res.send({ message: "User updated successfully" });
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send({
+//       error: (error as Error).message,
+//       message: "Internal Sever Error",
+//     });
+//   }
+// };
+
 export const fetchAllUsersControllers = async (req: Request, res: Response) => {
   try {
     const loggedInUserID = req.params.loggedInUserID;

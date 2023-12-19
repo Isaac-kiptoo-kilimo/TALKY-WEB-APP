@@ -47,6 +47,9 @@ export class UserDashboardComponent {
   selectedPost: any;
   currentUserID: string='';
   followStatusMap: { [userID: string]: string } = {};
+  postID!: string;
+  likeCount!: number;
+  isLiked!: boolean;
 
 
 constructor(private router:Router, private fb:FormBuilder,
@@ -72,7 +75,8 @@ myID = localStorage.getItem('userID') as string;
     this.getPosts();
     this.getFollowings()
     this.getFollowers()
-   
+    this.getLikeInfo();
+    
     if (this.authService.isLoggedIn()) {
      
       this.authService.getUserDetails().subscribe(
@@ -428,35 +432,37 @@ toggleSidebar() {
       }
     );
   }
-  
-  // followings =[]
-  // getFollowStatus(){
-  //   let followingID = localStorage.getItem('userID') as string;
+ 
+ 
+   getLikeInfo() {
+    this.postService.getLikesForPost(this.postID).subscribe((likes) => {
+      this.isLiked = likes.some((like:any) => like.userID === this.userID); // Replace 'your-userID' with the actual user ID
+      this.getLikeCount();
+    });
+  }
 
-  //     this.users.filter((el, index)=>{
-  //       // el.followStatus = 
-  //       let status = this.followings.find((el:User, index)=>{
-  //         return el.userID == followingID
-  //       })
+  getLikeCount() {
+    this.postService.getLikeCountForPost(this.postID).subscribe((count) => {
+      this.likeCount = count;
+    });
+  }
+  likePost() {
+    this.postService
+      .likePost({ userID: this.userID, postID: this.postID }) // Replace 'your-userID' with the actual user ID
+      .subscribe(() => {
+        this.isLiked = true;
+        this.getLikeCount();
+      });
+  }
 
-  //       console.log(status);
-        
-  //     })
-    
-  // }  
-  
-
-  // toggleForUser(followedUserID:string){
-  //   this.followings.filter((user:any)=>{
-  //     console.log(user.userID == followedUserID);
-      
-  //     if(user.userID == followedUserID){
-  //       return this.followStatus = 'Following';
-  //     }else{
-  //       return this.followStatus = 'Follow';
-  //     }
-  //   })
-  // }
+  unlikePost() {
+    this.postService
+      .unlikePost({ userID: this.userID, postID: this.postID }) // Replace 'your-userID' with the actual user ID
+      .subscribe(() => {
+        this.isLiked = false;
+        this.getLikeCount();
+      });
+  }
 
 
   }
