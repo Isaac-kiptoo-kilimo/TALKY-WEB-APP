@@ -27,6 +27,10 @@ export interface Comment{
   content: string;
 }
 
+export interface updatedComment{
+  userID:string;
+  content: string;
+}
 
 export interface CommentDetails{
   postID: string;

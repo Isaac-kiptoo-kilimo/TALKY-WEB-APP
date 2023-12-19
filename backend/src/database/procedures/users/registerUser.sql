@@ -14,6 +14,9 @@ END
 
 DROP PROCEDURE registerUser
 
+
+
+
 GO
 
 CREATE OR ALTER PROCEDURE registerUser
@@ -31,7 +34,6 @@ BEGIN
         SELECT 'User registered successfully' AS Result;
     END TRY
     BEGIN CATCH
-        -- Check for unique constraint violation
         IF ERROR_NUMBER() = 2627
         BEGIN
             SELECT 'Username or email already exists. User not registered.' AS Result;

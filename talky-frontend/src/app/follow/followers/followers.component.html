@@ -17,12 +17,14 @@
                         <span class="sr-only">Close modal</span>
                     </button>
                 </div>
+                   
+             
                <div class="overflow-y-auto" style="height: 350px;">
-               <div class="flex justify-between p-4 items-center">
-                <div class="flex items-center gap-3">
-                    <img src="assets/images/profile2.png" class="w-10 h-10 rounded-full border-2 border-green-500 " alt="">
+               <div *ngIf="followers && followers.length > 0" class="flex justify-between p-4 items-center">
+                <div class="flex items-center gap-3" *ngFor="let follower of followers">
+                    <img [src]="follower.profileImage " class="w-10 h-10 rounded-full border-2 border-green-500 " alt="">
                 <div >
-                  <span class="text-lg font-semibold">DanKariuki</span>
+                  <span class="text-lg font-semibold">{{ follower.username }}</span>
                   <span class="ml-2 text-lg text-gray-500 hover:bg-gray-200 dark:text-gray-400 hover:text-gray-900 border-gray-100 rounded-md py-2 px-2" >Follow</span>
                </div>
                 </div>
@@ -31,71 +33,10 @@
               </button>
                 
                </div>
-               <div class="flex justify-between p-4 items-center">
-                <div class="flex items-center gap-3">
-                    <img src="assets/images/profile2.png" class="w-10 h-10 rounded-full border-2 border-green-500 " alt="">
-                <div >
-                  <span class="text-lg font-semibold">DanKariuki</span>
-                  <span class="ml-2 text-lg text-gray-500 hover:bg-gray-200 dark:text-gray-400 hover:text-gray-900 border-gray-100 rounded-md py-2 px-2" >Follow</span>
-               </div>
-                </div>
-               <button class="text-gray-900 bg-gray-100 py-1 px-3 border-gray-100 rounded-md text-lg hover:bg-gray-200 font-semibold">
-                Remove
-              </button>
-                
-               </div>
-               <div class="flex justify-between p-4 items-center">
-                <div class="flex items-center gap-3">
-                    <img src="assets/images/profile2.png" class="w-10 h-10 rounded-full border-2 border-green-500 " alt="">
-                <div >
-                  <span class="text-lg font-semibold">DanKariuki</span>
-                  <span class="ml-2 text-lg text-gray-500 hover:bg-gray-200 dark:text-gray-400 hover:text-gray-900 border-gray-100 rounded-md py-2 px-2" >Follow</span>
-               </div>
-                </div>
-               <button class="text-gray-900 bg-gray-100 py-1 px-3 border-gray-100 rounded-md text-lg hover:bg-gray-200 font-semibold">
-                Remove
-              </button>
-                
-               </div>
-               <div class="flex justify-between p-4 items-center">
-                <div class="flex items-center gap-3">
-                    <img src="assets/images/profile2.png" class="w-10 h-10 rounded-full border-2 border-green-500 " alt="">
-                <div >
-                  <span class="text-lg font-semibold">DanKariuki</span>
-                  <span class="ml-2 text-lg text-gray-500 hover:bg-gray-200 dark:text-gray-400 hover:text-gray-900 border-gray-100 rounded-md py-2 px-2" >Follow</span>
-               </div>
-                </div>
-               <button class="text-gray-900 bg-gray-100 py-1 px-3 border-gray-100 rounded-md text-lg hover:bg-gray-200 font-semibold">
-                Remove
-              </button>
-                
-               </div>
-               <div class="flex justify-between p-4 items-center">
-                <div class="flex items-center gap-3">
-                    <img src="assets/images/profile2.png" class="w-10 h-10 rounded-full border-2 border-green-500 " alt="">
-                <div >
-                  <span class="text-lg font-semibold">DanKariuki</span>
-                  <span class="ml-2 text-lg text-gray-500 hover:bg-gray-200 dark:text-gray-400 hover:text-gray-900 border-gray-100 rounded-md py-2 px-2" >Follow</span>
-               </div>
-                </div>
-               <button class="text-gray-900 bg-gray-100 py-1 px-3 border-gray-100 rounded-md text-lg hover:bg-gray-200 font-semibold">
-                Remove
-              </button>
-                
-               </div>
-               <div class="flex justify-between p-4 items-center">
-                <div class="flex items-center gap-3">
-                    <img src="assets/images/profile2.png" class="w-10 h-10 rounded-full border-2 border-green-500 " alt="">
-                <div >
-                  <span class="text-lg font-semibold">DanKariuki</span>
-                <span class="ml-2 text-lg text-gray-500 hover:bg-gray-200 dark:text-gray-400 hover:text-gray-900 border-gray-100 rounded-md py-2 px-2" >Follow</span>
-               </div>
-                </div>
-               <button class="text-gray-900 bg-gray-100 py-1 px-3 border-gray-100 rounded-md text-lg hover:bg-gray-200 font-semibold">
-                Remove
-              </button>
-                
-               </div>
+               <div *ngIf="!followers || followers.length === 0">
+                <p>No followers.</p>
+              </div>
+              
           
           
             </div>

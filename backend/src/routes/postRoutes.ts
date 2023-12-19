@@ -12,7 +12,7 @@ postRoute.put('/update/:postID', updatePostController)
 postRoute.delete('/delete/:postID', deletePostController)
 postRoute.post('/addComment', addCommentController)
 postRoute.get('/allComments', getAllCommentsController)
-postRoute.put("/updatecomment", updateCommentControllers)
+postRoute.put("/updatecomment/:commentID", updateCommentControllers)
 postRoute.delete("/deletecomment/:ID", deleteCommentControllers)
 
 postRoute.post('/createreply', createReplyController)

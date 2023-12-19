@@ -5,14 +5,16 @@ export interface User {
     email: string;
     password: string;
     role: string;
-    profileImage: string
+    profileImage: string,
+    followStatus: string;
 }
 
 
   export interface LoginResponse {
     user: User | undefined;
     token: string;
-    userID:string
+    userID:string;
+    username: string
   }
 
   export interface userLogin {
@@ -36,3 +38,15 @@ export interface updatedUserData {
   username: string;
  profileImage: string;
 };
+
+export interface Follower {
+  followerID: string; 
+  followerUserID: string;
+  followingUserID: string;
+}
+
+
+export interface UserFollowStatus {
+  userID: string;
+  isFollowing: boolean;
+}

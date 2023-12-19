@@ -7,6 +7,7 @@ import { Observable, catchError } from 'rxjs';
   providedIn: 'root'
 })
 export class PostService {
+  private apiUrl = 'http://localhost:3700/users';
 
   constructor(private http:HttpClient) { }
 
@@ -45,7 +46,7 @@ getPosts(): Observable<Post[]>{
     });
   }
 
-  
+
 
   getComments(){
     return this.http.get('http://localhost:3700/posts/allComments',{
@@ -54,10 +55,19 @@ getPosts(): Observable<Post[]>{
       },
     });
   }
-
-  followingPosts(following_user_id:string){
-    return this.http.get(`http://localhost:3700/post/${following_user_id}`)
-
+  updateComment(commentID: string, updatedComment: any): Observable<any> {
+    console.log(updatedComment);
+    console.log(commentID);
+    
+    
+    return this.http.put(`http://localhost:3700/posts/updatecomment/${commentID}`, updatedComment);
   }
+
+  deleteComent(commentID: string): Observable<any> {
+    return this.http.delete(`http://localhost:3700/posts/deletecomment/${commentID}`)
+   
+  }
+
+  
 }
 

@@ -185,11 +185,12 @@ export const updateUserControllers = async (req: Request, res: Response) => {
 
 export const fetchAllUsersControllers = async (req: Request, res: Response) => {
   try {
+    const loggedInUserID = req.params.loggedInUserID;
 
-    const pool = await mssql.connect(dbConfig);
-    let users = (await pool.request().execute('getAllUsers')).recordset
+    let users = await dbhelpers.execute('getAllUsers', { loggedInUserID });
 
-    return res.status(201).json(users)
+   
+    return res.status(201).json(users.recordset)
 
   } catch (error) {
     return res.json({
@@ -197,6 +198,22 @@ export const fetchAllUsersControllers = async (req: Request, res: Response) => {
     })
   }
 }
+export const fetchAllAvailableUsersControllers = async (req: Request, res: Response) => {
+  try {
+
+    let users = await dbhelpers.execute('getAllUsersAvailable');
+
+   
+    return res.status(201).json(users.recordset)
+
+  } catch (error) {
+    return res.json({
+      error: error
+    })
+  }
+}
+
+
 
 
 
@@ -439,98 +456,169 @@ export const resetPasswordControllers = async (req: Request, res: Response) => {
 
 
 
-export const getFollowersControllers = async (req: Request, res: Response) => {
+// export const getFollowersControllers = async (req: Request, res: Response) => {
+//   try {
+//     let  followedUserID  = req.params.ID;
+
+//     let followers = (
+//       await dbhelpers.execute("getFollowers", {
+//         followedUserID,
+//       })
+//     ).recordset;
+
+//     return res.status(200).json({
+//       followers: followers,
+//     });
+//   } catch (error) {
+//     return res.json({
+//       error: error,
+//     });
+//   }
+// };
+
+// //GET FOLLOWINGS
+// export const getFollowingsControllers = async (req: Request, res: Response) => {
+//   try {
+//     let  followingUserID  = req.params.ID;
+
+//     let followers = (
+//       await dbhelpers.execute("getFollowings", {
+//         followingUserID,
+//       })
+//     ).recordset;
+
+//     return res.status(200).json({
+//       followings: followers,
+//     });
+//   } catch (error) {
+//     return res.json({
+//       error: error,
+//     });
+//   }
+// };
+
+
+// export const followUnfollowUserControllers = async (req: Request, res: Response) => {
+//   console.log(req.body);
+
+//   try {
+//     const followerID = v4();
+
+//     const { followingUserID, followedUserID } = req.body;
+//     const relationsexists = (
+//       await query(
+//         `SELECT * FROM Followers WHERE followingUserID = '${followingUserID}' AND followedUserID= '${followedUserID}'`
+//       )
+//     ).recordset;
+
+//     if (!isEmpty(relationsexists)) {
+//       let result = await dbhelpers.execute("unfollowUser", {
+//         followingUserID,
+//         followedUserID,
+//       });
+
+//       if (result.rowsAffected[0] === 0) {
+//         return res.status(404).json({
+//           message: "Something went wrong, user not followed",
+//         });
+//       } else {
+//         return res.status(200).json({
+//           message: "User Unfollowed",
+//         });
+//       }
+//     } else {
+//       let result = await dbhelpers.execute("followUser", {
+//         followerID,
+//         followingUserID,
+//         followedUserID,
+//       });
+
+//       if (result.rowsAffected[0] === 0) {
+//         return res.status(404).json({
+//           message: "Something went wrong, user not followed",
+//         });
+//       } else {
+//         return res.status(200).json({
+//           message: "User Followed",
+//         });
+//       }
+//     }
+//   } catch (error) {
+//     console.log(error);
+
+//     return res.json({
+//       error,
+//     });
+//   }
+// };
+
+
+
+
+
+export const followUnfollowUser = async (req: Request, res: Response) => {
   try {
-    let  followedUserID  = req.params.ID;
+    const { followedUserID, followingUserID } = req.body;
 
-    let followers = (
-      await dbhelpers.execute("getFollowers", {
-        followedUserID,
-      })
-    ).recordset;
-
-    return res.status(200).json({
-      followers: followers,
+    // Check follow status
+    const checkFollowStatusResult = await dbhelpers.execute("checkFollowStatus", {
+      followedUserID,
+      followingUserID,
     });
-  } catch (error) {
-    return res.json({
-      error: error,
-    });
-  }
-};
 
-//GET FOLLOWINGS
-export const getFollowingsControllers = async (req: Request, res: Response) => {
-  try {
-    let  followingUserID  = req.params.ID;
+    const isFollowing = checkFollowStatusResult.recordset[0].isFollowing;
 
-    let followers = (
-      await dbhelpers.execute("getFollowings", {
-        followingUserID,
-      })
-    ).recordset;
-
-    return res.status(200).json({
-      followings: followers,
-    });
-  } catch (error) {
-    return res.json({
-      error: error,
-    });
-  }
-};
-
-
-export const followUnfollowUserControllers = async (req: Request, res: Response) => {
-  console.log(req.body);
-
-  try {
-    const followerID = v4();
-
-    const { followingUserID, followedUserID } = req.body;
-    const relationsexists = (
-      await query(
-        `SELECT * FROM Followers WHERE followingUserID = '${followingUserID}' AND followedUserID= '${followedUserID}'`
-      )
-    ).recordset;
-
-    if (!isEmpty(relationsexists)) {
-      let result = await dbhelpers.execute("unfollowUser", {
-        followingUserID,
-        followedUserID,
-      });
-
-      if (result.rowsAffected[0] === 0) {
-        return res.status(404).json({
-          message: "Something went wrong, user not followed",
-        });
-      } else {
-        return res.status(200).json({
-          message: "User Unfollowed",
-        });
-      }
+    console.log(isFollowing);
+    
+    if (isFollowing) {
+      
+      await dbhelpers.execute("unfollowUser", { followedUserID, followingUserID });
+      return res.status(200).send({ message: "User unfollowed successfully", isFollowing: false });
     } else {
-      let result = await dbhelpers.execute("followUser", {
-        followerID,
-        followingUserID,
-        followedUserID,
-      });
-
-      if (result.rowsAffected[0] === 0) {
-        return res.status(404).json({
-          message: "Something went wrong, user not followed",
-        });
-      } else {
-        return res.status(200).json({
-          message: "User Followed",
-        });
-      }
+      // If not following, follow
+      await dbhelpers.execute("followUser", { followedUserID, followingUserID });
+      return res.status(200).send({ message: "User followed successfully", isFollowing: true });
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    res.status(500).send({
+      error: (error as Error).message,
+      message: "Internal Server Error",
+    });
+  }
+};
 
-    return res.json({
-      error,
+
+export const getFollowers = async (req: Request, res: Response) => {
+  try {
+    const { userID } = req.params;
+
+    const result = await dbhelpers.execute("getFollowers", { userID });
+
+    return res.status(200).send(result.recordset);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({
+      error: (error as Error).message,
+      message: "Internal Server Error",
+    });
+  }
+};
+
+
+
+export const getFollowings = async (req: Request, res: Response) => {
+  try {
+    const  {userID}  = req.params
+
+    const result = await dbhelpers.execute("getFollowings", { userID });
+
+    return res.status(200).send(result.recordset);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({
+      error: (error as Error).message,
+      message: "Internal Server Error",
     });
   }
 };

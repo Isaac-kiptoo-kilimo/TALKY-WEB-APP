@@ -93,6 +93,7 @@ export const getSinglePostController = async (req: Request, res: Response) => {
 
 export const getAllPostControllers = async (req: Request, res: Response) => {
   try {
+    
     const pool = await mssql.connect(dbConfig);
     let users = (await pool.request().execute('getAllPostsAndMedia')).recordset
 
@@ -273,23 +274,26 @@ export const getAllCommentsController = async (req: Request, res: Response) => {
 
 export const updateCommentControllers = async (req: Request, res: Response) => {
   try {
-    const { postID, userID, content, commentID } = req.body;
+    const { userID, content} = req.body;
+    const { commentID }=req.params
 
 
     const { error } = validateUpdateComment.validate(req.body);
 
-    console.log(error);
+    console.log("error",error);
 
     if (error)
       return res.status(400).send({ error: "please put correct details" });
 
 
     let result = await dbhelpers.execute("updateComment", {
-      postID,
       userID,
       content,
       commentID
     });
+console.log("recordsets",result.recordset);
+console.log(result.output);
+console.log("affected rows",result.rowsAffected);
 
     return res.status(200).send({ message: "Comment updated successfully" });
   } catch (error) {

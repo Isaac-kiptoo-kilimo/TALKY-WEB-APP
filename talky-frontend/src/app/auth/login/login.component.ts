@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
       this.userService.checkDetails().subscribe(
         
         (user:User) => {
-          console.log('User:', user ); 
+          console.log(user ); 
           this.loggedInState = true;
           this.link = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUIqAiC9hh11wMKEMA12TnXyz7Uw1qqHuWTrA6IFHxhA&s';
           this.successMessage = 'Logged in successfully.';
@@ -86,7 +86,11 @@ export class LoginComponent implements OnInit {
             this.successMessage = '';
             this.loggingIn = false;
 
-            // localStorage.setItem('')
+            localStorage.setItem('userID',user.userID)
+            localStorage.setItem('username',user.username)
+            localStorage.setItem('fullname',user.fullName)
+            localStorage.setItem('profileImage',user.profileImage)
+            localStorage.setItem('role',user.role)
 
             if (user.role === 'Admin') {
               this.router.navigate(['admin']);

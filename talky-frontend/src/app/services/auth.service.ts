@@ -20,11 +20,12 @@ export class AuthService {
   login(user: User): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.apiUrl}/login/`, user).pipe(
       tap((result) => {
+        console.log(result);
         
         const token = result.token;
-
        
         localStorage.setItem('token', token);
+        // localStorage.setItem('username', );
       })
     );
   }

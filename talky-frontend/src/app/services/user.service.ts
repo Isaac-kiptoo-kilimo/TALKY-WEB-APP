@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User, UserDetails, updatedUserData } from '../interface/user';
+import { Follower, User, UserDetails, updatedUserData } from '../interface/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Observable, map, switchMap } from 'rxjs';
@@ -14,15 +14,28 @@ export class UserService {
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  getUsers(): Observable<User[]> {
+  // getUsers(loggedInUserID: string): Observable<User[]> {
+  //   const token = localStorage.getItem('token') as string;
+  //   return this.http.get<User[]>(`http://localhost:3700/users/all/${loggedInUserID}`, {
+  //     headers: {
+  //       'Content-type': 'application/json',
+  //       token: token,
+  //     },
+  //   });
+  // }
+
+  getUsers(loggedInUserID: string): Observable<User[]> {
     const token = localStorage.getItem('token') as string;
-    return this.http.get<User[]>('http://localhost:3700/users/all', {
+    
+    return this.http.get<User[]>(`http://localhost:3700/users/all/${loggedInUserID}`, {
       headers: {
         'Content-type': 'application/json',
         token: token,
-      },
+      }
     });
   }
+
+
 
   checkDetails(): Observable<User> {
     const token = localStorage.getItem('token') || '';
@@ -63,13 +76,6 @@ deleteUser(userID: string): Observable<any> {
  
 }
  
-  // getProducts(): Observable<Product[]> {
-  //   return this.http.get<Product[]>('http://localhost:3500/products/all', {
-  //     headers: {
-  //       'Content-type': 'application/json',
-  //     },
-  //   });
-  // }
 
   initializePasswordReset(user:User){
     this.http.post('http://localhost:3700/users/initiate-password-reset/',user).subscribe(res=>{
@@ -85,4 +91,21 @@ deleteUser(userID: string): Observable<any> {
     })
   }
 
+
+  followUnfollowUser(data : Follower): Observable<any> {
+    
+    return this.http.post('http://localhost:3700/users/followUnfollowUser/', data);
+  }
+
+
+
+  getFollowers(userID: string): Observable<any> {
+    
+    return this.http.get(`http://localhost:3700/users/getFollowings/${userID}`);
+  }
+
+  getFollowings(userID: string): Observable<any> {
+    
+    return this.http.get(`http://localhost:3700/users/getFollowers/${userID}`);
+  }
 }

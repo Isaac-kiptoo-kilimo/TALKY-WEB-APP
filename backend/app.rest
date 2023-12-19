@@ -17,13 +17,16 @@ Content-Type: application/json
 
 {
    "email": "isaackilimok2@gmail.com",
-   "password": "12345678" 
+   "password": "12345678@Ik" 
 }
 
 ### fetching all users
-GET http://localhost:3700/users/all
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJjYWM0OTA3NS1iYzNmLTRiY2UtYTU4MS1iODNkMjQyMGFkMWIiLCJmdWxsTmFtZSI6ImlzYWFjIGtpbGltbyIsInVzZXJuYW1lIjoiaXNhYWMxMjMiLCJlbWFpbCI6ImlzYWFja2lsaW1vazJAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJyZXNldFRva2VuIjpudWxsLCJleHBpcnlUaW1lIjpudWxsLCJ3ZWxjb21lZCI6dHJ1ZSwiaXNEZWxldGVkIjpmYWxzZSwiaXNTZW5kIjpmYWxzZSwicHJvZmlsZUltYWdlIjpudWxsLCJpYXQiOjE3MDI3MzU4MDYsImV4cCI6MTcwMjkwODYwNn0.K5W3NwRzSGVZ8KXA1yiA0LtzravTrkeBmBcq32HZFao
+GET http://localhost:3700/users/all/
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI5OWUxOGYzYS1mN2Q5LTRiYjctODBlMi1iOWYxN2JkMjA4MWIiLCJmdWxsTmFtZSI6ImlzYWFjIGtpbGltbyIsInVzZXJuYW1lIjoiQGlzYWFjMTIzNCIsImVtYWlsIjoiaXNhYWNraWxpbW9rMkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInJlc2V0VG9rZW4iOm51bGwsImV4cGlyeVRpbWUiOm51bGwsIndlbGNvbWVkIjpmYWxzZSwiaXNEZWxldGVkIjpmYWxzZSwiaXNTZW5kIjpmYWxzZSwicHJvZmlsZUltYWdlIjoiaHR0cHM6Ly9tZWRpYS5pc3RvY2twaG90by5jb20vaWQvMTMwMDg0NTYyMC92ZWN0b3IvdXNlci1pY29uLWZsYXQtaXNvbGF0ZWQtb24td2hpdGUtYmFja2dyb3VuZC11c2VyLXN5bWJvbC12ZWN0b3ItaWxsdXN0cmF0aW9uLmpwZz9zPTYxMng2MTImdz0wJms9MjAmYz15QmV5YmEwaFVraDE0X2pndjFPS3FJSDBDQ1NXVV80Y2tSa0FveTJwNzNvPSIsImlhdCI6MTcwMjkyNjA4NSwiZXhwIjoxNzAzMDk4ODg1fQ.9t02Me_WQ6jZeKwjljxW0oIp0YtDjHvooEaJcLG7W68
 
+#### getting users
+GET http://localhost:3700/users/all/99e18f3a-f7d9-4bb7-80e2-b9f17bd2081b
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI5OWUxOGYzYS1mN2Q5LTRiYjctODBlMi1iOWYxN2JkMjA4MWIiLCJmdWxsTmFtZSI6ImlzYWFjIGtpbGltbyIsInVzZXJuYW1lIjoiQGlzYWFjMTIzNCIsImVtYWlsIjoiaXNhYWNraWxpbW9rMkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInJlc2V0VG9rZW4iOm51bGwsImV4cGlyeVRpbWUiOm51bGwsIndlbGNvbWVkIjpmYWxzZSwiaXNEZWxldGVkIjpmYWxzZSwiaXNTZW5kIjpmYWxzZSwicHJvZmlsZUltYWdlIjoiaHR0cHM6Ly9tZWRpYS5pc3RvY2twaG90by5jb20vaWQvMTMwMDg0NTYyMC92ZWN0b3IvdXNlci1pY29uLWZsYXQtaXNvbGF0ZWQtb24td2hpdGUtYmFja2dyb3VuZC11c2VyLXN5bWJvbC12ZWN0b3ItaWxsdXN0cmF0aW9uLmpwZz9zPTYxMng2MTImdz0wJms9MjAmYz15QmV5YmEwaFVraDE0X2pndjFPS3FJSDBDQ1NXVV80Y2tSa0FveTJwNzNvPSIsImlhdCI6MTcwMjkyNjA4NSwiZXhwIjoxNzAzMDk4ODg1fQ.9t02Me_WQ6jZeKwjljxW0oIp0YtDjHvooEaJcLG7W68
 
 ###update user
 PUT http://localhost:3700/users/update/13994250-847e-4545-9232-af9cd787b196/
@@ -87,11 +90,11 @@ Content-Type: application/json
 }
 
 ### get followers
-GET http://localhost:3700/users/getFollowers/118a3986-224c-4fbd-97dd-a571d1ae9c6a
+GET http://localhost:3700/users/getFollowers/99e18f3a-f7d9-4bb7-80e2-b9f17bd2081b
 
 
 ### get following
-GET http://localhost:3700/users/getFollowings/13994250-847e-4545-9232-af9cd787b196
+GET http://localhost:3700/users/getFollowings/31230ca0-094a-486c-9041-7a9b2aacf398
 
 
 
@@ -184,18 +187,16 @@ GET http://localhost:3700/posts/allComments/
 
 
 #### fetching comments from single post
-GET http://localhost:3700/posts/getpostcomments/2c3c9ae4-22d4-4c36-ad8e-e027438b3222
+GET http://localhost:3700/posts/getpostcomments/caa4ff74-fdaf-4a1f-a646-80c60754f32c
 
 
 ###update comment
-PUT http://localhost:3700/posts/updatecomment
+PUT http://localhost:3700/posts/updatecomment/a8c2184c-6a77-40c7-b898-47f818732144
 Content-Type: application/json
 
 {
-  "postID": "fdcc2068-ee00-4cfe-9e7a-a47e5fd14255",
-  "userID": "933706eb-e1eb-40f6-9cb4-1c14e7e6e1fe",
-  "content": "The comment so far",
-  "commentID": "1f92aec2-b3e6-463e-87dd-de13dd3a590a"
+  "userID": "99e18f3a-f7d9-4bb7-80e2-b9f17bd2081b",
+  "content": "new working style"
 }
 
 

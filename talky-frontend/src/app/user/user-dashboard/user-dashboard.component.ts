@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Comment, CommentDetails, Post, PostDetails } from 'src/app/interface/post';
-import { User, UserDetails } from 'src/app/interface/user';
+import { Comment, CommentDetails, Post, PostDetails, updatedComment } from 'src/app/interface/post';
+import { Follower, User, UserDetails, UserFollowStatus } from 'src/app/interface/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
@@ -22,42 +22,57 @@ export class UserDashboardComponent {
   isLikeClicked2 = false;
   isLikeClicked3 = false;
   followStatus: string = 'Follow';
-  followStatus2: string = 'Follow';
-  followStatus3: string = 'Follow';
-  followStatus4: string = 'Follow';
   visible : boolean =true  
   commentForm!: FormGroup;
   filter=''
+  hide: boolean=true
   userID! : string;
   postUserID! : string;
-  users!: User[];
+  users: User[]=[];
   posts!: Post[];
-  comments!: CommentDetails[];
+  comments: CommentDetails[]=[];
   comPostID!: string;
+  commentID: string='';
+  updateCommentID :string ='';
+  following!: string
+  isFollowing = false;
+  
   // postDetails!: PostDetails;
   clickedPostID! : string
   CommentclickedPostID! : string
   userDetails!: UserDetails ;
   showProfileDropdown: boolean = false;
   postUsername!: string;
+  updateCommentForm! : FormGroup
+
+  currentUserID: string='';
+  followStatusMap: { [userID: string]: string } = {};
+
 
 constructor(private router:Router, private fb:FormBuilder,
   private userService: UserService,    private toastr: ToastrService,
   private authService: AuthService, private postService: PostService){
+
   this.commentForm = this.fb.group({
     content: ['', [Validators.required]]
   });
 
+  this.updateCommentForm= this.fb.group({
+    content: ['', [Validators.required]]
+  })
   
 }
 
 loggedInTrue = localStorage.getItem('loggedIn')
-
+myID = localStorage.getItem('userID') as string;
 
  ngOnInit() {
    
     this.getUsers();
     this.getPosts();
+    this.getFollowings()
+    this.getFollowers()
+   
     if (this.authService.isLoggedIn()) {
      
       this.authService.getUserDetails().subscribe(
@@ -73,31 +88,59 @@ loggedInTrue = localStorage.getItem('loggedIn')
         }
       );
     }
-    
+   
     
  }
 
-   getUsers() {
-    this.userService.getUsers().subscribe(
+
+
+ getUsers() {
+  let loggedInUserID = localStorage.getItem('userID');
+
+  if (loggedInUserID !== null) {
+    console.log(loggedInUserID);
+
+    this.userService.getUsers(loggedInUserID).subscribe(
       (response) => {
+        console.log(response);
+        
         this.users = response;
+
+        this.users.map(user=>{
+          user.followStatus=this.followStatus
+          console.log(user.followStatus);
+          
+        })
+        
       },
       (error) => {
-        console.error('Error fetching users:',error.error.message);
+        console.error('Error fetching users:', error.error.message);
       }
     );
+  } else {
+    console.error('User ID is null.');
   }
+}
+
+
 
   loadUsers(): void {
-    this.userService.getUsers().subscribe(
-      (users) => {
-        this.users = users;
-        this.loadUsers();
-      },
-      (error) => {
-        console.error('Error fetching tours:', error);
-      }
-    );
+    let loggedInUserID = localStorage.getItem('userID');
+
+    if (loggedInUserID !== null) {
+      console.log(loggedInUserID);
+  
+      this.userService.getUsers(loggedInUserID).subscribe(
+        (response) => {
+          this.users = response;
+        },
+        (error) => {
+          console.error('Error fetching users:', error.error.message);
+        }
+      );
+    } else {
+      console.error('User ID is null.');
+    }
   }
 
 
@@ -131,7 +174,6 @@ deleteUser(userID: string): void {
   
   clickedPost(clickedID: string) {
     console.log(clickedID);
-    // Store the clicked post ID for later use
     this.clickedPostID = clickedID;
   }
   
@@ -150,9 +192,9 @@ deleteUser(userID: string): void {
             postID: this.clickedPostID,
             userID: userID,
             content: this.commentForm.value.content,
-            // other properties...
+
           };
-  console.log(commentedPost);
+          console.log(commentedPost);
   
           this.postService.createComment(commentedPost).subscribe(
             (res) => {
@@ -177,32 +219,71 @@ deleteUser(userID: string): void {
     }
   }
 
-  // commentPostClicked(commentPostClickedID: string) {
-    
-  //   if (commentPostClickedID) {
-  //     this.postService.getPostComments(commentPostClickedID).subscribe(comments => {
-  //       this.comments = comments;
-  //       console.log(comments);
-      
-  //     });
-  //   } else {
-  //     console.error('Post ID is not available.');
-  //   }
-    
-  // }
-  
+ 
   
   getPostComments(postID: string): void {
     this.postService.getPostComments(postID).subscribe((comments) => {
-      // Find the post index
+      
       const postIndex = this.posts.findIndex((post) => post.postID === postID);
 
-      // Update comments for the specific post
+      
       if (postIndex !== -1) {
         this.posts[postIndex].comments = comments;
       }
     });
   }
+
+
+  deleteComment(commentID: string): void {
+    alert('Are you sure You want to delete, this action is irreversible')
+    this.postService.deleteComent(commentID).subscribe(
+      () => {
+        // this.getPostComments();
+      },
+      (error) => {
+        console.error('Error deleting comment:', error);
+      }
+    );
+  }
+
+
+
+  clickUpdateCommentID(commentID: string) {
+    this.updateCommentID = commentID;
+
+    if (this.userID) {
+      console.log(this.userID);
+      
+    } else {
+      console.error('You are not allowed to edit this comment.');
+    }
+  }
+
+  updateComment(postID:string) {
+    if (this.updateCommentForm.invalid || !this.updateCommentID) {
+      console.error('Invalid Comment or commentID');
+      return;
+    }
+
+    const updatedContent: string = this.updateCommentForm.value.content;
+    const updatedComment: updatedComment = {
+      userID: this.userID, 
+      content: updatedContent
+    };
+    console.log(updatedComment);
+
+    this.postService.updateComment(this.updateCommentID, updatedComment).subscribe(
+      (response) => {
+        console.log('Comment updated successfully', response);
+        this.getPostComments(postID);
+        this.updateCommentForm.reset();
+      },
+      (error) => {
+        console.error('Error updating Comment', error);
+      }
+    );
+  }
+
 
   checkLoggedIn(){
 
@@ -245,30 +326,121 @@ toggleSidebar() {
   this.sidebarOpen = !this.sidebarOpen;
 }
 
-toggleFollow() {
-  
-  this.followStatus = this.followStatus === 'Follow' ? 'Following' : 'Follow';
-}
-
-toggleFollow2() {
-  
-  this.followStatus2 = this.followStatus2 === 'Follow' ? 'Following' : 'Follow';
-}
-toggleFollow3() {
-  
-  this.followStatus3 = this.followStatus3 === 'Follow' ? 'Following' : 'Follow';
-}
-toggleFollow4() {
-  
-  this.followStatus4 = this.followStatus4 === 'Follow' ? 'Following' : 'Follow';
-}
-
-  
 
   viewProfile(){
     console.log("I am clickable");
     this.router.navigate(['profile'])
   }
+
+
+  followers = []
+  getFollowers() {
+    const userID = localStorage.getItem('userID') ?? ''
+    this.userService.getFollowers(userID).subscribe(
+      (response) => {
+        console.log('Followers:', response);
+        this.followers = response
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
+  }
+
+  
+  getFollowings() {
+    const userID = localStorage.getItem('userID') ?? ''
+    this.userService.getFollowings(userID).subscribe(
+      (response) => {
+        this.following=response
+        console.log('Following:', response);
+        
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
+  }
+
+  toggleFollow(followerID: string) {
+    console.log(followerID);
+  
+    this.followUnfollowUser(followerID);
+  }
+  
+  followUnfollowUser(followedUserID: string) {
+    let followingID = localStorage.getItem('userID');
+  
+    const data: any = {
+      followingUserID: followingID,
+      followedUserID: followedUserID,
+    };
+  
+    console.log(data);
+  
+    this.userService.followUnfollowUser(data).subscribe(
+      (response) => {
+        console.log('Follow/Unfollow success:', response);
+  console.log(response);
+  
+        // Assuming you have a userService method to get users, modify it accordingly
+        this.userService.getUsers(this.userID).subscribe(
+          (usersResponse) => {
+            console.log(usersResponse);
+  
+            this.users = usersResponse;
+  
+            this.users.forEach((user) => {
+
+              if(this.userID){
+                user.followStatus = response.isFollowing ? 'Following' : 'Follow';
+              console.log(user.followStatus);
+              }
+              const userFollowStatus = response.find((item:UserFollowStatus) => item.userID === user.userID);
+              console.log(userFollowStatus);
+            
+            });
+          },
+          (error) => {
+            console.error('Error fetching users:', error);
+          }
+        );
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
+  }
+  
+  // followings =[]
+  // getFollowStatus(){
+  //   let followingID = localStorage.getItem('userID') as string;
+
+  //     this.users.filter((el, index)=>{
+  //       // el.followStatus = 
+  //       let status = this.followings.find((el:User, index)=>{
+  //         return el.userID == followingID
+  //       })
+
+  //       console.log(status);
+        
+  //     })
+    
+  // }  
+  
+
+  // toggleForUser(followedUserID:string){
+  //   this.followings.filter((user:any)=>{
+  //     console.log(user.userID == followedUserID);
+      
+  //     if(user.userID == followedUserID){
+  //       return this.followStatus = 'Following';
+  //     }else{
+  //       return this.followStatus = 'Follow';
+  //     }
+  //   })
+  // }
+
 
   }
   

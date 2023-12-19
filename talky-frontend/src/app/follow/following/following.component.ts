@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-following',
@@ -7,4 +8,50 @@ import { Component } from '@angular/core';
 })
 export class FollowingComponent {
 notVisible: boolean=true
+
+following: any[]=[]
+followers: any[] = [];
+
+constructor(
+  private userService: UserService){
+
+  
+}
+
+
+ngOnInit() {
+  this.getFollowers();
+  this.getFollowings()
+}
+
+getFollowers() {
+  const userID = localStorage.getItem('userID') ?? '';
+  this.userService.getFollowers(userID).subscribe(
+    (response) => {
+      this.followers = response;
+      console.log(this.followers);
+      
+    },
+    (error) => {
+      console.error('Error:', error);
+    }
+  );
+}
+
+
+
+getFollowings() {
+  const userID = localStorage.getItem('userID') ?? ''
+  this.userService.getFollowings(userID).subscribe(
+    (response) => {
+      this.following=response
+      console.log('Following:', response);
+    },
+    (error) => {
+      console.error('Error:', error);
+    }
+  );
+}
+
+
 }
