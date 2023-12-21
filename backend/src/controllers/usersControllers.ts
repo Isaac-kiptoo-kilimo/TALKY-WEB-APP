@@ -23,7 +23,7 @@ export const registerUserControllers = async (req: Request, res: Response) => {
     if (error) {
       return res.status(404).json({
         message: "Check your username/password/email kindly",
-        error: error.details
+        error: error.details[0].message
 
       })
     }
@@ -42,15 +42,31 @@ export const registerUserControllers = async (req: Request, res: Response) => {
       .input('password', mssql.VarChar, hashedpwd)
       .execute('registerUser')
 
-      const resultMessage = results.recordset[0].Result;
+    //   const resultMessage = results.recordset[0].Result;
+    // console.log(resultMessage);
+    // console.log(results);
 
-      if (resultMessage.includes('User registered successfully')) {
+    const result = results.rowsAffected[0];
+    
+// console.log(result);
+
+    // if (resultMessage.includes('User registered successfully')) {
+    //   return res.status(201).json({
+    //     message: 'User Registered Successfully'
+    //   });
+    // } else {
+    //   return res.status(400).json({
+    //     message: resultMessage
+    //   });
+    // }
+
+    if (result===1) {
           return res.status(201).json({
-              message: 'User registered successfully'
+              message: 'User Registered Successfully'
           });
       } else {
           return res.status(400).json({
-              message: resultMessage
+              message: results.recordset[0].Result
           });
       }
 
@@ -70,7 +86,7 @@ export const loginUserControllers = async (req: Request, res: Response) => {
 
     if (error) {
       return res.json({
-        error: error.details
+        error: error.details[0].message
       })
     }
 
@@ -127,7 +143,6 @@ export const checkCredentials = async (req: ExtendeUser, res: Response) => {
 export const getUserDetails = async (req: ExtendeUser, res: Response) => {
   try {
     const user = req.info
-    // console.log(user);
     if (!user) {
       return res.status(404).json({
         message: "User Not Found"
@@ -136,12 +151,12 @@ export const getUserDetails = async (req: ExtendeUser, res: Response) => {
 
     const pool = await mssql.connect(dbConfig);
     const userID = user.userID
-    console.log(userID);
+    // console.log(userID);
 
     const result = await dbhelpers.execute('GetUserDetails', { userID });
 
     const userDetails = result.recordset
-    console.log(userDetails);
+    // console.log(userDetails);
     if (!userDetails) {
       return res.status(404).json({ message: 'User details not found' });
 
@@ -183,46 +198,6 @@ export const updateUserControllers = async (req: Request, res: Response) => {
   }
 }
 
-// export const updateUser = async (req: Request, res: Response) => {
-//   try {
-//     let { user_id, user_name, profileImage, fullName } = req.body;
-
-//     console.log(profileImage);
-
-//     // if (profileImage === "") {
-//     //   profileImage =
-//     //     "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?q=80&w=1434&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-//     // }
-
-//     const { error } = validateUpdateuser.validate(req.body);
-//     console.log(error);
-
-//     if (error)
-//       return res
-//         .status(400)
-//         .send({ error: "check input infomation if its correct" });
-
-//     const newUser: UpdateUser = {
-//       user_id,
-//       user_name,
-//       profileImage,
-//       fullName,
-//     };
-
-//     const procedureName = "updateUser";
-//     const params = newUser;
-//     // console.log(params);
-
-//     await execute(procedureName, params);
-//     return res.send({ message: "User updated successfully" });
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).send({
-//       error: (error as Error).message,
-//       message: "Internal Sever Error",
-//     });
-//   }
-// };
 
 export const fetchAllUsersControllers = async (req: Request, res: Response) => {
   try {
@@ -261,7 +236,7 @@ export const fetchAllAvailableUsersControllers = async (req: Request, res: Respo
 export const getSingleUserController = async (req: Request, res: Response) => {
   try {
     const userID = req.params.userID;
-    console.log(userID);
+    // console.log(userID);
     if (!userID) return res.status(403).send({ message: "Id is required" });
 
 
@@ -277,26 +252,7 @@ export const getSingleUserController = async (req: Request, res: Response) => {
 };
 
 
-// export const deleteUserController = async (req: Request, res: Response) => {
-//   try {
-//     const { userID } = req.params
 
-//     const result  = await dbhelpers.execute('deleteUser', { userID })
-//     if (result.rowsAffected[0] === 0) {
-//       return res.status(404).json({
-//         message: 'User not found or already deleted.',
-//       });
-//     }
-
-//     return res.status(200).json({
-//       message: 'User deleted successfully',
-//     });
-//   } catch (error) {
-//     return res.json({
-//       error: error
-//     })
-//   }
-// }
 
 
 export const deleteUserController = async (req: Request, res: Response) => {
@@ -304,6 +260,7 @@ export const deleteUserController = async (req: Request, res: Response) => {
     const { userID } = req.params;
 
     const result = await dbhelpers.execute('deleteUser', { userID });
+    // console.log(result.recordset[0].Result);
 
     if (result.recordset[0].Result === 'User not found') {
       return res.status(404).json({
@@ -344,7 +301,7 @@ export const initiatePasswordResetController = async (req: Request, res: Respons
     }
 
     const resetToken = generateResetToken();
-    console.log(resetToken);
+    // console.log(resetToken);
 
     const expiration = new Date();
     expiration.setHours(expiration.getHours() + 1);
@@ -360,7 +317,7 @@ export const initiatePasswordResetController = async (req: Request, res: Respons
 
     res.status(200).json({ message: 'Reset token sent successfully.' });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
@@ -370,7 +327,7 @@ export const initiatePasswordResetController = async (req: Request, res: Respons
 export const resetPasswordControllers = async (req: Request, res: Response) => {
   try {
     const { email, resetToken, newPassword } = req.body;
-    console.log("reset token ", resetToken);
+    // console.log("reset token ", resetToken);
     newPassword
     // Hash the new password before updating
     const hashedPassword = await bcrypt.hash(newPassword, 10);
@@ -381,18 +338,18 @@ export const resetPasswordControllers = async (req: Request, res: Response) => {
       newPassword: hashedPassword,
     });
 
-    console.log("rows affected", result.rowsAffected);
+    // console.log("rows affected", result.rowsAffected);
 
     if (result.rowsAffected[0] > 0) {
       res.status(200).json({ message: 'Password reset successful.' });
       return;
     }
 
-    console.log("Record sets", result.recordset);
+    // console.log("Record sets", result.recordset);
 
     if (result.recordset && result.recordset.length > 0) {
       const message = result.recordset[0].message;
-      console.log("message:", message);
+      // console.log("message:", message);
 
       if (message === 'Password updated successfully') {
         res.status(200).json({ message: 'Password reset successful' });
@@ -407,191 +364,11 @@ export const resetPasswordControllers = async (req: Request, res: Response) => {
       }
     }
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 
-
-
-
-// export const followUserController = async (req: Request, res: Response) => {
-//   try {
-//     const { userID, followingUserID } = req.body;
-
-//     // Validate request parameters if needed
-
-//     const followingID = v4();
-//     // const createdAt = getCurrentTimestamp(); 
-
-//     const result = await dbhelpers.execute('followUser', { followingID, userID, followingUserID});
-
-//     if (result.rowsAffected[0] === 0) {
-//       return res.status(404).json({
-//         message: 'User or following user does not exist. Follow not performed.',
-//       });
-//     }
-
-//     return res.status(200).json({
-//       message: 'User followed successfully',
-//     });
-//   } catch (error) {
-//     console.error(error);
-//     return res.status(500).json({
-//       error: 'Internal Server Error',
-//     });
-//   }
-// };
-
-
-// export const unfollowUserController = async (req: Request, res: Response) => {
-//   try {
-//     const { userID, followingUserID } = req.body;
-
-//     // Validate request parameters if needed
-
-//     const result = await dbhelpers.execute('unfollowUser', { userID, followingUserID });
-
-//     if (result.rowsAffected[0] === 0) {
-//       return res.status(404).json({
-//         message: 'User or following user does not exist. Unfollow not performed.',
-//       });
-//     }
-
-//     return res.status(200).json({
-//       message: 'User unfollowed successfully',
-//     });
-//   } catch (error) {
-//     console.error(error);
-//     return res.status(500).json({
-//       error: 'Internal Server Error',
-//     });
-//   }
-// };
-
-
-
-// export const getFollowersForUserController = async (req: Request, res: Response) => {
-//   try {
-//     const { userID } = req.params; 
-
-//     const result = await dbhelpers.execute('getFollowersForUser', { userID });
-
-   
-//     if (result.recordset.length === 0) {
-//       return res.status(404).json({
-//         message: 'No followers found for the user',
-//       });
-//     }
-
-//     return res.status(200).json({
-//       followers: result.recordset,
-//     });
-//   } catch (error) {
-//     console.error(error);
-//     return res.status(500).json({
-//       error: 'Internal Server Error',
-//     });
-//   }
-// };
-
-
-
-// export const getFollowersControllers = async (req: Request, res: Response) => {
-//   try {
-//     let  followedUserID  = req.params.ID;
-
-//     let followers = (
-//       await dbhelpers.execute("getFollowers", {
-//         followedUserID,
-//       })
-//     ).recordset;
-
-//     return res.status(200).json({
-//       followers: followers,
-//     });
-//   } catch (error) {
-//     return res.json({
-//       error: error,
-//     });
-//   }
-// };
-
-// //GET FOLLOWINGS
-// export const getFollowingsControllers = async (req: Request, res: Response) => {
-//   try {
-//     let  followingUserID  = req.params.ID;
-
-//     let followers = (
-//       await dbhelpers.execute("getFollowings", {
-//         followingUserID,
-//       })
-//     ).recordset;
-
-//     return res.status(200).json({
-//       followings: followers,
-//     });
-//   } catch (error) {
-//     return res.json({
-//       error: error,
-//     });
-//   }
-// };
-
-
-// export const followUnfollowUserControllers = async (req: Request, res: Response) => {
-//   console.log(req.body);
-
-//   try {
-//     const followerID = v4();
-
-//     const { followingUserID, followedUserID } = req.body;
-//     const relationsexists = (
-//       await query(
-//         `SELECT * FROM Followers WHERE followingUserID = '${followingUserID}' AND followedUserID= '${followedUserID}'`
-//       )
-//     ).recordset;
-
-//     if (!isEmpty(relationsexists)) {
-//       let result = await dbhelpers.execute("unfollowUser", {
-//         followingUserID,
-//         followedUserID,
-//       });
-
-//       if (result.rowsAffected[0] === 0) {
-//         return res.status(404).json({
-//           message: "Something went wrong, user not followed",
-//         });
-//       } else {
-//         return res.status(200).json({
-//           message: "User Unfollowed",
-//         });
-//       }
-//     } else {
-//       let result = await dbhelpers.execute("followUser", {
-//         followerID,
-//         followingUserID,
-//         followedUserID,
-//       });
-
-//       if (result.rowsAffected[0] === 0) {
-//         return res.status(404).json({
-//           message: "Something went wrong, user not followed",
-//         });
-//       } else {
-//         return res.status(200).json({
-//           message: "User Followed",
-//         });
-//       }
-//     }
-//   } catch (error) {
-//     console.log(error);
-
-//     return res.json({
-//       error,
-//     });
-//   }
-// };
 
 
 
@@ -609,7 +386,7 @@ export const followUnfollowUser = async (req: Request, res: Response) => {
 
     const isFollowing = checkFollowStatusResult.recordset[0].isFollowing;
 
-    console.log(isFollowing);
+    // console.log(isFollowing);
     
     if (isFollowing) {
       
@@ -621,7 +398,7 @@ export const followUnfollowUser = async (req: Request, res: Response) => {
       return res.status(200).send({ message: "User followed successfully", isFollowing: true });
     }
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).send({
       error: (error as Error).message,
       message: "Internal Server Error",
@@ -638,7 +415,7 @@ export const getFollowers = async (req: Request, res: Response) => {
 
     return res.status(200).send(result.recordset);
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).send({
       error: (error as Error).message,
       message: "Internal Server Error",
@@ -656,7 +433,7 @@ export const getFollowings = async (req: Request, res: Response) => {
 
     return res.status(200).send(result.recordset);
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).send({
       error: (error as Error).message,
       message: "Internal Server Error",

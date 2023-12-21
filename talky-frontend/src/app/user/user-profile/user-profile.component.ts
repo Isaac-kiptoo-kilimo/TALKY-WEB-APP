@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserDetails } from 'src/app/interface/user';
+import { User, UserDetails } from 'src/app/interface/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -15,6 +15,9 @@ export class UserProfileComponent {
   hidden: boolean= true
   userID! : string;
   userDetails!: UserDetails ;
+  users: any[] = [];
+  loggedInUserID = localStorage.getItem('userID')
+  user!: User;
 
   constructor( 
     private userService: UserService,
@@ -26,6 +29,7 @@ export class UserProfileComponent {
   
   
    ngOnInit() {
+     this.getUsers()
      
       if (this.authService.isLoggedIn()) {
        
@@ -44,4 +48,33 @@ export class UserProfileComponent {
       }
       
    }
+
+  getUsers() {
+    let loggedInUserID = localStorage.getItem('userID');
+
+    if (loggedInUserID !== null) {
+      console.log(loggedInUserID);
+
+      this.userService.getUsers(loggedInUserID).subscribe(
+        (response) => {
+          console.log(response);
+
+          this.users = response;
+
+          this.users.map(user => {
+            this.user=user
+            console.log(this.user);
+            
+          })
+
+        },
+        (error) => {
+          console.error('Error fetching users:', error.error.message);
+        }
+      );
+    } else {
+      console.error('User ID is null.');
+    }
+  }
+   
 }

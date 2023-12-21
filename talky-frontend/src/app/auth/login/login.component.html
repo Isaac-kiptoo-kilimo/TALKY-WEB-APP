@@ -27,10 +27,10 @@
           <h1 class="mt-4 text-2xl font-bold text-center text-white">
               Login Talky Account
           </h1>
-          <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+          <form [formGroup]="loginForm" data-cy="loginForm" (ngSubmit)="loginUser()">
             <div class="relative w-full mb-3">
             
-              <input 
+              <input data-cy="email"
                 type="email" formControlName="email"
                 class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                 placeholder="Email"
@@ -41,7 +41,7 @@
             </div>
             <div class="relative w-full mb-3">
              <input
-                type="password" formControlName="password"
+                type="password" data-cy="password" formControlName="password"
                 class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                 placeholder="Password"
                 style="transition: all 0.15s ease 0s;"
@@ -50,12 +50,12 @@
             </div>
             <div>
               <p class="mt-2">
-                <a class="text-sm text-white hover:underline"routerLink="/forgot">
+                <a data-cy="forgot" class="text-sm text-white hover:underline"routerLink="/forgot">
                     Forgot your password?
                 </a>
             </p>
             </div>
-            <button
+            <button data-cy="login_submitBtn"
             class="block w-full px-4 py-3 mt-4 text-lg font-medium leading-5 text-center border border-transparent text-white transition-colors duration-150 bg-blue-500 border-none rounded-lg active:bg-blue-700 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
              type="submit" >
             Log in
@@ -73,7 +73,7 @@
       >
         <p>
           Don't have an account?
-          <a routerLink="/signup" class="underline hover:text-blue-300"
+          <a data-cy="signupBtn" routerLink="/signup" class="underline hover:text-blue-300"
             >Sign up</a
           >
         </p>

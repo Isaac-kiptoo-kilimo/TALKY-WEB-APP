@@ -1,4 +1,4 @@
-<div class="flex main-container w-full bg-[#F1F5F9]">
+<div data-cy="home" class="flex main-container w-full bg-[#F1F5F9]">
   <!-- bg-[#FBFBFB] -->
 
   <nav
@@ -13,17 +13,17 @@
       class="z-10 w-2/5 top-0 hidden lg:flex sm-md:flex md:flex z-10 w-2/5 top-0 flex text-white"
       style="padding: 20px; border-radius: 20px 20px 0 0"
     >
-      <form class="" style="width: 100%">
+      <form class="" data-cy="searchForm" style="width: 100%">
         <div class="flex">
           <div class="relative w-full">
-            <input
+            <input data-cy="searchInput" [(ngModel)]="filter"
               type="search"
               class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-[#F1F5F9] rounded-lg border-none border-gray-300 focus:border-none focus:outline-none dark:bg-gray-700 dark:border-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
               placeholder="Search by username"
               required
             />
             <button
-              type="submit"
+              type="submit" data-cy="searchBtn"
               class="absolute top-0 end-0 h-full p-2.5 text-sm font-medium text-white bg-blue-500 rounded-e-lg border border-blue-700 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               <svg
@@ -62,7 +62,7 @@
             width="27"
             viewBox="0 0 576 512"
           >
-            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+          
             <path
               d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"
             />
@@ -70,7 +70,7 @@
         </a>
       </li>
       <li class="relative hover:bg-[#F1F5F9] px-2 py-2">
-        <a
+        <a data-cy="message"
           class="inline-flex items-center w-full text-lg font-normal transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
           routerLink="/message"
         >
@@ -80,7 +80,7 @@
             width="24"
             viewBox="0 0 512 512"
           >
-            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+           
             <path
               d="M160 368c26.5 0 48 21.5 48 48v16l72.5-54.4c8.3-6.2 18.4-9.6 28.8-9.6H448c8.8 0 16-7.2 16-16V64c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16V352c0 8.8 7.2 16 16 16h96zm48 124l-.2 .2-5.1 3.8-17.1 12.8c-4.8 3.6-11.3 4.2-16.8 1.5s-8.8-8.2-8.8-14.3V474.7v-6.4V468v-4V416H112 64c-35.3 0-64-28.7-64-64V64C0 28.7 28.7 0 64 0H448c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H309.3L208 492z"
             />
@@ -91,7 +91,7 @@
         </a>
       </li>
       <li class="relative hover:bg-[#F1F5F9] px-2 py-2">
-        <a
+        <a data-cy="app-create-post"
           (click)="visible = !visible"
           class="inline-flex items-center w-full text-lg font-normal transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
         >
@@ -101,7 +101,7 @@
             width="21"
             viewBox="0 0 448 512"
           >
-            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+          
             <path
               d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM200 344V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H248v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"
             />
@@ -110,7 +110,7 @@
       </li>
 
       <li class="relative hover:bg-[#F1F5F9] py-2">
-        <a
+        <a data-cy="profileLink"
           class="inline-flex items-center w-full text-lg font-normal transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
           routerLink="/profile"
         >
@@ -125,14 +125,14 @@
         <a
           class="inline-flex items-center w-full text-lg font-normal transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
         >
-          <svg
+          <svg data-cy="logout"
             xmlns="http://www.w3.org/2000/svg"
             (click)="logout()"
             height="24"
             width="24"
             viewBox="0 0 512 512"
           >
-            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+          
             <path
               d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
             />
@@ -151,7 +151,7 @@
   <div
     class="flex mt-20 w-full md:w-4/5 lg:w-4/5 justify-center main-content flex-wrap lg:gap-6 md:gap-1 overflow-y-auto md:w-screen overflow-x-hidden"
   >
-    <div
+    <div data-cy="postSection"
       class="h-full text-gray-900 m:w-4/5 md:w-3/5 lg:w-3/5 md:mx-5 ms:mx-2 lg:ml-12 md:ml-0 ms:ml-0 post-content overflow-y-auto md:flex-shrink-0"
       style="border-radius: 20px"
     >
@@ -159,12 +159,12 @@
         <ul
           class="inline-flex w-full lg:gap-4 md:gap:2 ms:gap-1 flex-wrap items-center"
         >
-          <li *ngFor="let user of users" class="relative w-1/6">
+          <li *ngFor="let user of users | search:filter" class="relative w-1/6">
             <a
               class="w-full transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
             >
               <div class="flex items-center">
-                <div class="relative">
+                <div  class="relative">
                   <img
                     [src]="user.profileImage"
                     class="w-16 h-16 rounded-full border-2 border-blue-500"
@@ -226,11 +226,9 @@
         />
         <div class="flex justify-between items-center">
           <div class="flex gap-10">
-
-            
-            <svg
-              
-              (click)="isLiked ? unlikePost() : likePost()"
+            <svg  *ngIf="isLikeClicked" data-cy="postLikes"
+   
+              (click)="likePost(post.postID);toggleLikeColor()"
               class="transform transition hover:scale-105 duration-300 ease-in-out"
               xmlns="http://www.w3.org/2000/svg"
               height="24"
@@ -243,8 +241,8 @@
             </svg>
 
             <svg
-              *ngIf="isLikeClicked"
-              (click)="toggleLikeColor()"
+              *ngIf="!isLikeClicked" data-cy="unpostLikes"
+               (click)="likePost(post.postID);toggleLikeColor() "
               class="transform transition hover:scale-105 duration-300 ease-in-out"
               xmlns="http://www.w3.org/2000/svg"
               height="24"
@@ -257,7 +255,7 @@
               />
             </svg>
             <svg
-              (click)="hidden = !hidden"
+             
               class="transform transition hover:scale-105 duration-300 ease-in-out"
               xmlns="http://www.w3.org/2000/svg"
               height="24"
@@ -283,10 +281,11 @@
             </svg>
           </div>
         </div>
-        <p class="text-lg text-gray-500 font-semibold">{{ likeCount }} Likes </p>
+        <p class="text-lg text-gray-500 font-semibold">
+          {{ post.likesCount }} Likes
+        </p>
 
         <div class="text-lg text-gray-500 mx-3" *ngIf="post.comments">
-          <!-- Display comment details -->
           <div
             class="text-lg text-gray-500 gap-3 flex mx-3 items-center justify-between"
           >
@@ -301,19 +300,18 @@
             </div>
             <div class="flex items-center gap-4">
               <svg
-                xmlns="http://www.w3.org/2000/svg"
+                xmlns="http://www.w3.org/2000/svg" data-cy="postComment"
                 (click)="deleteComment(post.comments[0].commentID)"
                 height="16"
                 width="14"
                 viewBox="0 0 448 512"
               >
-                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
                 <path
                   fill="#db4614"
                   d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
                 />
               </svg>
-              <svg
+              <svg data-cy="commentEdit"
                 xmlns="http://www.w3.org/2000/svg"
                 (click)="clickUpdateCommentID(post.comments[0].commentID)"
                 (click)="hide = !hide"
@@ -321,12 +319,18 @@
                 width="16"
                 viewBox="0 0 512 512"
               >
-                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
                 <path
                   fill="#0f62f0"
                   d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"
                 />
               </svg>
+              <div data-cy="reply"
+                class="cursor-pointer"
+                (click)="hidding = !hidding"
+                (click)="onCommentClick(post.comments[0].commentID)"
+              >
+                Reply
+              </div>
             </div>
           </div>
           <div class="flex items-center relative mb-3 border-b-2" *ngIf="!hide">
@@ -335,10 +339,39 @@
               (ngSubmit)="updateComment(post.postID)"
               class="flex-grow relative"
             >
-              <input
+              <input data-cy="update_comment_content"
                 formControlName="content"
                 type="text"
                 placeholder="Update a comment"
+                class="bg-1D566E p-2 focus:border-none focus:outline-none focus:bg-[#F1F5F9]"
+                style="font-size: 18px; width: 80%"
+              />
+
+              <button
+                type="submit" data-cy="update_post_btn"
+                class="text-gray-500 text-lg ml-2 pt-3 cursor-pointer hover:cursor-pointer hover:text-blue-500"
+              >
+                Post
+              </button>
+            </form>
+          </div>
+          <div *ngFor="let reply of replies">
+            {{ reply.text }}
+            <button (click)="updateReply(reply.replyID, 'New Text')"></button>
+          </div>
+          <div
+            class="flex items-center relative mb-3 border-b-2"
+            *ngIf="!hidding"
+          >
+            <form
+              [formGroup]="replyForm"
+              (ngSubmit)="createReply(post.comments[0].commentID)"
+              class="flex-grow relative"
+            >
+              <input
+                formControlName="text" data-cy="reply_comment_btn"
+                type="text"
+                placeholder="Reply a comment"
                 class="bg-1D566E p-2 focus:border-none focus:outline-none focus:bg-[#F1F5F9]"
                 style="font-size: 18px; width: 80%"
               />
@@ -352,157 +385,287 @@
             </form>
           </div>
         </div>
-        <p (click)="getPostComments(post.postID)">..more</p>
+        <p
+          (click)="getPostComments(post.postID)"
+          class="hover:text-blue-700 text-[20px] cursor-pointer"
+        >
+          ..more
+        </p>
 
         <p
           class="text-lg font-semibold text-gray-500 hover:text-gray-400 hover:cursor-pointer"
-          
-           (click)="showAllComments(post)" 
+          (click)="showAllComments(post)"
         >
-        View All {{ post.comments?.length || 0 }} comments
-      </p>
-        <div *ngIf="!hidden" class="relative z-30 h-full" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
-          <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">   
-        <div class="flex px-20 py-8">
-              
-        
-        <button type="button" (click)="hidden=!hidden" class="btn relative rounded-md text-gray-300 hover:text-teal-500 focus:outline-none focus:ring-2 focus:ring-white">
-          <span class="absolute -inset-2.5"></span>
-          <span class="sr-only">Close panel</span>
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-        
-              <div   tabindex="-1" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-4/5 h-full  p-4 overflow-hidden  bg-white dark:bg-gray-800 rounded-lg" style="height: 90%; width: 70%;">
-                
-                  <div  class="relative w-full flex h-full">
-                      <div *ngIf="selectedPost" class= "relative w-1/3 overflow-hidden ">
+          View All {{ post.comments?.length || 0 }} comments
+        </p>
+        <div
+          *ngIf="!hidden"
+          class="relative z-30 h-full"
+          aria-labelledby="slide-over-title"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+          >
+            <div class="flex px-20 py-8">
+              <button
+                type="button"
+                (click)="hidden = !hidden"
+                class="btn relative rounded-md text-gray-300 hover:text-teal-500 focus:outline-none focus:ring-2 focus:ring-white"
+              >
+                <span class="absolute -inset-2.5"></span>
+                <span class="sr-only">Close panel</span>
+                <svg
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+
+              <div
+                tabindex="-1"
+                class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-4/5 h-full p-4 overflow-hidden bg-white dark:bg-gray-800 rounded-lg"
+                style="height: 90%; width: 70%"
+              >
+                <div class="relative w-full flex h-full">
+                  <div
+                    *ngIf="selectedPost"
+                    class="relative w-1/3 overflow-hidden"
+                  >
+                    <img
+                      [src]="selectedPost.mediaFile"
+                      class="w-full h-full object-cover rounded-tl-lg rounded-bl-lg transform transition hover:scale-105 duration-50 ease-in-out"
+                    />
+                  </div>
+                  <div class="w-2/3">
+                    <ul class="px-4 border-b-2 border-gray-100">
+                      <li class="relative">
+                        <a
+                          class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                        >
                           <img
-                          [src]="selectedPost.mediaFile"
-                              class="w-full h-full object-cover rounded-tl-lg rounded-bl-lg transform transition hover:scale-105 duration-50 ease-in-out"
+                            [src]="selectedPost.profileImage"
+                            class="w-10 h-10 rounded-full border-2 border-blue-500"
+                            alt=""
                           />
-                      </div>
-                      <div class="w-2/3">
-                          <ul class="px-4 border-b-2 border-gray-100" >
-                              <li class="relative">
-                              <a
-                                class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                               
+                          <span class="ml-2">{{ selectedPost.username }}</span>
+                          <img src="" alt="" />
+                          <span class="ml-2 text-gray-300">
+                            {{ selectedPost.caption }}</span
+                          >
+                        </a>
+                      </li>
+                    </ul>
+
+                    <div class="overflow-y-auto h-3/4 p-4">
+                      <ul *ngIf="post.comments">
+                        <li
+                          class="relative py-4"
+                          *ngFor="let comment of selectedPost.comments"
+                        >
+                          <a
+                            class="inline-flex gap-3 w-full transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                          >
+                            <img
+                              [src]="comment.profileImage"
+                              class="w-10 h-10 rounded-full border-2 border-blue-500"
+                              alt=""
+                            />
+                            <div>
+                              <span class="text-lg font-semibold"
+                                >DanKariuki</span
                               >
-                              <img [src]="selectedPost.profileImage" class="w-10 h-10 rounded-full border-2 border-blue-500 " alt="">
-                                <span class="ml-2">{{selectedPost.username}}</span>
-                                <img src="" alt="">
-                                <span class="ml-2 text-gray-300">
-                                  {{selectedPost.caption}}</span>
-                              </a>
-                              </li>
-                              </ul>
-                       <div class="overflow-y-auto h-3/4 p-4 " >
-                          <ul *ngIf="post.comments">
-                              <li class="relative py-4">
-                              <a
-                                class="inline-flex  gap-3 w-full    transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                              
+                              <span
+                                class="ml-2 text-sm text-gray-500 dark:text-gray-400"
+                                >Stop milking this goal and plan how to win I
+                                ain't in for another depressing day it's my
+                                bday</span
                               >
-                              <img [src]="post.comments[0]?.profileImage" class="w-10 h-10 rounded-full border-2 border-blue-500 " alt="">
-                                <div>
-                                  <span class="text-lg font-semibold">DanKariuki</span>
-                                <span class="ml-2 text-sm text-gray-500 dark:text-gray-400" >Stop milking this goal and plan how to win I ain't in for another depressing day it's my bday</span>
-                                <div class="flex gap-3 text-gray-500 dark:text-gray-400">
-                                  <p class="text-lg">123 Likes</p>
+                              <div
+                                class="flex gap-3 text-gray-500 dark:text-gray-400"
+                              >
+                                <p class="text-lg">123 Likes</p>
                                 <span class="text-lg">Reply</span>
-                                </div>
-                                <p class="font-semibold text-gray-500 dark:text-gray-400">_  View All Replies(100)</p>
-                                </div>
-                                <img  *ngIf="!isLikeClicked" (click)="toggleLikeColor()" class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart2.svg" alt="">
-                                <img  *ngIf="isLikeClicked" (click)="toggleLikeColor()" class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart-green.svg" alt="">
-                              </a>
-                              </li>
-                              
-                              </ul>
-        
-                              <ul>
-                                  <li class="relative py-4">
-                                  <a
-                                    class="inline-flex  gap-3 w-full    transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                                  
-                                  >
-                                  <img src="assets/images/profile2.png" class="w-10 h-10 rounded-full border-2 border-blue-500 " alt="">
-                                    <div>
-                                      <span class="text-lg font-semibold">DanKariuki</span>
-                                    <span class="ml-2 text-sm text-gray-500 dark:text-gray-400" >Stop milking this goal and plan how to win I ain't in for another depressing day it's my bday</span>
-                                    <div class="flex gap-3 text-gray-500 dark:text-gray-400">
-                                      <p class="text-lg">123 Likes</p>
-                                    <span class="text-lg">Reply</span>
-                                    </div>
-                                    <p class="font-semibold text-gray-500 dark:text-gray-400">_  View All Replies(100)</p>
-                                    </div>
-                                    <img  *ngIf="!isLikeClicked2" (click)="toggleLikeColor2()" class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart2.svg" alt="">
-                                    <img  *ngIf="isLikeClicked2" (click)="toggleLikeColor2()" class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart-green.svg" alt="">
-                                  </a>
-                                  </li>
-                                  
-                                  </ul>
-                                  <ul>
-                                      <li class="relative py-4">
-                                      <a
-                                        class="inline-flex  gap-3 w-full    transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                                      
-                                      >
-                                      <img src="assets/images/profile2.png" class="w-10 h-10 rounded-full border-2 border-blue-500 " alt="">
-                                        <div>
-                                          <span class="text-lg font-semibold">DanKariuki</span>
-                                        <span class="ml-2 text-sm text-gray-500 dark:text-gray-400" >Stop milking this goal and plan how to win I ain't in for another depressing day it's my bday</span>
-                                        <div class="flex gap-3 text-gray-500 dark:text-gray-400">
-                                          <p class="text-lg">123 Likes</p>
-                                        <span class="text-lg">Reply</span>
-                                        </div>
-                                        <p class="font-semibold text-gray-500 dark:text-gray-400">_  View All Replies(100)</p>
-                                        </div>
-                                        <img  *ngIf="!isLikeClicked3" (click)="toggleLikeColor3()" class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart2.svg" alt="">
-                                <img  *ngIf="isLikeClicked3" (click)="toggleLikeColor3()" class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/heart-green.svg" alt="">
-                                      </a>
-                                      </li>
-                                      
-                                      </ul>
-                              
-                      
-                       </div>
-                       
-                  <div class="mx-4 border-t border-gray-200">
-                 <div class="border-b-2 border-gray-200">
-                  <div class="flex justify-between mt-1 items-center">
-                      <div class="flex gap-6 ">
-                        <img class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out text-gray-900" src="assets/images/heart2.svg" alt="">
-                        <img class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/comment2.svg" alt="">
+                              </div>
+                              <p
+                                class="font-semibold text-gray-500 dark:text-gray-400"
+                              >
+                                _ View All Replies(100)
+                              </p>
+                            </div>
+                            <img
+                              *ngIf="!isLikeClicked"
+                              (click)="toggleLikeColor()"
+                              class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out"
+                              src="assets/images/heart2.svg"
+                              alt=""
+                            />
+                            <img
+                              *ngIf="isLikeClicked"
+                              (click)="toggleLikeColor()"
+                              class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out"
+                              src="assets/images/heart-green.svg"
+                              alt=""
+                            />
+                          </a>
+                        </li>
+                      </ul>
+
+                      <ul>
+                        <li class="relative py-4">
+                          <a
+                            class="inline-flex gap-3 w-full transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                          >
+                            <img
+                              src="assets/images/profile2.png"
+                              class="w-10 h-10 rounded-full border-2 border-blue-500"
+                              alt=""
+                            />
+                            <div>
+                              <span class="text-lg font-semibold"
+                                >DanKariuki</span
+                              >
+                              <span
+                                class="ml-2 text-sm text-gray-500 dark:text-gray-400"
+                                >Stop milking this goal and plan how to win I
+                                ain't in for another depressing day it's my
+                                bday</span
+                              >
+                              <div
+                                class="flex gap-3 text-gray-500 dark:text-gray-400"
+                              >
+                                <p class="text-lg">123 Likes</p>
+                                <span class="text-lg">Reply</span>
+                              </div>
+                              <p
+                                class="font-semibold text-gray-500 dark:text-gray-400"
+                              >
+                                _ View All Replies(100)
+                              </p>
+                            </div>
+                            <img
+                              *ngIf="!isLikeClicked2"
+                              (click)="toggleLikeColor2()"
+                              class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out"
+                              src="assets/images/heart2.svg"
+                              alt=""
+                            />
+                            <img
+                              *ngIf="isLikeClicked2"
+                              (click)="toggleLikeColor2()"
+                              class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out"
+                              src="assets/images/heart-green.svg"
+                              alt=""
+                            />
+                          </a>
+                        </li>
+                      </ul>
+                      <ul>
+                        <li class="relative py-4">
+                          <a
+                            class="inline-flex gap-3 w-full transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                          >
+                            <img
+                              src="assets/images/profile2.png"
+                              class="w-10 h-10 rounded-full border-2 border-blue-500"
+                              alt=""
+                            />
+                            <div>
+                              <span class="text-lg font-semibold"
+                                >DanKariuki</span
+                              >
+                              <span
+                                class="ml-2 text-sm text-gray-500 dark:text-gray-400"
+                                >Stop milking this goal and plan how to win I
+                                ain't in for another depressing day it's my
+                                bday</span
+                              >
+                              <div
+                                class="flex gap-3 text-gray-500 dark:text-gray-400"
+                              >
+                                <p class="text-lg">123 Likes</p>
+                                <span class="text-lg">Reply</span>
+                              </div>
+                              <p
+                                class="font-semibold text-gray-500 dark:text-gray-400"
+                              >
+                                _ View All Replies(100)
+                              </p>
+                            </div>
+                            <img
+                              *ngIf="!isLikeClicked3"
+                              (click)="toggleLikeColor3()"
+                              class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out"
+                              src="assets/images/heart2.svg"
+                              alt=""
+                            />
+                            <img
+                              *ngIf="isLikeClicked3"
+                              (click)="toggleLikeColor3()"
+                              class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out"
+                              src="assets/images/heart-green.svg"
+                              alt=""
+                            />
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="mx-4 border-t border-gray-200">
+                      <div class="border-b-2 border-gray-200">
+                        <div class="flex justify-between mt-1 items-center">
+                          <div class="flex gap-6">
+                            <img
+                              class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out text-gray-900"
+                              src="assets/images/heart2.svg"
+                              alt=""
+                            />
+                            <img
+                              class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out"
+                              src="assets/images/comment2.svg"
+                              alt=""
+                            />
+                          </div>
+                          <div>
+                            <img
+                              class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out"
+                              src="assets/images/bookmark2.svg"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                        <p class="text-lg">123 Likes</p>
                       </div>
-                      <div>
-                        <img class="w-6 h-6 transform transition hover:scale-105 duration-300 ease-in-out" src="assets/images/bookmark2.svg" alt="">
+                      <div class="flex items-center relative">
+                        <form class="flex-grow relative">
+                          <input
+                            type="text"
+                            placeholder="Add a comment"
+                            class="p-2 focus:border-none focus:outline-none"
+                            style="font-size: 18px; width: 90%"
+                          />
+                          <span
+                            class="text-gray-500 text-lg ml-2 pt-3 cursor-pointer hover:cursor-pointer hover:text-blue-500"
+                            >post</span
+                          >
+                        </form>
                       </div>
                     </div>
-                    <p class="text-lg">123 Likes</p>
-                 </div>
-                       <div class="flex items-center relative">
-                          <form class="flex-grow relative">
-                            <input type="text" placeholder="Add a comment"
-                              class=" p-2 focus:border-none focus:outline-none "
-                              style="font-size: 18px; width: 90%;">
-                              <span class="text-gray-500 text-lg ml-2 pt-3 cursor-pointer hover:cursor-pointer hover:text-blue-500" >post</span>
-                          </form>
-                          
-                        </div>
-                      </div>
                   </div>
-                     
-                  </div>
+                </div>
               </div>
-              
-              
             </div>
-        
-        </div>
-        
+          </div>
         </div>
         <div class="flex items-center relative mb-3 border-b-2">
           <form
@@ -562,27 +725,38 @@
             <p class="font-bold text-gray-500" style="font-size: 20px">
               Suggested For You
             </p>
-            <div class="relative px-2">
+            <div class="relative px-1">
               <div
                 *ngFor="let user of users; let i = index"
-                class="inline-flex items-center w-full text-lg font-semibold transition-colors duration-150"
+                class="inline-flex items-center justify-between w-full text-lg font-semibold transition-colors duration-150"
               >
-                <img
-                  [src]="user.profileImage"
-                  class="w-16 h-16 rounded-full"
-                  alt=""
-                />
-                <div class="flex gap-6">
+                <div class="flex items-center">
+                  <img
+                    [src]="user.profileImage"
+                    class="w-16 h-16 rounded-full"
+                    alt=""
+                  />
                   <span
-                    class="ml-2 hover:text-gray-700 dark:hover:text-gray-700"
+                    class="ml-1 hover:text-gray-700 dark:hover:text-gray-700"
                     >{{ user.username }}</span
                   >
+                </div>
+                <div class="flex gap-6">
                   <span
+                    *ngIf="user.isFollowing===0"
                     class="text-blue-500 font-normal"
                     (click)="toggleFollow(user.userID)"
                     class:hover="text-blue-700"
-                    >{{ user.followStatus }}</span
+                    >follow</span
                   >
+                  <span
+                    *ngIf="user.isFollowing===1"
+                    class="text-blue-500 font-normal"
+                    (click)="toggleFollow(user.userID)"
+                    class:hover="text-blue-700"
+                    >following</span
+                  >
+                
                 </div>
               </div>
             </div>
@@ -594,7 +768,5 @@
 </div>
 
 <!-- <app-comment *ngIf="!hidden"></app-comment> -->
-
-
 
 <app-create-post *ngIf="!visible"></app-create-post>

@@ -11,7 +11,7 @@ const dbhelpers = new Connection
 
 export const createPostControllers = async (req: Request, res: Response) => {
   try {
-    console.log(req.body);
+    // console.log(req.body);
 
     let { postImage, userID, caption } = req.body;
 
@@ -82,7 +82,7 @@ export const getSinglePostController = async (req: Request, res: Response) => {
       post: result.recordset[0],
     });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return res.status(500).json({
       error: 'Internal Server Error',
     });
@@ -99,7 +99,7 @@ export const getAllPostControllers = async (req: Request, res: Response) => {
 
     return res.status(201).json(users)
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
@@ -108,7 +108,7 @@ export const getAllPostControllers = async (req: Request, res: Response) => {
 
 export const updatePostController = async (req: Request, res: Response) => {
   try {
-    console.log(req.body);
+    // console.log(req.body);
     const { postID } = req.params
     let { postImage, caption } = req.body;
 
@@ -151,7 +151,7 @@ export const updatePostController = async (req: Request, res: Response) => {
       postID,
       caption
     });
-    console.log(result);
+    // console.log(result);
 
     if (result.rowsAffected[0] === 0) {
       return res.status(404).json({
@@ -165,7 +165,7 @@ export const updatePostController = async (req: Request, res: Response) => {
       postMediaIds,
     });
   } catch (err) {
-    console.error(err);
+    // console.error(err);
     return res.status(500).json({
       error: (err as Error).message,
       message: 'Error in deleting a post',
@@ -358,6 +358,33 @@ export const getSingleCommentControllers = async (req: Request, res: Response) =
 };
 
 
+export const toggleLike = async (req: Request, res: Response) => {
+  try {
+    const { userID, postID } = req.body;
+
+    // Check if the user has already liked the post
+    const hasLikedResult = await dbhelpers.execute('checkIfLiked', { userID, postID });
+    const hasLiked = hasLikedResult.recordset[0].hasLiked;
+
+    if (hasLiked) {
+      // User has liked the post, so unlike it
+      await dbhelpers.execute('unlikePost', { userID, postID });
+      return res.status(200).send({ message: 'Post unliked successfully', isLiked: false });
+    } else {
+      // User has not liked the post, so like it
+      const likesID = v4();
+      await dbhelpers.execute('likePost', { likesID, userID, postID });
+      return res.status(200).send({ message: 'Post liked successfully', isLiked: true });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({
+      error: (error as Error).message,
+      message: 'Internal Server Error',
+    });
+  }
+};
+
 export const likePostController = async (req: Request, res: Response) => {
   try {
     const { userID, postID } = req.body;
@@ -420,9 +447,8 @@ export const getLikesForPostController = async (req: Request, res: Response) => 
       });
     }
 
-    return res.status(200).json({
-      likes: result.recordset,
-    });
+    return res.status(200).json(result.recordset,
+    );
   } catch (error) {
     console.error(error);
     return res.status(500).json({
@@ -439,9 +465,9 @@ export const getLikesCountForPostController = async (req: Request, res: Response
 
     const likesCount = result.recordset[0].likesCount;
 
-    return res.status(200).json({
-      likesCount,
-    });
+    return res.status(200).json(
+      likesCount
+    );
   } catch (error) {
     console.error(error);
     return res.status(500).json({
@@ -517,9 +543,8 @@ export const getRepliesController = async (req: Request, res: Response) => {
       });
     }
 
-    return res.status(200).json({
-      replies: result.recordset,
-    });
+    return res.status(200).json(result.recordset,
+    );
   } catch (error) {
     console.error(error);
     return res.status(500).json({

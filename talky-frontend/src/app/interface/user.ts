@@ -7,6 +7,9 @@ export interface User {
     role: string;
     profileImage: string,
     followStatus: string;
+    isFollowing: number
+    followersCount? :number;
+    followingCount ?:number;
 }
 
 

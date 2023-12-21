@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addCommentController, createPostControllers, createReplyController, deleteCommentControllers, deletePostController, deleteReplyController, getAllCommentsController, getAllPostCommentsControllers, getAllPostControllers, getLikesCountForPostController, getLikesForPostController, getRepliesController, getSingleCommentControllers, getSinglePostController, likeCommentController, likePostController, unlikeCommentController, unlikePostController, updateCommentControllers, updatePostController, updateReplyController } from "../controllers/postsControllers";
+import { addCommentController, createPostControllers, createReplyController, deleteCommentControllers, deletePostController, deleteReplyController, getAllCommentsController, getAllPostCommentsControllers, getAllPostControllers, getLikesCountForPostController, getLikesForPostController, getRepliesController, getSingleCommentControllers, getSinglePostController, likeCommentController, likePostController, toggleLike, unlikeCommentController, unlikePostController, updateCommentControllers, updatePostController, updateReplyController } from "../controllers/postsControllers";
 
 
 
@@ -25,7 +25,7 @@ postRoute.post('/comment/unlike', unlikeCommentController);
 
 postRoute.get("/getpostcomments/:ID", getAllPostCommentsControllers)
 postRoute.get("/singleComment/:ID", getSingleCommentControllers)
-postRoute.post('/likepost', likePostController)
+postRoute.post('/likepost', toggleLike)
 postRoute.post('/unlikepost', unlikePostController)
 postRoute.get('/allLikes/:postID', getLikesForPostController)
 postRoute.get('/postlikecount/:postID', getLikesCountForPostController)

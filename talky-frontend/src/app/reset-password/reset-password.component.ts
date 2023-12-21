@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -11,26 +12,29 @@ import { Router } from '@angular/router';
 export class ResetPasswordComponent {
   isLoading = false;
   loginError = false;
-  loginForm! : FormGroup
+  resetPasswordForm!: FormGroup
 
-  constructor(private formBuilder:FormBuilder, private router:Router){
-    this.loginForm=formBuilder.group({
-      fullName:["",[Validators.required]],
-      username:["",[Validators.required]],
-      profileImage:["",[Validators.required]],
-      email:["",[Validators.required]],
-      password:["",[Validators.required]]
-    })
-  }
-
-  loginUser() {
-    if (this.loginForm.invalid) {
-
-      const loginUserForm=this.loginForm.value
-      console.log(loginUserForm);
-
-      this.router.navigate(['user'])
-      
+constructor(private formBuilder:FormBuilder, private userService: UserService, private router:Router){
+  this.resetPasswordForm=this.formBuilder.group({
+    email:['',[Validators.required]],
+    resetToken:['',[Validators.required]],
+    newPassword:['',[Validators.required]]
+  })
 }
+
+resetPassword(){
+  if(this.resetPasswordForm.valid){
+    const resetPassword=this.resetPasswordForm.value
+    console.log(resetPassword);
+    
+    this.userService.resetPassword(resetPassword)
+    
+      this.router.navigate(['']);
+
+  }else{
+    this.resetPasswordForm.markAllAsTouched()
   }
+}
+
+
 }

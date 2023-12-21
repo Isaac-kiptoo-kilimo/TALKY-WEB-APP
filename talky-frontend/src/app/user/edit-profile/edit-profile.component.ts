@@ -53,7 +53,6 @@ export class EditProfileComponent {
       if (this.updateUserForm.valid) {
         if (this.postFiles.length === 0) {
           let userDetails: any = this.updateUserForm.value;
-          // this.updateUserForm.value.userID = this.userID;
 
           this.userService
             .updateUserById(userDetails)
@@ -72,10 +71,8 @@ export class EditProfileComponent {
           data.append('cloud_name', 'dyisqzh7l');
 
           this.upload.uploadImage(data).subscribe((res) => {
-            // console.log(res.secure_url);
 
             this.updateUserForm.value.profileImage = res.secure_url;
-            // this.updateUserForm.value.userID = this.userID;
             let userDetails: any = this.updateUserForm.value;
 
             if (!this.token) {

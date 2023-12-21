@@ -21,7 +21,7 @@ BEGIN
         SET isDeleted = 1
         WHERE userID = @userID;
 
-        SELECT 'User sdeleted successfully' AS Result;
+        SELECT 'User deleted successfully' AS Result;
     END
     ELSE
     BEGIN

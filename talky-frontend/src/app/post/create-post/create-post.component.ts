@@ -86,9 +86,10 @@ export class CreatePostComponent implements OnInit {
                 console.log(response);
                 this.toastr.success('Form submitted successfully!', 'Success');
     
-                this.getPosts();
+                
                 this.createPostForm.reset();
                 this.postFiles = []; 
+                this.getPosts();
               },
               (error) => {
               

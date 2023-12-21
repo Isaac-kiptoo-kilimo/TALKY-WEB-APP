@@ -72,12 +72,7 @@ updateUserById(updatedUser:updatedUserData): Observable<any> {
   }
 
 
-// updateUser(user: any, token: string): Observable<any> {
-//   const url = `${this.baseUrl}`;
-//   return this.http.put(url, user, {
-//     headers: this.getHeadersWithToken(token),
-//   });
-// }
+
 
 deleteUser(userID: string): Observable<any> {
   return this.http.delete(`http://localhost:3700/users/delete/${userID}`)

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -7,9 +9,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent {
-constructor( private router:Router){
-}
-  reset(){
-    this.router.navigate(['reset'])
+  forgotPasswordForm!: FormGroup
+
+  constructor(private formBuilder: FormBuilder, private userService:UserService, private router:Router){
+    this.forgotPasswordForm=this.formBuilder.group({
+      email:['',[Validators.required]]
+    })
   }
+  
+  initializePasswordReset(){
+    if(this.forgotPasswordForm.valid){
+    const forgotPassword=this.forgotPasswordForm.value
+    console.log(forgotPassword);
+    
+    this.userService.initializePasswordReset(forgotPassword)
+    this.router.navigate(['reset']);
+    }else{
+      this.forgotPasswordForm.markAllAsTouched()
+    }
+  }
+  
+  
 }

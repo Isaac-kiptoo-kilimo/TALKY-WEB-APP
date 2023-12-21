@@ -69,7 +69,7 @@ getPosts(): Observable<Post[]>{
   }
 
 
-  likePost(data: { userID: string; postID: string }): Observable<any> {
+  likePost(data: any): Observable<any> {
     return this.http.post('http://localhost:3700/posts/likepost/', data);
   }
 
@@ -77,13 +77,26 @@ getPosts(): Observable<Post[]>{
     return this.http.post('http://localhost:3700/posts/unlikepost/', data);
   }
 
-  getLikesForPost(postID: string): Observable<any> {
-    return this.http.get(`http://localhost:3700/posts/alllikes${postID}`);
-  }
+  // getLikesForPost(postID: string): Observable<any> {
+  //   return this.http.get(`http://localhost:3700/posts/alllikes/${postID}`);
+  // }
 
   getLikeCountForPost(postID: string): Observable<any> {
     return this.http.get(`http://localhost:3700/posts/postlikecount/${postID}`);
   }
+
   
+ 
+  createReply(replyData: any): Observable<any> {
+    return this.http.post<any>('http://localhost:3700/posts/createreply', replyData);
+  }
+
+  getAllReplies(commentID: string): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:3700/posts/allreplies/${commentID}`);
+  }
+
+  updateReply(replyData: any): Observable<any> {
+    return this.http.put<any>('http://localhost:3700/posts/updatereply', replyData);
+  }
 }
 

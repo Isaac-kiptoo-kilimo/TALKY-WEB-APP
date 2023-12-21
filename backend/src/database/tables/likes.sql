@@ -2,8 +2,9 @@ CREATE TABLE Likes (
   likesID VARCHAR(255) PRIMARY KEY,
   userID VARCHAR(255) REFERENCES Users(userID),
   postID VARCHAR(255) REFERENCES Posts(postID),
-  commentID VARCHAR(255) REFERENCES Comments(commentID),
   createdAt TIMESTAMP
 );
 
 DROP TABLE Likes
+
+SELECT * FROM Likes

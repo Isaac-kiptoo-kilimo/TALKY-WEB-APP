@@ -1,3 +1,4 @@
+-- Create unlikePost Stored Procedure
 CREATE OR ALTER PROCEDURE unlikePost
     @userID VARCHAR(255),
     @postID VARCHAR(255)
@@ -10,7 +11,7 @@ BEGIN
         DELETE FROM Likes
         WHERE userID = @userID AND postID = @postID;
 
-        -- Decrement the likes count in the Posts table
+        -- Decrement the likes count in the postLikeCount table
         UPDATE postLikeCount
         SET likesCount = CASE WHEN likesCount > 0 THEN likesCount - 1 ELSE 0 END
         WHERE postID = @postID;
@@ -23,3 +24,4 @@ BEGIN
         SELECT 'User has not liked the post. Unlike not performed.' AS Result;
     END
 END;
+

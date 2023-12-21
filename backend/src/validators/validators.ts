@@ -62,9 +62,9 @@ export const validateComment = Joi.object({
   });
 
   export const validateCommentReply = Joi.object({
-    text: Joi.string(),
+    text: Joi.string().required(),
     userID: Joi.string(),
-    commentID: Joi.string().required(),
+    commentID: Joi.string()
   });
 
 

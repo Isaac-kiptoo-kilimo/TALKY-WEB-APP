@@ -9,3 +9,5 @@ CREATE TABLE Replies (
 );
 
 DROP TABLE Replies
+
+select * from Replies

@@ -30,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {CloudinaryModule} from '@cloudinary/ng';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { SearchPipe } from './pipes/search.pipe';
 
 
 
@@ -52,7 +53,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     FollowersComponent,
     FollowingComponent,
     MessageComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

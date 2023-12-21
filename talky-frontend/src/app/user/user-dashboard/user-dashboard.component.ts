@@ -26,6 +26,7 @@ export class UserDashboardComponent {
   commentForm!: FormGroup;
   filter=''
   hide: boolean=true
+  hidding: boolean=true
   userID! : string;
   postUserID! : string;
   users: User[]=[];
@@ -36,7 +37,8 @@ export class UserDashboardComponent {
   updateCommentID :string ='';
   following!: string
   isFollowing = false;
-  
+  isLikeClickedpost: boolean = false;
+
   // postDetails!: PostDetails;
   clickedPostID! : string
   CommentclickedPostID! : string
@@ -48,9 +50,14 @@ export class UserDashboardComponent {
   currentUserID: string='';
   followStatusMap: { [userID: string]: string } = {};
   postID!: string;
-  likeCount!: number;
+  likeCount: number=0;
   isLiked!: boolean;
-
+  selectedComment: any;
+  replies: any[] = [];
+  replyForm!: FormGroup
+  // filter : string=''
+  
+loggedInUserID=localStorage.getItem('userID')
 
 constructor(private router:Router, private fb:FormBuilder,
   private userService: UserService,    private toastr: ToastrService,
@@ -63,7 +70,11 @@ constructor(private router:Router, private fb:FormBuilder,
   this.updateCommentForm= this.fb.group({
     content: ['', [Validators.required]]
   })
-  
+
+this.replyForm=this.fb.group({
+  text: ['', [Validators.required]] 
+})
+
 }
 
 loggedInTrue = localStorage.getItem('loggedIn')
@@ -75,8 +86,9 @@ myID = localStorage.getItem('userID') as string;
     this.getPosts();
     this.getFollowings()
     this.getFollowers()
-    this.getLikeInfo();
-    
+    this.getLikeCount(this.postID);
+
+
     if (this.authService.isLoggedIn()) {
      
       this.authService.getUserDetails().subscribe(
@@ -92,7 +104,7 @@ myID = localStorage.getItem('userID') as string;
         }
       );
     }
-   
+  
     
  }
 
@@ -168,6 +180,8 @@ deleteUser(userID: string): void {
       this.posts = posts;
       console.log(posts[0].username);
       console.log(posts[0].createdAt);
+      console.log(posts);
+      
     },
     (error) => {
       console.error('Error fetching users:', error.error.message);
@@ -233,13 +247,6 @@ deleteUser(userID: string): void {
   }
 
 
- getAllPostComments(post: any): void {
-  this.postService.getPostComments(post.postID).subscribe((comments) => {
-    post.comments = comments;
-    console.log(this.selectedPost.comments[0]?.profileImage);
-
-  });
-}
 
   
   getPostComments(postID: string): void {
@@ -413,10 +420,10 @@ toggleSidebar() {
   
             this.users.forEach((user) => {
 
-              if(this.userID){
-                user.followStatus = response.isFollowing ? 'Following' : 'Follow';
-              console.log(user.followStatus);
-              }
+              // if(this.userID){
+              //   user.followStatus = response.isFollowing ? 'Following' : 'Follow';
+              // console.log(user.followStatus);
+              // }
               const userFollowStatus = response.find((item:UserFollowStatus) => item.userID === user.userID);
               console.log(userFollowStatus);
             
@@ -434,24 +441,44 @@ toggleSidebar() {
   }
  
  
-   getLikeInfo() {
-    this.postService.getLikesForPost(this.postID).subscribe((likes) => {
-      this.isLiked = likes.some((like:any) => like.userID === this.userID); // Replace 'your-userID' with the actual user ID
-      this.getLikeCount();
+  //  getLikeInfo() {
+  //   this.postService.getLikesForPost(this.postID).subscribe((likes) => {
+  //     this.isLiked = likes.some((like:any) => like.userID === this.userID);
+
+  //     this.getLikeCount(this.postID);
+  //   });
+  // }
+
+  getLikeCount(postID:string) {
+    console.log(postID);
+    
+    this.postService.getLikeCountForPost(postID).subscribe((count) => {
+      console.log(postID);
+      
+      this.likeCount = count;
+      console.log(this.likeCount);
+      const postIndex = this.posts.findIndex(post => post.postID === postID);
+    if (postIndex !== -1) {
+      this.posts[postIndex].likesCount = count;
+    }
     });
   }
 
-  getLikeCount() {
-    this.postService.getLikeCountForPost(this.postID).subscribe((count) => {
-      this.likeCount = count;
-    });
-  }
-  likePost() {
+
+  likePost(postID:string) {
+    const userID = localStorage.getItem('userID'); 
+  const data = {
+    userID: userID,
+    postID: postID
+  };
+  console.log(data);
+  
     this.postService
-      .likePost({ userID: this.userID, postID: this.postID }) // Replace 'your-userID' with the actual user ID
-      .subscribe(() => {
+      .likePost(data) 
+      .subscribe((res) => {
+        
         this.isLiked = true;
-        this.getLikeCount();
+        this.getLikeCount(postID);
       });
   }
 
@@ -460,11 +487,60 @@ toggleSidebar() {
       .unlikePost({ userID: this.userID, postID: this.postID }) // Replace 'your-userID' with the actual user ID
       .subscribe(() => {
         this.isLiked = false;
-        this.getLikeCount();
+        this.getLikeCount(this.postID);
       });
   }
 
+  onCommentClick(comment: any): void {
+    this.selectedComment = comment;
+    console.log(this.selectedComment);
+    
+  }
 
+  fetchReplies(selectedCommentID: string): void {
+    if (this.selectedComment) {
+      this.postService.getAllReplies(selectedCommentID).subscribe((replies) => {
+        this.replies = replies;
+        console.log(replies);
+        
+      });
+    }
+  }
+
+  createReply(selectedCommentID: string): void {
+    if (this.selectedComment && this.replyForm.valid) {
+      console.log(selectedCommentID);
+      
+      let userID=localStorage.getItem('userID')
+      const replyData = {
+        userID: this.userID, 
+        commentID: selectedCommentID,
+        text: this.replyForm.value.text,
+      };
+
+      this.postService.createReply(replyData).subscribe(() => {
+        
+        this.fetchReplies(selectedCommentID);
+        
+        this.replyForm.reset();
+      });
+    }
+  }
+
+
+  updateReply(replyID: string, newText: string): void {
+    if (this.selectedComment) {
+      const replyData = {
+        replyID,
+        text: newText,
+      };
+
+      this.postService.updateReply(replyData).subscribe(() => {
+        // After updating the reply, fetch updated replies
+        this.fetchReplies(this.selectedComment.commentID);
+      });
+    }
+  }
   }
   
 

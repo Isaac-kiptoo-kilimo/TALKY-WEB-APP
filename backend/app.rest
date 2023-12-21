@@ -3,9 +3,9 @@ POST http://localhost:3700/users/register/
 Content-Type: application/json
 
 {
-    "fullName": "Daniel Kitheka",
-    "username": "_@Dankitheka254",
-    "email": "gamemy1774@gmail.com",
+    "fullName": "Limo Kemboi",
+    "username": "_kemboi2",
+    "email": "gkemboi@gmail.com",
     "password": "12345678@Dk"
 }
 
@@ -16,13 +16,13 @@ POST http://localhost:3700/users/login/
 Content-Type: application/json
 
 {
-   "email": "isaackilimok2@gmail.com",
-   "password": "12345678@Ik" 
+   "email": "gamemy175@gmail.com",
+   "password": "12345678@Dk" 
 }
 
 ### fetching all users
 GET http://localhost:3700/users/all/
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI5OWUxOGYzYS1mN2Q5LTRiYjctODBlMi1iOWYxN2JkMjA4MWIiLCJmdWxsTmFtZSI6ImlzYWFjIGtpbGltbyIsInVzZXJuYW1lIjoiQGlzYWFjMTIzNCIsImVtYWlsIjoiaXNhYWNraWxpbW9rMkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInJlc2V0VG9rZW4iOm51bGwsImV4cGlyeVRpbWUiOm51bGwsIndlbGNvbWVkIjpmYWxzZSwiaXNEZWxldGVkIjpmYWxzZSwiaXNTZW5kIjpmYWxzZSwicHJvZmlsZUltYWdlIjoiaHR0cHM6Ly9tZWRpYS5pc3RvY2twaG90by5jb20vaWQvMTMwMDg0NTYyMC92ZWN0b3IvdXNlci1pY29uLWZsYXQtaXNvbGF0ZWQtb24td2hpdGUtYmFja2dyb3VuZC11c2VyLXN5bWJvbC12ZWN0b3ItaWxsdXN0cmF0aW9uLmpwZz9zPTYxMng2MTImdz0wJms9MjAmYz15QmV5YmEwaFVraDE0X2pndjFPS3FJSDBDQ1NXVV80Y2tSa0FveTJwNzNvPSIsImlhdCI6MTcwMjkyNjA4NSwiZXhwIjoxNzAzMDk4ODg1fQ.9t02Me_WQ6jZeKwjljxW0oIp0YtDjHvooEaJcLG7W68
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1YjA4ZWI4MS0zNzgzLTRjNTEtYTZlYS03MTFhNGFmYTNiM2IiLCJmdWxsTmFtZSI6IkRhbmllbDIgS2l0aGVrYSIsInVzZXJuYW1lIjoiX0BEYW5raXRoZWthMjUxNCIsImVtYWlsIjoiZ2FtZW15MTc1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicmVzZXRUb2tlbiI6bnVsbCwiZXhwaXJ5VGltZSI6bnVsbCwid2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpc1NlbmQiOmZhbHNlLCJmb2xsb3dlcnNDb3VudCI6MCwiZm9sbG93aW5nQ291bnQiOjAsInByb2ZpbGVJbWFnZSI6Imh0dHBzOi8vbWVkaWEuaXN0b2NrcGhvdG8uY29tL2lkLzEzMDA4NDU2MjAvdmVjdG9yL3VzZXItaWNvbi1mbGF0LWlzb2xhdGVkLW9uLXdoaXRlLWJhY2tncm91bmQtdXNlci1zeW1ib2wtdmVjdG9yLWlsbHVzdHJhdGlvbi5qcGc_cz02MTJ4NjEyJnc9MCZrPTIwJmM9eUJleWJhMGhVa2gxNF9qZ3YxT0txSUgwQ0NTV1VfNGNrUmtBb3kycDczbz0iLCJpYXQiOjE3MDMxNDczOTUsImV4cCI6MTcwMzMyMDE5NX0.R6jMIv_93D6F-V2qkxnSIyNA-rVET1Gf4EOoTCW7qH0
 
 #### getting users
 GET http://localhost:3700/users/all/99e18f3a-f7d9-4bb7-80e2-b9f17bd2081b
@@ -53,7 +53,7 @@ POST http://localhost:3700/users/initiate-password-reset/
 Content-Type: application/json
 
 {
-   "email": "gamemy177@gmail.com" 
+   "email": "isaackilimok2@gmail.com" 
 }
 
 
@@ -75,8 +75,9 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI3NzY3Nzc3NS0xODNhLTQ4
 
 
 #### deleting user
-DELETE http://localhost:3700/users/delete/13994250-847e-4545-9232-af9cd787b196/
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI3NzY3Nzc3NS0xODNhLTQ4YzktODAxMC1jNzc3MGEzZTk4NGUiLCJmdWxsTmFtZSI6IkVyaWNrIEt5YWxvIiwidXNlcm5hbWUiOiJfQGVyaWNrMTIzIiwiZW1haWwiOiJlcmlja2t5YWxvQGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsInJlc2V0VG9rZW4iOm51bGwsImV4cGlyeVRpbWUiOm51bGwsIndlbGNvbWVkIjp0cnVlLCJpc1NlbmQiOmZhbHNlLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL21lZGlhLmlzdG9ja3Bob3RvLmNvbS9pZC8xMzAwODQ1NjIwL3ZlY3Rvci91c2VyLWljb24tZmxhdC1pc29sYXRlZC1vbi13aGl0ZS1iYWNrZ3JvdW5kLXVzZXItc3ltYm9sLXZlY3Rvci1pbGx1c3RyYXRpb24uanBnP3M9NjEyeDYxMiZ3PTAmaz0yMCZjPXlCZXliYTBoVWtoMTRfamd2MU9LcUlIMENDU1dVXzRja1JrQW95MnA3M289IiwiaWF0IjoxNzAyNjMxMjI3LCJleHAiOjE3MDI4MDQwMjd9.vPEqXjXa9thiIXSdPFq6WTRaAtv5-hkSxqhxwuUDMMY
+
+DELETE http://localhost:3700/users/delete/b177e7b1-019a-45d5-a246-02e234a716ad/
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI5OWUxOGYzYS1mN2Q5LTRiYjctODBlMi1iOWYxN2JkMjA4MWIiLCJmdWxsTmFtZSI6ImlzYWFjIGtpbGltbyIsInVzZXJuYW1lIjoiQGlzYWFjMTIzNCIsImVtYWlsIjoiaXNhYWNraWxpbW9rMkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInJlc2V0VG9rZW4iOm51bGwsImV4cGlyeVRpbWUiOm51bGwsIndlbGNvbWVkIjpmYWxzZSwiaXNEZWxldGVkIjpmYWxzZSwiaXNTZW5kIjpmYWxzZSwicHJvZmlsZUltYWdlIjoiaHR0cHM6Ly9tZWRpYS5pc3RvY2twaG90by5jb20vaWQvMTMwMDg0NTYyMC92ZWN0b3IvdXNlci1pY29uLWZsYXQtaXNvbGF0ZWQtb24td2hpdGUtYmFja2dyb3VuZC11c2VyLXN5bWJvbC12ZWN0b3ItaWxsdXN0cmF0aW9uLmpwZz9zPTYxMng2MTImdz0wJms9MjAmYz15QmV5YmEwaFVraDE0X2pndjFPS3FJSDBDQ1NXVV80Y2tSa0FveTJwNzNvPSIsImlhdCI6MTcwMjkyNjA4NSwiZXhwIjoxNzAzMDk4ODg1fQ.9t02Me_WQ6jZeKwjljxW0oIp0YtDjHvooEaJcLG7W68
 
 
 
@@ -122,13 +123,13 @@ GET http://localhost:3700/posts/single/740057a8-6906-471c-8d1f-58f7e2783c23
 
 
 ###### Updating post
-PUT  http://localhost:3700/posts/update/740057a8-6906-471c-8d1f-58f7e2783c23
+PUT  http://localhost:3700/posts/update/2c3c9ae4-22d4-4c36-ad8e-e027438b3222
 Content-Type: application/json
 
 {
-    "userID": "933706eb-e1eb-40f6-9cb4-1c14e7e6e1fe",
-    "caption": "They are remaining two regions with Nyeri",
-    "postImage": ["https://media.istockphoto.com/id/1430080532/photo/bedroom-without-sheets.webp?b=1&s=612x612&w=0&k=20&c=7_c725vsPgGRxQJLD13VAt5zOk6TvFT4KWZba4RYBfg="]
+    "userID": "99e18f3a-f7d9-4bb7-80e2-b9f17bd2081b",
+    "caption": "Lets chat using talky App",
+    "postImage": ["https://res-console.cloudinary.com/dyisqzh7l/thumbnails/v1/image/upload/v1702408313/Y2xkLXNhbXBsZS00/grid_landscape"]
   }
 
 
@@ -158,7 +159,7 @@ Content-Type: application/json
 }
 
 ###### alllikes for a post
-GET http://localhost:3700/posts/alllikes/33d87867-9ad2-4c52-9b4e-a67657386156/
+GET http://localhost:3700/posts/alllikes/c5737ce6-8e7b-4183-9804-433a3b8898f9/
 
 
 
@@ -217,7 +218,7 @@ Content-Type: application/json
 
 ### fetching all replies for specific comment
 
-GET http://localhost:3700/posts/allreplies/e7e388d9-80ec-436e-a8ce-ba1c68603c8c
+GET http://localhost:3700/posts/allreplies/1ce968d4-a3d8-4246-850c-c0c7db8e690a
 
 
 ###update comment reply

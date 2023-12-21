@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/interface/user';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class FollowersComponent {
 isVisible : boolean=true
 following: any[]=[]
 followers: any[] = [];
+  
 
 constructor(private router:Router,
   private userService: UserService){
@@ -20,6 +22,7 @@ constructor(private router:Router,
 
 
 ngOnInit() {
+
   this.getFollowers();
   this.getFollowings()
 }
@@ -52,4 +55,6 @@ getFollowings() {
     }
   );
 }
+
+  
 }

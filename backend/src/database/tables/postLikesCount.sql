@@ -1,6 +1,9 @@
 CREATE TABLE postLikeCount (
-  postID VARCHAR(255) PRIMARY KEY,
+  postLIkeCountID VARCHAR(255) PRIMARY KEY,
   likesCount INT DEFAULT 0,
-  FOREIGN KEY (postID) REFERENCES posts(postID)
+  postID VARCHAR(255) REFERENCES Posts(postID),
 );
 DROP TABLE postLikeCount
+
+
+SELECT * FROM postLikeCount

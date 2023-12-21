@@ -19,9 +19,9 @@ export const dbConfig={
     }
 }
 
-const testConnection=()=>{
-  console.log('Connected to database');
+// const testConnection=()=>{
+//   console.log('Connected to database');
   
-}
+// }
 
-testConnection()
+// testConnection()

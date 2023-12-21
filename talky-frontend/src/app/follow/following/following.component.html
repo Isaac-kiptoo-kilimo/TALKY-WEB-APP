@@ -24,7 +24,7 @@
                <div class="overflow-y-auto" style="height: 350px;">
                <div *ngIf="following && following.length > 0" >
                 <div *ngFor="let followedUser of following" class="flex justify-between p-4 items-center" >
-                  <div class="flex gap-3" >
+                  <div class="flex gap-3 items-center" >
                     <img [src]="followedUser.profileImage" class="w-10 h-10 rounded-full border-2 border-green-500 " alt="">
                     <div class="text-lg font-semibold" >
                       
@@ -36,12 +36,12 @@
                     Unfollow
                   </button>
                 </div>
-                <div *ngIf="!following || following.length === 0">
-                  <p>Not following anyone.</p>
-                </div>
-               
+                             
                 
                </div>
+               <div class="font-bold text-center mt-4 text-[20px]" *ngIf="!following || following.length === 0">
+                <p  >Not following anyone.</p>
+              </div>
           
             </div>
     </div>

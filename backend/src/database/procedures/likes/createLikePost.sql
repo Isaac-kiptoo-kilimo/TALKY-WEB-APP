@@ -13,10 +13,18 @@ BEGIN
         INSERT INTO Likes (likesID, userID, postID)
         VALUES (@likesID, @userID, @postID);
 
-        -- Increment the likes count in the Posts table
-        UPDATE postLikeCount
-        SET likesCount = ISNULL(likesCount, 0) + 1
-        WHERE postID = @postID;
+        -- Increment the likes count in the postLikeCount table
+        IF EXISTS (SELECT 1 FROM postLikeCount WHERE postID = @postID)
+        BEGIN
+            UPDATE postLikeCount
+            SET likesCount = likesCount + 1
+            WHERE postID = @postID;
+        END
+        ELSE
+        BEGIN
+            INSERT INTO postLikeCount (postLikeCountID, likesCount, postID)
+            VALUES (NEWID(), 1, @postID);
+        END
 
         SELECT 'Like added for the post successfully' AS Result;
     END

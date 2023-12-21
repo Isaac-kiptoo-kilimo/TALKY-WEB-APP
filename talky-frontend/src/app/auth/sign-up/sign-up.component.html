@@ -15,27 +15,27 @@
                   <h1 class="mb-4 text-2xl text-white font-bold text-center">
                     CREATE AN ACCOUNT
                   </h1>
-                  <form [formGroup]="signupForm" (ngSubmit)="registerUser()">
+                  <form data-cy="signup" [formGroup]="signupForm" (ngSubmit)="registerUser()">
                     <mat-form-field class="w-full">
-                      <input matInput formControlName="fullName" type="text" placeholder="Full Name" required class="w-full bg-gray-200 rounded border-none outline-none" />
-                      <mat-error *ngIf="signupForm.get('fullName')?.hasError('required')">Please enter your full name</mat-error>
+                      <input matInput data-cy="fullname" formControlName="fullName" type="text" placeholder="Full Name" required class="w-full bg-gray-200 rounded border-none outline-none" />
+                      <mat-error data-cy="fullnameError" *ngIf="signupForm.get('fullName')?.hasError('required')">Please enter your full name</mat-error>
                     </mat-form-field>
                     <mat-form-field class="w-full">
-                      <input matInput formControlName="username" type="text" placeholder="Username" required class="w-full bg-gray-200 rounded border-none outline-none" />
-                      <mat-error *ngIf="signupForm.get('username')?.hasError('required')">Please enter a username</mat-error>
+                      <input data-cy="username" matInput formControlName="username" type="text" placeholder="Username" required class="w-full bg-gray-200 rounded border-none outline-none" />
+                      <mat-error data-cy="usernameError" *ngIf="signupForm.get('username')?.hasError('required')">Please enter a username</mat-error>
                     </mat-form-field>
                     <mat-form-field class="w-full">
-                      <input matInput formControlName="email" type="email" placeholder="E-mail" required email class="w-full bg-gray-200 rounded border-none outline-none" />
+                      <input matInput data-cy="email" formControlName="email" type="email" placeholder="E-mail" required email class="w-full bg-gray-200 rounded border-none outline-none" />
                       <mat-error *ngIf="signupForm.get('email')?.hasError('required')">Please enter your email</mat-error>
                       <mat-error *ngIf="signupForm.get('email')?.hasError('email')">Please enter a valid email</mat-error>
                     </mat-form-field>
                     <mat-form-field class="w-full">
-                      <input matInput formControlName="password" type="password" placeholder="Password" required class="w-full bg-gray-200 rounded outline-none focus:border-green-900" />
-                      <mat-error *ngIf="signupForm.get('password')?.hasError('required')">Please enter a password</mat-error>
+                      <input matInput data-cy="password" formControlName="password" type="password" placeholder="Password" required class="w-full bg-gray-200 rounded outline-none focus:border-green-900" />
+                      <mat-error data-cy="passwordError" *ngIf="signupForm.get('password')?.hasError('required')">Please enter a password</mat-error>
                     </mat-form-field>
             
              
-                  <button
+                  <button data-cy="signup-submitBtn"
                       class="block w-full px-4 py-3 mt-2 text-lg font-medium leading-5 text-center border border-transparent text-white transition-colors duration-150 bg-blue-500 border-none rounded-lg active:bg-blue-700 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
                        type="submit" >
                        Sign Up
@@ -48,7 +48,7 @@
                     <div class="flex-grow border-t border-white ml-4"></div>
                   </div>
                   <div class="infobox text-white text-center">
-                    <p>Have an account? <a routerLink="/" class="underline">Sign In</a></p>
+                    <p>Have an account? <a data-cy="singinBtn" routerLink="/" class="underline">Sign In</a></p>
                   </div>                
                 </form>
                 

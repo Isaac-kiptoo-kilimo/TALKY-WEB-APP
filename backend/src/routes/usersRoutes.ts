@@ -13,7 +13,7 @@ userRouter.get('/all/:loggedInUserID', verifyToken , fetchAllUsersControllers)
 userRouter.get('/all', verifyToken , fetchAllAvailableUsersControllers)
 userRouter.get('/checkUserDetails', verifyToken, checkCredentials);
 userRouter.get('/singleUser/:userID',verifyToken,getSingleUserController)
-userRouter.delete('/delete/:userID',verifyToken, deleteUserController)
+userRouter.delete('/delete/:userID', deleteUserController)
 userRouter.post('/initiate-password-reset', initiatePasswordResetController);
 userRouter.post('/reset-password', resetPasswordControllers);
 // userRouter.get("/getFollowers/:ID", getFollowersControllers);
